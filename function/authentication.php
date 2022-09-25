@@ -146,7 +146,7 @@ if(array_key_exists("userForgotPassword", $_POST)){
         $row = $result->fetch_assoc();
         $sql = "SELECT * FROM password_resets WHERE email='$email'";
         $result = $__conn->query($sql);
-        if ($result->num_rows == 0) {
+        if ($result->num_rows > 0) {
             $data = [ 'code' => 'code_4' ];
         } else {
             $ps = $row['password'];
@@ -182,6 +182,34 @@ if(array_key_exists("userForgotPassword", $_POST)){
         }
     } else {
         $data = [ 'code' => 'code_1' ];
+    }
+    header('Content-type: application/json');
+    echo json_encode( $data );
+}
+
+// reset password
+if(array_key_exists("resetPassword", $_POST)){
+    $token = $_POST['token'];
+    $password = $_POST['password'];
+    $data = "";
+    $sql = "SELECT * FROM password_resets WHERE reset_token='$token'";
+    $result = $__conn->query($sql);
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        $email = $row['email'];
+        $sql = "UPDATE users SET password = '$password' WHERE email='$email'";
+        if($__conn->query($sql) === TRUE){
+            $sql = "DELETE FROM password_resets WHERE reset_token='$token'";
+            if($__conn->query($sql) === TRUE){
+                $data = [ 'code' => 'code_1' ];
+            }else {
+                $data = [ 'code' => 'code_2' ];
+            }
+        } else {
+            $data = [ 'code' => 'code_2' ];
+        }
+    } else {
+        $data = [ 'code' => 'code_3' ];
     }
     header('Content-type: application/json');
     echo json_encode( $data );

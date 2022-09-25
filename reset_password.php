@@ -36,65 +36,85 @@
                 <h3 class="mb-4">Reset Your Password</h3>
                 <div class="form-area">
                     <div class="row">
-                        <div class="col-12 mb-3">
-                            <input type="text" id="email" class="form-control" placeholder="Email Address">
+                        <div class="col-12 mb-2">
+                            <input type="password" id="password" class="form-control" autocomplete="new-password"
+                                placeholder="New Password">
                         </div>
                         <div class="col-12 mb-2">
-                            <button onclick="userForgotPassword()" class="btn btn-primary" name="user_login">Send
-                                Password Reset Link <i class="bi bi-box-arrow-right"></i></button>
+                            <input type="password" id="cpassword" class="form-control"
+                                placeholder="Confirm New Password">
                         </div>
-                        <div class="sep-link">Remember your password ? <a class="no-link" href="login.php">Log In
-                                here</a></a>
+                        <div class="col-12 mb-2">
+                            <button onclick="resetPassword()" class="btn btn-primary" name="user_login">Reset Password<i
+                                    class="bi bi-box-arrow-right"></i></button>
                         </div>
+                        <!-- <div class="sep-link">Remember your password ? <a class="no-link"
+                                href="login.php">Log In here</a></a>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
-        <?php include('./components/footer.php');?>
+        <?php include('components/common/footer.php');?>
         <script>
-        function userForgotPassword() {
-            let email = document.getElementById("email").value;
+        var query = window.location.search.substring(1);
+        var qs = parse_query_string(query);
 
-            const pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        function parse_query_string(query) {
+            var vars = query.split("&");
+            var query_string = {};
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                var key = decodeURIComponent(pair.shift());
+                var value = decodeURIComponent(pair.join("="));
+                if (typeof query_string[key] === "undefined") {
+                    query_string[key] = value;
+                } else if (typeof query_string[key] === "string") {
+                    var arr = [query_string[key], value];
+                    query_string[key] = arr;
+                } else {
+                    query_string[key].push(value);
+                }
+            }
+            return query_string;
+        }
 
-            if (email === "") {
-                swal("Empty Field", "Please enter your email address to continue", "warning");
+        function resetPassword() {
+            let password = document.getElementById("password").value;
+            let cpassword = document.getElementById("cpassword").value;
+            let token = qs.token;
+
+            if (password === "") {
+                swal("Empty Field", "Please enter your new password to continue", "warning");
                 return;
             }
-            if (!(pattern.test(email))) {
-                swal("Invalid field", email + " is not an valid email address. Enter a valid email address", "error");
-                return false;
+            if (cpassword === "") {
+                swal("Empty Field", "Please confirm your new password to continue", "warning");
+                return;
+            }
+            if (cpassword !== password) {
+                swal("Invalid Field", "Passwords doesn't match", "error");
+                return;
             }
 
             let data = new FormData();
-            data.append('email', email);
-            data.append('userForgotPassword', 'true');
-
-            swal({
-                title: "Sending Email...",
-                text: "Please wait",
-                icon: "site_images/loading.gif",
-                buttons: false,
-                closeOnClickOutside: false
-            });
+            data.append('password', md5(password));
+            data.append('token', token);
+            data.append('resetPassword', 'true');
 
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     let x = JSON.parse(xhttp.responseText);
                     if (x.code === "code_1") {
-                        swal("Unregisterd Email", email + " address in not registerd in our database", "error");
-                    } else if (x.code === "code_2") {
-                        swal("Email Sent", "The password reset link has send to the " + email + " address",
-                            "success").then((value) => {
+                        swal("Success", "Your password has reset successfully", "success").then((value) => {
                             document.location.href = "login.php";
                         });
-                    } else if (x.code === "code_3") {
+                    } else if (x.code === "code_2") {
                         swal("Unexpected Error", "Unexpected error caused when sending the email, Try Again",
                             "error");
-                    } else if (x.code === "code_4") {
-                        swal("Reset Link", "One password reset link has already send to the " + email +
-                            " address", "warning");
+                    } else if (x.code === "code_3") {
+                        swal("Reset Link Expired", "Reset link expired or invalid reset link", "error");
                     }
                 }
             };
