@@ -43,7 +43,7 @@
                 }
                 ?>
                 <a href="<?php echo $dashboard; ?>" class="logout no-link"><?php echo $_SESSION['ses_email']?></a>
-                <a href="database/common/functions.php?logout=true" class="logout no-link">Log Out</a>
+                <a href="./function/authentication.php?logout=true" class="logout no-link">Log Out</a>
                 <?php } else { ?>
                 <a href="login.php" class="login no-link">Login</a>
                 <?php } ?>

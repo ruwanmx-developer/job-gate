@@ -36,17 +36,17 @@
         <div class="col-12 col-lg-6">
             <div class="login-select-wrap d-flex align-items-center justify-content-center">
                 <div class="login">
-                    <a class="no-link" href="signing_employee.php">
+                    <a class="no-link" href="signing_e.php">
                         <div class="login-card d-flex">
-                            <div class="text">Employee Sign In</div>
+                            <div class="text">Employee Sign Up</div>
                             <div class="icon">
                                 <i class="bi bi-chevron-double-right"></i>
                             </div>
                         </div>
                     </a>
-                    <a class="no-link" href="signing_company.php">
+                    <a class="no-link" href="signing_c.php">
                         <div class="login-card d-flex">
-                            <div class="text">Company Sign In</div>
+                            <div class="text">Company Sign Up</div>
                             <div class="icon">
                                 <i class="bi bi-chevron-double-right"></i>
                             </div>

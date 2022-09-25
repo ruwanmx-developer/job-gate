@@ -104,7 +104,7 @@
                     }
                 }
             };
-            xhttp.open("POST", "./function/login.php", true);
+            xhttp.open("POST", "./function/authentication.php", true);
             xhttp.send(data);
         }
         </script>
