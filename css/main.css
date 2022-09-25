@@ -509,6 +509,122 @@ body {
   box-shadow: var(--shadow-box);
   border-radius: 40px;
 }
+/* empty */
+.empty {
+  text-align: center;
+}
+
+.empty .empty-img img {
+  max-width: 100px;
+  margin-bottom: 20px;
+}
+
+.empty .empty-message {
+  color: var(--green-2);
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.empty .empty-message.r {
+  color: var(--red-3);
+}
+
+.empty .empty-message.g {
+  color: var(--green-3);
+}
+
+.empty .empty-message.b {
+  color: var(--blue-2);
+}
+
+/* company-view */
+.company-view .img img {
+  border-radius: 300px;
+  max-height: 150px;
+}
+
+.company-view .name {
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.01em;
+  color: #2b3087;
+}
+
+.company-view .address {
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  color: var(--bgc-1);
+}
+
+.company-view .desc-1 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--bgc-3);
+}
+
+.company-view .title-1 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  color: var(--green-2);
+}
+
+/* company-card */
+.company-card .name {
+  font-size: 16px;
+  color: var(--bgc-1);
+  font-weight: 600;
+}
+
+.mini-company-card {
+  padding: 10px;
+}
+
+.mini-company-card .name {
+  font-size: 13px;
+  color: var(--bgc-1);
+  font-weight: 600;
+}
+
+.company-card .address {
+  font-size: 12px;
+  color: var(--blue-3);
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.mini-company-card .address {
+  font-size: 12px;
+  color: var(--blue-3);
+  font-weight: 500;
+  line-height: 12px;
+}
+
+.company-card .desc {
+  line-height: 16px;
+  font-size: 13px;
+  color: var(--bgc-4);
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: initial;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-height: 48px;
+}
+
+.company-card img {
+  width: 50px;
+}
+
+.mini-company-card img {
+  width: 35px;
+  border-radius: 50%;
+  border: 1px solid #888;
+}
 
 /* misc */
 .btn-title {
@@ -527,6 +643,9 @@ body {
   padding: 10px;
   box-shadow: var(--shadow-box);
   border-radius: 5px;
+}
+.card-basic.over:hover {
+  background-color: var(--bgc-8);
 }
 .card-basic-2 {
   background-color: var(--w);

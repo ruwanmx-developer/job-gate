@@ -50,7 +50,7 @@
                                 op.innerHTML = xhttp.responseText;
                             }
                         };
-                        xhttp.open("POST", "database/admin/functions.php", true);
+                        xhttp.open("POST", "../function/admin.php", true);
                         xhttp.send(data);
                     }
                     </script>
