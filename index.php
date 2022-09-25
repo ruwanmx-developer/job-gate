@@ -4,12 +4,12 @@
 <head>
     <title>Job Gate</title>
     <!-- include header links -->
-    <?php include('../components/header_links.php');?>
+    <?php include('./components/header_links.php');?>
 </head>
 
 <body>
     <!-- include navigation -->
-    <?php include('../components/navigation.php');?>
+    <?php include('./components/navigation.php');?>
 
     <div class="row gx-0">
         <div class="col-12 col-lg-6">
@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    <?php include('../components/footer.php');?>
+    <?php include('./components/footer.php');?>
 </body>
 
 </html>

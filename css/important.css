@@ -1,0 +1,81 @@
+/* margin classes */
+.marg {
+  margin: 10px !important;
+}
+
+.marg-b {
+  margin-bottom: 10px !important;
+}
+
+.marg-r {
+  margin-right: 10px !important;
+}
+
+.marg-t {
+  margin-top: 10px !important;
+}
+
+.marg-l {
+  margin-left: 10px !important;
+}
+
+.marg-0 {
+  margin: 0px !important;
+}
+
+.marg-b-0 {
+  margin-bottom: 0px !important;
+}
+
+.marg-r-0 {
+  margin-right: 0px !important;
+}
+
+.marg-t-0 {
+  margin-top: 0px !important;
+}
+
+.marg-l-0 {
+  margin-left: 0px !important;
+}
+
+/* padding classes */
+.pad {
+  padding: 10px !important;
+}
+
+.pad-b {
+  padding-bottom: 10px !important;
+}
+
+.pad-r {
+  padding-right: 10px !important;
+}
+
+.pad-t {
+  padding-top: 10px !important;
+}
+
+.pad-l {
+  padding-left: 10px !important;
+}
+
+.pad-0 {
+  padding: 0px !important;
+}
+
+.pad-b-0 {
+  padding-bottom: 0px !important;
+}
+
+.pad-r-0 {
+  padding-right: 0px !important;
+}
+
+.pad-t-0 {
+  padding-top: 0px !important;
+}
+
+.pad-l-0 {
+  padding-left: 0px !important;
+}

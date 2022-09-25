@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto marg-b mb-lg-0">
                 <?php if(array_key_exists("ses_role_id", $_SESSION)){
                 if($_SESSION['ses_role_id'] === '2'){?>
                 <li class="nav-item">
