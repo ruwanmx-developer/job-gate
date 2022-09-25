@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php $__siteroot = ""; ?>
 
 <head>
     <title>Job Gate</title>
@@ -95,7 +96,7 @@
                     } else if (x.code === "code_3") {
                         swal("Login Successfull", "Successfull", "success").then((value) => {
                             if (x.role == 1) {
-                                document.location.href = "ad_dashboard.php";
+                                document.location.href = "./user_admin/dashboard.php";
                             }
                             if (x.role == 2) {
                                 document.location.href = "em_dashboard.php";

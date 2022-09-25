@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php $__siteroot = ""; ?>
 
 <head>
     <title>Job Gate</title>

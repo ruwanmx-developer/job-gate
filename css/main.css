@@ -113,12 +113,34 @@ body {
   font-weight: 500 !important;
   border: none !important;
   text-transform: uppercase !important;
-  box-shadow: var(--shadow-btn) !important;
 }
 
 .btn-green:hover {
   background-color: var(--green-2) !important;
   color: #fff;
+}
+
+.btn-red,
+.btn-red:active,
+.btn-red:focus {
+  line-height: 15px;
+  padding: 8px 15px;
+  color: #fff;
+  background-color: var(--red-3) !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  border: none !important;
+  text-transform: uppercase !important;
+}
+
+.btn-red:hover {
+  background-color: var(--red-2) !important;
+  color: #fff;
+}
+
+.btn-green.s,
+.btn-red.s {
+  box-shadow: var(--shadow-btn) !important;
 }
 
 /* navigation bar */
@@ -394,4 +416,125 @@ body {
   color: var(--bgc-1);
   font-weight: 700;
   font-size: 18px;
+}
+
+/* menu-card */
+.menu-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 50px;
+  padding: 0 10px 0 0;
+  box-shadow: var(--shadow-box);
+}
+
+.menu-item .activebar {
+  height: 100%;
+  width: 12px;
+}
+
+.menu-item .activebar.active {
+  height: 100%;
+  width: 12px;
+  background-color: #2b3087;
+}
+
+.menu-item .name.active {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  color: #2b3087;
+}
+
+/* admin-company-card */
+.admin-company-card .name-wrap {
+  display: flex;
+}
+
+.admin-company-card .name-wrap .id {
+  font-size: 14px;
+  color: var(--blue-1);
+  font-weight: 700;
+  width: 30px;
+}
+
+.admin-company-card .name-wrap .name {
+  font-size: 14px;
+  color: var(--bgc-1);
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.admin-company-card .li-desc {
+  font-size: 12px;
+  color: var(--bgc-4);
+  font-weight: 300;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-box-orient: vertical;
+}
+
+.admin-company-card .li-desc span {
+  font-size: 12px;
+  color: var(--bgc-2);
+  font-weight: 500;
+}
+
+.admin-company-card .logo-wrap {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 5px;
+}
+
+.admin-company-card .btn-wrap {
+  text-align: right;
+  margin-left: 10px;
+  max-width: 180px;
+}
+
+.admin-company-card .btn-wrap button {
+  font-size: 13px;
+  width: 100%;
+}
+
+.admin-company-card .img {
+  display: flex;
+  align-items: flex-end;
+}
+
+.admin-company-card img {
+  width: 60px;
+  border: 1px solid var(--bgc-5);
+  box-shadow: var(--shadow-box);
+  border-radius: 40px;
+}
+
+/* misc */
+.btn-title {
+  background-color: var(--yellow-1);
+  padding: 6px 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: var(--shadow-box);
+}
+
+.card-basic {
+  background-color: var(--w);
+  padding: 10px;
+  box-shadow: var(--shadow-box);
+  border-radius: 5px;
+}
+.card-basic-2 {
+  background-color: var(--w);
+  padding: 20px;
+  box-shadow: var(--shadow-box2);
+  border-radius: 5px;
+}
+.card-basic-2.ho:hover {
+  background-color: var(--blue-5);
+  cursor: pointer;
 }

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php"><img src="site_images/logo.png" alt=""></a>
+        <a class="navbar-brand" href="index.php"><img src="<?php echo $__siteroot; ?>./site_images/logo.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
                 <?php 
                 $dashboard = "";
                 if($_SESSION['ses_role_id'] == 1){
-                    $dashboard = "ad_dashboard.php";
+                    $dashboard = "./user_admin/dashboard.php";
                 } else if($_SESSION['ses_role_id'] == 2){
                     $dashboard = "em_dashboard.php";
                 } else if($_SESSION['ses_role_id'] == 3){
@@ -43,7 +43,8 @@
                 }
                 ?>
                 <a href="<?php echo $dashboard; ?>" class="logout no-link"><?php echo $_SESSION['ses_email']?></a>
-                <a href="./function/authentication.php?logout=true" class="logout no-link">Log Out</a>
+                <a href="<?php echo $__siteroot; ?>./function/authentication.php?logout=true" class="logout no-link">Log
+                    Out</a>
                 <?php } else { ?>
                 <a href="login.php" class="login no-link">Login</a>
                 <?php } ?>
