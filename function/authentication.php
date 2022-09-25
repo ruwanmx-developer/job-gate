@@ -135,4 +135,56 @@ if(array_key_exists("emp_signup",$_POST)){
     header('Content-type: application/json');
     echo json_encode( $data );
 }
+
+// user forgot password
+if(array_key_exists("userForgotPassword", $_POST)){
+    $email = $_POST['email'];
+    $data = "";
+    $sql = "SELECT * FROM users WHERE email='$email'";
+    $result = $__conn->query($sql);
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        $sql = "SELECT * FROM password_resets WHERE email='$email'";
+        $result = $__conn->query($sql);
+        if ($result->num_rows == 0) {
+            $data = [ 'code' => 'code_4' ];
+        } else {
+            $ps = $row['password'];
+            $token = md5($email . $ps);
+            $sql = "INSERT INTO password_resets VALUES (NULL, '$email', '$token')";
+            if($__conn->query($sql) === TRUE){
+                $resetLink = $__site_url ."/". "reset_password.php?token=" . $token;
+
+                // sendmail
+                $to = $email;
+                $subject = 'Reset Password';
+
+                $message = "Welcome " . $email. ",<br>";
+                $message .= "Forgot your password?<br><br>";
+                $message .= "We received a request to reset the password for your account.<br><br>";
+                $message .= "To reset your password, click on the button below:<br>";
+                $message .= "<a href=" .$resetLink. "> <button>Reset Password</button> <a/><br><br>";
+                $message .= "Or copy and paste  the URL into your browser:<br>";
+                $message .= "<a href='".$resetLink."'>" .$resetLink. "</a>" ;
+
+                $headers = "From: Job Gate System\r\n";
+                $headers .= "Content-type: text/html\r\n";
+                
+                if(mail($to, $subject, $message, $headers) === TRUE){
+                    $data = [ 'code' => 'code_2' ];
+                } else {
+                    $data = [ 'code' => 'code_3' ];
+                }
+                
+            } else {
+                $data = [ 'code' => 'code_3' ];
+            }
+        }
+    } else {
+        $data = [ 'code' => 'code_1' ];
+    }
+    header('Content-type: application/json');
+    echo json_encode( $data );
+}
+
 ?>
