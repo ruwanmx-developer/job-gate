@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --blue-1: #2b3087;
+  --blue-2: #4b51ac;
+  --blue-3: #6b71cb;
+  --blue-4: #9fa2e7;
+  --blue-5: #e6e7fe;
+  --green-1: #064e3b;
+  --green-2: #047857;
+  --green-3: #10b981;
+  --green-4: #6ee7b7;
+  --green-5: #ecfdf5;
+  --red-1: #830404;
+  --red-2: #b60303;
+  --red-3: #ef4444;
+  --red-4: #ff9191;
+  --red-5: #fef2f2;
+  --yellow-1: #ffcd05;
+  --yellow-2: #f7ce46;
+  --yellow-3: #f7d977;
+  --yellow-4: #f3e5ab;
+  --yellow-5: #f7f0d9;
+  --bgc-1: #0f172a;
+  --bgc-2: #1e293b;
+  --bgc-3: #334155;
+  --bgc-4: #475569;
+  --bgc-5: #64748b;
+  --bgc-6: #94a3b8;
+  --bgc-7: #cbd5e1;
+  --bgc-8: #e2e8f0;
+  --bgc-9: #f8fafc;
+  --bgc-10: #f8fafc;
+  --shade-light: #ffffff;
+  --shade-dark: #000000cc;
+  --b: #000;
+  --w: #fff;
+  --shadow-btn: 0px 6px 6px -6px #000000;
+  --shadow-box: 0px 6px 6px -6px #0000004f, 0 2px 3px #00000046;
+  --shadow-box2: 0px 6px 6px -6px #0000004f, 0 2px 3px #00000013;
+}
+
+* {
+  font-family: "Roboto Slab", serif;
+  font-family: "Poppins", sans-serif;
+}
+
+*:focus {
+  box-shadow: none !important;
+}
+
+.form-control,
+.form-select,
+.form-control:focus {
+  background: #f8fafc;
+  border: 1px solid #9fa2e7;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--blue-3);
+}
+
+.input-group .btn-search {
+  border: 1px solid #9fa2e7;
+  color: var(--blue-2);
+  font-size: 13px;
+}
+
+body {
+  background-color: #f8fafc;
+  user-select: none;
+}
+
+.title-bar {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 35px;
+  color: var(--bgc-3);
+}
+
+.origin-height {
+  min-height: calc(100vh - 56px);
+}
+
+.no-link {
+  text-decoration: none;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.btn-wrap-left {
+  width: 100%;
+  text-align: left;
+}
+
+.btn-wrap-right {
+  width: 100%;
+  text-align: right;
+}
+
+/* buttons */
+.btn-green,
+.btn-green:active,
+.btn-green:focus {
+  border: none;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 8px 15px;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: var(--green-3);
+}
+
+.btn-green:hover {
+  background-color: var(--green-2);
+}
+
+/* navigation bar */
+.navbar {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.navbar .navbar-brand {
+  color: var(--blue-1);
+  font-weight: 700;
+  margin-right: 40px;
+  font-size: 20px;
+}
+
+.navbar .navbar-brand img {
+  max-height: 40px;
+}
+
+.navbar .nav-item {
+  border-radius: 10px;
+  padding: 3px 5px;
+  width: 120px;
+  margin-right: 10px;
+}
+
+.navbar .nav-link {
+  color: var(--b);
+  font-weight: 400;
+  font-size: 15px;
+  text-align: center;
+  padding: 0;
+}
+
+.navbar .logout,
+.navbar .login {
+  color: var(--blue-1);
+  font-weight: 600;
+  margin-right: 10px;
+  font-size: 14px;
+  border-radius: 20px;
+  border: solid 2px var(--blue-1);
+  padding: 4px 20px;
+  box-shadow: var(--shadow-btn);
+  background-color: var(--shade-light);
+}
+
+/* jumb wrap */
+.jumb-wrap {
+  min-height: calc(100vh - 56px);
+  height: 100%;
+  background-color: var(--blue-1);
+  padding: 30px;
+}
+
+.jumb-wrap .title {
+  font-size: 35px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 35px;
+  color: var(--blue-5);
+}
+
+.jumb-wrap .desc {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  color: var(--blue-4);
+}
+
+/* login select card */
+.login-select-wrap {
+  min-height: 100%;
+  background-color: var(--blue-4);
+  padding: 30px;
+}
+
+.login-select-wrap .login-card {
+  background-color: var(--shade-light);
+  margin-bottom: 20px;
+  padding: 5px 20px;
+  width: 350px;
+  box-shadow: var(--shadow-btn);
+  cursor: pointer;
+}
+
+.login-select-wrap .login-card .text {
+  width: 150px;
+  color: var(--bgc-2);
+  font-weight: 700;
+}
+
+.login-select-wrap .login-card .icon {
+  transition: all 0.7s;
+}
+
+.login-select-wrap .login-card:hover .icon {
+  transform: translateX(150px);
+}
