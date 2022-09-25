@@ -119,8 +119,8 @@
                             });
                             $('#crop').click(function() {
                                 canvas = cropper.getCroppedCanvas({
-                                    width: 400,
-                                    height: 400
+                                    width: 200,
+                                    height: 200
                                 });
                                 var dataURL = canvas.toDataURL("image/png");
                                 console.log(dataURL);
@@ -252,7 +252,7 @@
                 }
             }
         };
-        xhttp.open("POST", "database/common/functions.php", true);
+        xhttp.open("POST", "./function/signup.php", true);
         xhttp.send(data);
     }
     </script>
