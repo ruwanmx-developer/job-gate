@@ -22,15 +22,15 @@ if(array_key_exists("adminSearchCompany", $_POST)){
     }
     if($count == 0){ 
         echo '<div class="d-flex justify-content-center">
-            <div class="empty pt-5">
-                <div class="empty-img">
-                    <img src="../site_images/empty.png" alt="">
-                </div>
-                <div class="empty-message b">
-                    Oops! There are no company matching your filters to view.
-                </div>
+        <div class="empty pt-5">
+            <div class="empty-img">
+                <img src="./img/empty.png" alt="">
             </div>
-        </div>';
+            <div class="empty-message b">
+                Oops! There are no companies to view.
+            </div>
+        </div>
+    </div>';
      }
 }
 
@@ -44,8 +44,23 @@ if(array_key_exists("change_company_state", $_POST)){
     if ($result->num_rows == 0) {
         $data = [ 'code' => 'code_1' ]; // unexpected error 
     } else {
-        $sql1 = "UPDATE users SET state = 1 WHERE user_id = '$id'";
+        $sql1 = "UPDATE users SET state = $state WHERE user_id = '$id'";
         if ($__conn->query($sql1) === TRUE) {
+
+            // sendmail
+            // $sql = "SELECT * FROM users WHERE user_id='$id'";
+            // $result = $__conn->query($sql);
+            // $row = $result->fetch_assoc();
+            // $type = ($row['role_id'] == 2) ? "Employee" : "Company" ;
+            // $state =  ($row['state'] == 1) ? "Active" : "Blocked" ;
+            // $subject = 'Account State Changed';
+
+            // $message = "Hello " . $row['email']. ",<br>";
+            // $message .= "Our administration had desided to change your state of your $type account to $state. You can go to your profile and check out for more details.";
+            // $headers = "From: Job Gate System\r\n";
+            // $headers .= "Content-type: text/html\r\n";
+            
+            // mail($to, $subject, $message, $headers);
             $data = [ 'code' => 'code_2']; // company acepted
         } else {
             $data = [ 'code' => 'code_1']; // unexpected error
