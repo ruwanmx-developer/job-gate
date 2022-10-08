@@ -38,11 +38,10 @@ if(array_key_exists("user_login",$_POST)){
                 $_SESSION['ses_last_name'] = $row['last_name'];
             }
             if($row['role_id'] == 3){
-                $sql1 = "SELECT * FROM company WHERE email='$_email'";
+                $sql1 = "SELECT * FROM companies WHERE user_id='" . $row['user_id'] . "'";
                 $result1 = $__conn->query($sql1);
                 $row1 = $result1->fetch_assoc();
-                $_SESSION['ses_company_name'] = $row['first_name'];
-                $_SESSION['ses_company_id'] = $row1['id'];
+                $_SESSION['ses_company_name'] = $row1['name'];
             }
             $data = [ 'code' => 'code_3', 'role' => $row['role_id'] ];
         }

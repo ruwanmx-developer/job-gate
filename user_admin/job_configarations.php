@@ -18,7 +18,7 @@
             <div class="btn-title">System Manage</div>
             <?php 
             $admin_menu = "ad_m_3";
-            $admin_submenu = "ad_m_3_3"; 
+            $admin_submenu = "ad_m_3_1"; 
             ?>
             <?php include('./components/admin_menu_card.php');?>
         </div>

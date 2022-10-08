@@ -44,21 +44,9 @@
 </div>
 
 <div id="ad_m_3_wrap" class="<?php if($admin_menu == "ad_m_3"){ echo "no-fade-jq"; }?>">
-    <a href="ad_view_companies.php" class="no-link">
+    <a href="job_configarations.php" class="no-link">
         <div id="ad_m_3_1" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "ad_m_3_1"){ echo "active"; }?>"></div>
-            <div class="ms-4 name active">COMPANY CONFIGARATIONS</div>
-        </div>
-    </a>
-    <a href="ad_companies_sign_request.php" class="no-link">
-        <div id="ad_m_3_2" class="menu-item mb-2 ms-4 company-sec">
-            <div class="activebar <?php if($admin_submenu == "ad_m_3_2"){ echo "active"; }?>"></div>
-            <div class="ms-4 name active">USER CONFIGARATIONS</div>
-        </div>
-    </a>
-    <a href="job_configarations.php" class="no-link">
-        <div id="ad_m_3_3" class="menu-item mb-2 ms-4 company-sec">
-            <div class="activebar <?php if($admin_submenu == "ad_m_3_3"){ echo "active"; }?>"></div>
             <div class="ms-4 name active">JOB CONFIGARATIONS</div>
         </div>
     </a>

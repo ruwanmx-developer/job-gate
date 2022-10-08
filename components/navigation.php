@@ -35,11 +35,11 @@
                 <?php 
                 $dashboard = "";
                 if($_SESSION['ses_role_id'] == 1){
-                    $dashboard = "./user_admin/dashboard.php";
+                    $dashboard = "$__siteroot./user_admin/dashboard.php";
                 } else if($_SESSION['ses_role_id'] == 2){
-                    $dashboard = "em_dashboard.php";
+                    $dashboard = "$__siteroot./user_ss/dashboard.php";
                 } else if($_SESSION['ses_role_id'] == 3){
-                    $dashboard = "co_dashboard.php";
+                    $dashboard = "$__siteroot./user_company/dashboard.php";
                 }
                 ?>
                 <a href="<?php echo $dashboard; ?>" class="logout no-link"><?php echo $_SESSION['ses_email']?></a>
