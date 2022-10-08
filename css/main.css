@@ -143,6 +143,16 @@ body {
   box-shadow: var(--shadow-btn) !important;
 }
 
+.btn-outline-update {
+  border: 1px solid #9fa2e7;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.btn-outline-update:hover {
+  background-color: var(--blue-4);
+  color: var(--bgc-10);
+}
 /* navigation bar */
 .navbar {
   padding-top: 2px;
@@ -656,4 +666,17 @@ body {
 .card-basic-2.ho:hover {
   background-color: var(--blue-5);
   cursor: pointer;
+}
+.sep-link {
+  font-weight: 400;
+  font-size: 14px;
+  color: #2b3087;
+  cursor: pointer;
+}
+.form-label {
+  margin-bottom: 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  color: #64748b;
 }

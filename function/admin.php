@@ -70,6 +70,34 @@ if(array_key_exists("change_company_state", $_POST)){
     echo json_encode( $data );
 }
 
-
+// update job categories
+if(array_key_exists("updateJobCategory", $_POST)){
+    $name = $_POST['category'];
+    $id = $_POST['id'];
+    $data = "";
+    if($id == '_1'){
+        $sql = "INSERT INTO job_categories VALUES (NULL, '$name')";
+        if($__conn->query($sql) === TRUE){
+            $data = [ 'code' => 'code_2' ];
+        } else {
+            $data = [ 'code' => 'code_1' ];
+        }
+    } else {
+    $sql = "SELECT * FROM job_categories WHERE id='$id'";
+    $result = $__conn->query($sql);
+    if ($result->num_rows == 1) {
+        $sql = "UPDATE job_categories SET name = '$name' WHERE id='$id'";
+        if($__conn->query($sql) === TRUE){
+            $data = [ 'code' => 'code_2' ];
+        } else {
+            $data = [ 'code' => 'code_1' ];
+        }
+    } else {
+        $data = [ 'code' => 'code_1' ];
+    }
+}
+    header('Content-type: application/json');
+    echo json_encode( $data );
+}
 
 ?>
