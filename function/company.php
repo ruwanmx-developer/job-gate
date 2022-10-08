@@ -127,7 +127,12 @@ if(array_key_exists('updateMobile',$_POST)){
 if(array_key_exists('updateLogo',$_POST)){
     $logo = $_POST['logo'];
     $id = $_POST['id'];
-    $date = date('YmdHis');
+    $sql1 = "SELECT * FROM companies WHERE user_id='$id'";
+    $result1 = $__conn->query($sql1);
+    if ($result1->num_rows == 1) {
+        $row1 = $result1->fetch_assoc();
+        unlink('../uploads/user/' . $row1['logo']);
+        $date = date('YmdHis');
             $image = "user_" . $id . $date . ".png";
             list($type, $logo) = explode(';', $logo);
             list(, $logo) = explode(',', $logo);
@@ -139,6 +144,7 @@ if(array_key_exists('updateLogo',$_POST)){
         } else {
             $data = [ 'code' => 'code_2']; // unexpected error
         }
+    }
     header('Content-type: application/json');
     echo json_encode( $data );
 }

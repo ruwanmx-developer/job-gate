@@ -129,5 +129,34 @@ if(array_key_exists("updateJobType", $_POST)){
     header('Content-type: application/json');
     echo json_encode( $data );
 }
+// update salary types
+if(array_key_exists("updateSalaryType", $_POST)){
+    $name = $_POST['type'];
+    $id = $_POST['id'];
+    $data = "";
+    if($id == '_1'){
+        $sql = "INSERT INTO salary_types VALUES (NULL, '$name')";
+        if($__conn->query($sql) === TRUE){
+            $data = [ 'code' => 'code_2' ];
+        } else {
+            $data = [ 'code' => 'code_1' ];
+        }
+    } else {
+    $sql = "SELECT * FROM salary_types WHERE id='$id'";
+    $result = $__conn->query($sql);
+    if ($result->num_rows == 1) {
+        $sql = "UPDATE salary_types SET name = '$name' WHERE id='$id'";
+        if($__conn->query($sql) === TRUE){
+            $data = [ 'code' => 'code_2' ];
+        } else {
+            $data = [ 'code' => 'code_1' ];
+        }
+    } else {
+        $data = [ 'code' => 'code_1' ];
+    }
+}
+    header('Content-type: application/json');
+    echo json_encode( $data );
+}
 
 ?>

@@ -22,7 +22,7 @@
     <div class=" ms-4 name active">MANAGE JOBS</div>
 </div>
 <div id="co_m_2_wrap" class="<?php if($admin_menu == "co_m_2"){ echo "no-fade-jq"; }?>">
-    <a href="co_add_new_job.php" class="no-link ">
+    <a href="add_new_job.php" class="no-link ">
         <div id="co_m_2_1" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "co_m_2_1"){ echo "active"; }?>"></div>
             <div class=" ms-4 name active">CREATE NEW JOB</div>

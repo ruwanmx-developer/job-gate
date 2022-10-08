@@ -157,6 +157,70 @@
                 }
                 </script>
             </div>
+            <div class="co-profile-edit-wrap card-basic mb-3 pad-b-0">
+                <div class="form-area">
+                    <div class="sep-link mb-1">Manage Salary Types</div>
+                    <label class="form-label">Add New Salary Type</label>
+                    <div class="input-group marg-b">
+                        <input type="text" id="update_salary__1" class="form-control" placeholder="New Salary Type" value="">
+                        <button class="btn btn-outline-update" onclick="updateSalaryType('_1')">Add</button>
+                    </div>
+                    <label class="form-label">Edit Existing Type</label>
+                    <div class="row gx-2">
+                        <?php
+                        $sql = "SELECT * FROM salary_types";
+                        $result = $__conn->query($sql);
+                        while($row = $result->fetch_assoc()) {
+                        ?><div class="col-lg-3">
+                            <div class="input-group marg-b">
+                                <input type="text" id="update_salary_<?php echo $row['id']; ?>" class="form-control"
+                                    placeholder="Update Salary Type" value="<?php echo $row['name']; ?>">
+                                <button class="btn btn-outline-update"
+                                    onclick="updateSalaryType(<?php echo $row['id']; ?>)">Update</button>
+                            </div>
+                        </div>
+                        <?php }?>
+                    </div>
+                </div>
+                <script>
+                function updateSalaryType(x) {
+                    let type = document.getElementById('update_salary_' + x).value;
+                    if (type === "") {
+                        swal("Empty Field", "Please enter data to continue", "warning");
+                        return;
+                    }
+                    if (!(job_category_pattern.test(type))) {
+                        swal("Invalid field", type +
+                            " is not an valid job type. Enter a valid salary type", "error");
+                        return;
+                    }
+                    let data = new FormData();
+                    data.append('type', type);
+                    data.append('id', x);
+                    let text = (x == '_1') ? "add" : "update";
+                    data.append('updateSalaryType', 'true');
+                    swal("Update Field", "Do you want to " + text + " the salary type", "warning").then((value) => {
+                        if (value) {
+                            var xhttp = new XMLHttpRequest();
+                            xhttp.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    let x = JSON.parse(xhttp.responseText);
+                                    if (x.code === "code_1") {
+                                        swal("Unexpected Error",
+                                            "Unexpected error caused when updating the salary type",
+                                            "error");
+                                    } else if (x.code === "code_2") {
+                                        location.reload();
+                                    }
+                                }
+                            };
+                            xhttp.open("POST", "../function/admin.php", true);
+                            xhttp.send(data);
+                        }
+                    });
+                }
+                </script>
+            </div>
         </div>
     </div>
     <?php include($__siteroot.'./components/footer.php');?>
