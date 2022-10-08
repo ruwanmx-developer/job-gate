@@ -12,7 +12,7 @@
     <a href="company_requests.php" class="no-link">
         <div id="ad_m_1_2" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "ad_m_1_2"){ echo "active"; }?>"></div>
-            <div class="ms-4 name active">COMPANIES SIGN REQUEST</div>
+            <div class="ms-4 name active">COMPANIES SIGN REQUESTS</div>
         </div>
     </a>
     <a href="blocked_companies.php" class="no-link">
@@ -31,7 +31,7 @@
     <a href="view_users.php" class="no-link">
         <div id="ad_m_2_1" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "ad_m_2_1"){ echo "active"; }?>"></div>
-            <div class="ms-4 name active">VIEW ALL USERS</div>
+            <div class="ms-4 name active">VIEW EMPLOYEES</div>
         </div>
     </a>
 </div>

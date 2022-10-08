@@ -16,6 +16,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.js"
     integrity="sha512-ZK6m9vADamSl5fxBPtXw6ho6A4TuX89HUbcfvxa2v2NYNT/7l8yFGJ3JlXyMN4hlNbz0il4k6DvqbIW5CCwqkw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="<?php echo $__siteroot; ?>./js/validationPatterns.js"></script>
 <link rel="stylesheet" href="<?php echo $__siteroot; ?>./css/main.css">
 <link rel="stylesheet" href="<?php echo $__siteroot; ?>./css/important.css">
 
