@@ -127,7 +127,8 @@ if(array_key_exists('updateMobile',$_POST)){
 if(array_key_exists('updateLogo',$_POST)){
     $logo = $_POST['logo'];
     $id = $_POST['id'];
-    $image = "user_" . $id . ".png";
+    $date = date('YmdHis');
+            $image = "user_" . $id . $date . ".png";
             list($type, $logo) = explode(';', $logo);
             list(, $logo) = explode(',', $logo);
             $logo = base64_decode($logo);

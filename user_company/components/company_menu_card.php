@@ -3,7 +3,7 @@
     <div class=" ms-4 name active">MANAGE DASHBOARD</div>
 </div>
 <div id="co_m_1_wrap" class="<?php if($admin_menu == "co_m_1"){ echo "no-fade-jq"; }?>">
-    <a href="co_profile.php" class="no-link ">
+    <a href="view_company_details.php" class="no-link ">
         <div id="co_m_1_1" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "co_m_1_1"){ echo "active"; }?>"></div>
             <div class="ms-4 name active">COMPANY PROFILE</div>

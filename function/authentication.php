@@ -70,7 +70,8 @@ if(array_key_exists("com_signup",$_POST)){
             $sql3 = "SELECT * FROM users WHERE email='$email'";
             $result = $__conn->query($sql3);
             $row = $result->fetch_assoc();
-            $image = "user_" . $row['user_id'] . ".png";
+            $date = date('YmdHis');
+            $image = "user_" . $row['user_id'] . $date . ".png";
             list($type, $logo) = explode(';', $logo);
             list(, $logo) = explode(',', $logo);
             $logo = base64_decode($logo);
@@ -111,7 +112,8 @@ if(array_key_exists("emp_signup",$_POST)){
             $sql3 = "SELECT * FROM users WHERE email='$email'";
             $result = $__conn->query($sql3);
             $row = $result->fetch_assoc();
-            $image = "user_" . $row['user_id'] . ".png";
+            $date = date('YmdHis');
+            $image = "user_" . $row['user_id'] . $date . ".png";
             list($type, $logo) = explode(';', $logo);
             list(, $logo) = explode(',', $logo);
             $logo = base64_decode($logo);
