@@ -102,7 +102,7 @@
                                 document.location.href = "em_dashboard.php";
                             }
                             if (x.role == 3) {
-                                document.location.href = "co_dashboard.php";
+                                document.location.href = "./user_company/dashboard.php";
                             }
                         });
                     }
