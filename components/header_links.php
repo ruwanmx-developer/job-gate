@@ -17,6 +17,7 @@
     integrity="sha512-ZK6m9vADamSl5fxBPtXw6ho6A4TuX89HUbcfvxa2v2NYNT/7l8yFGJ3JlXyMN4hlNbz0il4k6DvqbIW5CCwqkw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="<?php echo $__siteroot; ?>./js/validationPatterns.js"></script>
+<script src="<?php echo $__siteroot; ?>./js/md5.js"></script>
 <link rel="stylesheet" href="<?php echo $__siteroot; ?>./css/main.css">
 <link rel="stylesheet" href="<?php echo $__siteroot; ?>./css/important.css">
 
