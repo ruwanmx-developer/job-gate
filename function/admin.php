@@ -10,7 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
 if(array_key_exists("adminSearchCompany", $_POST)){
     $search = $_POST['search_val'];
     $state = $_POST['state'];
-    $sql = "SELECT a.name, a.logo, a.user_id, b.state, b.email FROM companies a INNER JOIN users b ON a.user_id = b.user_id WHERE a.name LIKE '%$search%' AND b.state=1";
+    $sql = "SELECT a.name, a.logo, a.user_id, b.state, b.email FROM companies a INNER JOIN users b ON a.user_id = b.user_id WHERE a.name LIKE '%$search%' AND b.state=$state";
     $result = $__conn->query($sql);
     $count = 0;
     $__siteroot = ".";
@@ -33,5 +33,28 @@ if(array_key_exists("adminSearchCompany", $_POST)){
         </div>';
      }
 }
+
+// admin change stste of a company
+if(array_key_exists("change_company_state", $_POST)){
+    $id = $_POST['id'];
+    $state = $_POST['state'];
+    $sql = "SELECT * FROM users WHERE user_id='$id'";
+    $result = $__conn->query($sql);
+    $data = "";
+    if ($result->num_rows == 0) {
+        $data = [ 'code' => 'code_1' ]; // unexpected error 
+    } else {
+        $sql1 = "UPDATE users SET state = 1 WHERE user_id = '$id'";
+        if ($__conn->query($sql1) === TRUE) {
+            $data = [ 'code' => 'code_2']; // company acepted
+        } else {
+            $data = [ 'code' => 'code_1']; // unexpected error
+        }
+    }
+    header('Content-type: application/json');
+    echo json_encode( $data );
+}
+
+
 
 ?>

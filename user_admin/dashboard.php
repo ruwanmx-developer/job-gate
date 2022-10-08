@@ -3,7 +3,7 @@
 <?php $__siteroot = "."; ?>
 
 <head>
-    <title>Job Gate</title>
+    <title>Admin Dashboard</title>
     <!-- include header links -->
     <?php include('../components/header_links.php');?>
 </head>

@@ -6,16 +6,16 @@
     <a href="view_companies.php" class="no-link">
         <div id="ad_m_1_1" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "ad_m_1_1"){ echo "active"; }?>"></div>
-            <div class="ms-4 name active">VIEW COMPANIES</div>
+            <div class="ms-4 name active">ACTIVE COMPANIES</div>
         </div>
     </a>
-    <a href="ad_companies_sign_request.php" class="no-link">
+    <a href="company_requests.php" class="no-link">
         <div id="ad_m_1_2" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "ad_m_1_2"){ echo "active"; }?>"></div>
             <div class="ms-4 name active">COMPANIES SIGN REQUEST</div>
         </div>
     </a>
-    <a href="ad_view_companies_blocked.php" class="no-link">
+    <a href="blocked_companies.php" class="no-link">
         <div id="ad_m_1_3" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "ad_m_1_3"){ echo "active"; }?>"></div>
             <div class="ms-4 name active">BLOCKED COMPANIES</div>

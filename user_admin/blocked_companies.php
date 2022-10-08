@@ -3,7 +3,7 @@
 <?php $__siteroot = "."; ?>
 
 <head>
-    <title>Active Companies</title>
+    <title>Blocked Companies</title>
     <!-- include header links -->
     <?php include($__siteroot . './components/header_links.php');?>
 </head>
@@ -18,7 +18,7 @@
             <div class="btn-title">System Manage</div>
             <?php 
             $admin_menu = "ad_m_1";
-            $admin_submenu = "ad_m_1_1";
+            $admin_submenu = "ad_m_1_3"; 
             ?>
             <?php include('./components/admin_menu_card.php');?>
         </div>
@@ -41,7 +41,7 @@
 
                         let data = new FormData();
                         data.append('search_val', inp);
-                        data.append('state', 1);
+                        data.append('state', 2);
                         data.append('adminSearchCompany', 'true');
 
                         var xhttp = new XMLHttpRequest();
@@ -63,7 +63,7 @@
             </div>
             <div id="company_wrap" class="row gx-3">
                 <?php 
-                $sql = "SELECT a.name, a.logo, a.user_id, b.state, b.email FROM companies a INNER JOIN users b ON a.user_id = b.user_id WHERE b.state=1";
+                $sql = "SELECT a.name, a.logo, a.user_id, b.state, b.email FROM companies a INNER JOIN users b ON a.user_id = b.user_id WHERE b.state=2";
                 $result = $__conn->query($sql);
                 $count = 0;
                 while($row = $result->fetch_assoc()) {
