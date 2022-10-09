@@ -33,7 +33,7 @@
             $row = $result->fetch_assoc();
             ?>
             <div class="card-basic">
-                <div class="row company-view pe-3">
+                <div class="row company-view gx-3">
                     <div class="col-12 d-flex justify-content-center mb-3">
                         <div class="img"><img class="logo-shadow img-fluid"
                                 src="<?php echo $__siteroot; ?>./uploads/user/<?php echo $row['logo']; ?>" alt=""></div>
@@ -80,8 +80,64 @@
                         </div>
                         <?php } ?>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-12">
-                        <hr class="mt-4 mb-4">
+                        <hr>
+                    </div>
+                </div>
+                <div class="row gx-3 gy-3">
+                    <div class="col-4">
+                        <div class="card-basic dashboard-card">
+                            <div class="li-desc">Posted Jobs Count</div>
+                            <div class="result">
+                                <?php 
+                            $sql = "SELECT COUNT(*) AS count FROM jobs WHERE user_id='$id'";
+                            $result = $__conn->query($sql);
+                            $row = $result->fetch_assoc();
+                            echo $row['count'];
+                            ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card-basic dashboard-card">
+                            <div class="li-desc">Active Jobs Count</div>
+                            <div class="result">
+                                <?php 
+                            $sql = "SELECT COUNT(*) AS count FROM jobs WHERE user_id='$id' AND state=1";
+                            $result = $__conn->query($sql);
+                            $row = $result->fetch_assoc();
+                            echo $row['count'];
+                            ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card-basic dashboard-card">
+                            <div class="li-desc">Closed Jobs Count</div>
+                            <div class="result">
+                                <?php 
+                            $sql = "SELECT COUNT(*) AS count FROM jobs WHERE user_id='$id' AND state=2";
+                            $result = $__conn->query($sql);
+                            $row = $result->fetch_assoc();
+                            echo $row['count'];
+                            ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card-basic dashboard-card">
+                            <div class="li-desc">Followers</div>
+                            <div class="result">
+                                <?php 
+                            $sql = "SELECT COUNT(*) AS count FROM follows WHERE company_id='$id'";
+                            $result = $__conn->query($sql);
+                            $row = $result->fetch_assoc();
+                            echo $row['count'];
+                            ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

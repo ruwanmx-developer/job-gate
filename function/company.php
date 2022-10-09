@@ -148,4 +148,40 @@ if(array_key_exists('updateLogo',$_POST)){
     header('Content-type: application/json');
     echo json_encode( $data );
 }
+
+// admin search function
+if(array_key_exists("companySearchJobs", $_POST)){
+    $search = $_POST['search_val'];
+    $state = $_POST['state'];
+    $sql = "SELECT a.id, a.title, b.name AS category, a.description,a.created_at, c.name AS salary_type, a.salary FROM jobs a INNER JOIN job_categories b ON a.job_category_id = b.id INNER JOIN salary_types c ON a.salary_type_id = c.id WHERE title LIKE '%$search%' AND state='$state' AND user_id='".$_SESSION['ses_user_id']."'";
+    $result = $__conn->query($sql);
+    $count = 0;
+    $__siteroot = ".";
+    while($row = $result->fetch_assoc()) {
+        $count++;
+        echo '<div class="col-12 col-md-6 col-xl-4">';
+        include('../user_company/components/job_card.php');
+        echo '</div>';
+    }
+    if($count == 0){ 
+        echo '<div class="d-flex justify-content-center">
+        <div class="empty pt-5">
+            <div class="empty-img">
+                <img src="./img/empty.png" alt="">
+            </div>
+            <div class="empty-message b">
+                Oops! There are no data to view.
+            </div>
+        </div>
+    </div>';
+     }
+}
+
+
+
+
+
+
+
+
 ?>

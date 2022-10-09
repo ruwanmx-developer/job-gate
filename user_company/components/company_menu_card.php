@@ -34,7 +34,7 @@
             <div class=" ms-4 name active">MANAGE CURRENT ACTIVE JOBS</div>
         </div>
     </a>
-    <a href="" class="no-link ">
+    <a href="CLOSED_JOBS.PHP" class="no-link ">
         <div id="co_m_2_3" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "co_m_2_3"){ echo "active"; }?>"></div>
             <div class=" ms-4 name active">CLOSED JOBS</div>

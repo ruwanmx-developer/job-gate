@@ -3,11 +3,11 @@
     <div class="row">
         <div class="col-8">
             <div class="name-wrap">
-                <div class="name"><?php echo $row['first_name']; ?></div>
+                <div class="name"><?php echo $row['first_name'] . " " . $row['last_name']; ?></div>
             </div>
             <div class="li-desc"><span>Email : </span><?php echo $row['email']; ?></div>
             <?php
-$sql5 = "SELECT COUNT(*) as follow_count FROM follows WHERE company_id='"  . $row['user_id'] . "'";
+$sql5 = "SELECT COUNT(*) as follow_count FROM follows WHERE user_id='"  . $row['user_id'] . "'";
 $result5 = $__conn->query($sql5);
 $row5 = $result5->fetch_assoc();
 $follow = $row5['follow_count'];

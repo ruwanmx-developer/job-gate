@@ -33,6 +33,32 @@ if(array_key_exists("adminSearchCompany", $_POST)){
     </div>';
      }
 }
+// admin search function
+if(array_key_exists("adminSearchEmployee", $_POST)){
+    $search = $_POST['search_val'];
+    $sql = "SELECT a.first_name, a.last_name, a.image, a.user_id, b.state, b.email FROM employies a INNER JOIN users b ON a.user_id = b.user_id WHERE a.first_name LIKE '%$search%' OR a.last_name LIKE '%$search%' OR b.email LIKE '%$search%'";
+    $result = $__conn->query($sql);
+    $count = 0;
+    $__siteroot = ".";
+    while($row = $result->fetch_assoc()) {
+        $count++;
+        echo '<div class="col-12 col-md-6 col-xl-4">';
+        include('../user_admin/components/admin_user_card.php');
+        echo '</div>';
+    }
+    if($count == 0){ 
+        echo '<div class="d-flex justify-content-center">
+        <div class="empty pt-5">
+            <div class="empty-img">
+                <img src="./img/empty.png" alt="">
+            </div>
+            <div class="empty-message b">
+                Oops! There are no data to view.
+            </div>
+        </div>
+    </div>';
+     }
+}
 
 // admin change stste of a company
 if(array_key_exists("change_company_state", $_POST)){

@@ -32,20 +32,20 @@
                 <div class="col-12">
                     <div class="card-basic mb-3">
                         <div class="input-group">
-                            <input class="form-control" type="text" name="search_q" onkeyup="adminSearchCompany()"
-                                id="search_q" placeholder="Search By Company Name">
+                            <input class="form-control" type="text" name="search_q" onkeyup="companySearchJobs()"
+                                id="search_q" placeholder="Search By Job Title">
                             <!-- <button class="btn btn-search"  type="button"><i class="bi bi-search"></i></button> -->
                         </div>
                     </div>
                     <script>
-                    function adminSearchCompany() {
+                    function companySearchJobs() {
                         let op = document.getElementById('company_wrap');
                         let inp = document.getElementById('search_q').value;
 
                         let data = new FormData();
                         data.append('search_val', inp);
-                        data.append('state', 3);
-                        data.append('adminSearchCompany', 'true');
+                        data.append('state', 1);
+                        data.append('companySearchJobs', 'true');
 
                         var xhttp = new XMLHttpRequest();
                         xhttp.onreadystatechange = function() {
@@ -53,7 +53,7 @@
                                 op.innerHTML = xhttp.responseText;
                             }
                         };
-                        xhttp.open("POST", "../function/admin.php", true);
+                        xhttp.open("POST", "../function/company.php", true);
                         xhttp.send(data);
                     }
 
@@ -66,7 +66,7 @@
             </div>
             <div id="company_wrap" class="row gx-3">
                 <?php 
-                $sql = "SELECT a.id, a.title, b.name AS category, a.description,a.created_at, c.name AS salary_type, a.salary FROM jobs a INNER JOIN job_categories b ON a.job_category_id = b.id INNER JOIN salary_types c ON a.salary_type_id = c.id WHERE user_id='".$_SESSION['ses_user_id']."'";
+                $sql = "SELECT a.id, a.title, b.name AS category, a.description,a.created_at, c.name AS salary_type, a.salary FROM jobs a INNER JOIN job_categories b ON a.job_category_id = b.id INNER JOIN salary_types c ON a.salary_type_id = c.id WHERE state=1 AND user_id='".$_SESSION['ses_user_id']."'";
                 $result = $__conn->query($sql);
                 $count = 0;
                 while($row = $result->fetch_assoc()) {
@@ -83,7 +83,7 @@
                             <img src="./img/empty.png" alt="">
                         </div>
                         <div class="empty-message b">
-                            Oops! There are no companies to view.
+                            Oops! There are no data to view.
                         </div>
                     </div>
                 </div>

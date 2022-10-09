@@ -636,6 +636,19 @@ body {
   border: 1px solid #888;
 }
 
+/* // dashboard styles */
+.dashboard-card {
+  text-align: center;
+}
+.dashboard-card .li-desc {
+  font-size: 13px;
+  color: #949494;
+}
+.dashboard-card .result {
+  font-size: 30px;
+  line-height: 30px;
+}
+
 /* misc */
 .btn-title {
   background-color: var(--yellow-1);
