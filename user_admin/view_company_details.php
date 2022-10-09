@@ -81,91 +81,91 @@
                         <?php } ?>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <hr>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <hr>
                 </div>
-                <div class="row gx-3 gy-3">
-                    <div class="col-4">
-                        <div class="card-basic dashboard-card">
-                            <div class="li-desc">Posted Jobs Count</div>
-                            <div class="result">
-                                <?php 
+            </div>
+            <div class="row gx-3 gy-3">
+                <div class="col-3">
+                    <div class="card-basic dashboard-card">
+                        <div class="li-desc">Posted Jobs Count</div>
+                        <div class="result">
+                            <?php 
                             $sql = "SELECT COUNT(*) AS count FROM jobs WHERE user_id='$id'";
                             $result = $__conn->query($sql);
                             $row = $result->fetch_assoc();
                             echo $row['count'];
                             ?>
-                            </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="card-basic dashboard-card">
-                            <div class="li-desc">Active Jobs Count</div>
-                            <div class="result">
-                                <?php 
+                </div>
+                <div class="col-3">
+                    <div class="card-basic dashboard-card">
+                        <div class="li-desc">Active Jobs Count</div>
+                        <div class="result">
+                            <?php 
                             $sql = "SELECT COUNT(*) AS count FROM jobs WHERE user_id='$id' AND state=1";
                             $result = $__conn->query($sql);
                             $row = $result->fetch_assoc();
                             echo $row['count'];
                             ?>
-                            </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="card-basic dashboard-card">
-                            <div class="li-desc">Closed Jobs Count</div>
-                            <div class="result">
-                                <?php 
+                </div>
+                <div class="col-3">
+                    <div class="card-basic dashboard-card">
+                        <div class="li-desc">Closed Jobs Count</div>
+                        <div class="result">
+                            <?php 
                             $sql = "SELECT COUNT(*) AS count FROM jobs WHERE user_id='$id' AND state=2";
                             $result = $__conn->query($sql);
                             $row = $result->fetch_assoc();
                             echo $row['count'];
                             ?>
-                            </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="card-basic dashboard-card">
-                            <div class="li-desc">Followers</div>
-                            <div class="result">
-                                <?php 
+                </div>
+                <div class="col-3">
+                    <div class="card-basic dashboard-card">
+                        <div class="li-desc">Followers</div>
+                        <div class="result">
+                            <?php 
                             $sql = "SELECT COUNT(*) AS count FROM follows WHERE company_id='$id'";
                             $result = $__conn->query($sql);
                             $row = $result->fetch_assoc();
                             echo $row['count'];
                             ?>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script>
-        function changeCompanyState(x, y) {
-
-            let data = new FormData();
-            data.append('id', x);
-            data.append('state', y);
-            data.append('change_company_state', 'true');
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    let x = JSON.parse(xhttp.responseText);
-                    if (x.code === "code_1") {
-                        swal("Unexpected Error", "Unexpected error caused when blocking the company", "error");
-                    } else if (x.code === "code_2") {
-                        location.reload();
-                    }
-                }
-            };
-            xhttp.open("POST", "../function/admin.php", true);
-            xhttp.send(data);
-        }
-        </script>
     </div>
+    <script>
+    function changeCompanyState(x, y) {
+
+        let data = new FormData();
+        data.append('id', x);
+        data.append('state', y);
+        data.append('change_company_state', 'true');
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let x = JSON.parse(xhttp.responseText);
+                if (x.code === "code_1") {
+                    swal("Unexpected Error", "Unexpected error caused when blocking the company", "error");
+                } else if (x.code === "code_2") {
+                    location.reload();
+                }
+            }
+        };
+        xhttp.open("POST", "../function/admin.php", true);
+        xhttp.send(data);
+    }
+    </script>
     <?php include($__siteroot.'./components/footer.php');?>
 </body>
 
