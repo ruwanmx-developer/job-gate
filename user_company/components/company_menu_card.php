@@ -28,7 +28,7 @@
             <div class=" ms-4 name active">CREATE NEW JOB</div>
         </div>
     </a>
-    <a href="co_manage_active_jobs.php" class="no-link ">
+    <a href="active_jobs.php" class="no-link ">
         <div id="co_m_2_2" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "co_m_2_2"){ echo "active"; }?>"></div>
             <div class=" ms-4 name active">MANAGE CURRENT ACTIVE JOBS</div>
@@ -67,7 +67,6 @@
     </a>
 </div>
 <script>
-
 const m1 = document.getElementById("co_m_1_wrap");
 const m2 = document.getElementById("co_m_2_wrap");
 const m3 = document.getElementById("co_m_3_wrap");

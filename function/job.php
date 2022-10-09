@@ -16,7 +16,7 @@ if(array_key_exists("addNewJob",$_POST)){
     $salary = $_POST['salary'];
     $company = $_POST['company'];
     $district = $_POST['district'];
-    $sql = "INSERT INTO jobs VALUES (NULL,'$id','$title','$category','$desc','$salary','$stype','$jtype','$category','$district',NULL)";
+    $sql = "INSERT INTO jobs VALUES (NULL,'$id','$title','$desc','$salary','$stype','$jtype','$category','$district','1',NULL)";
     if($__conn->query($sql) === TRUE){
         $data = [ 'code' => 'code_1'];
     } else {
