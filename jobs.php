@@ -19,14 +19,7 @@
             <div class="btn-title">Filter Jobs</div>
             <?php include('./components/job_filter_card.php');?>
 
-            <div class="btn-title mt-4">Top Rated Companies</div>
-            <?php 
-            $sql = "SELECT * FROM companies LIMIT 5";
-            $result = $__conn->query($sql);
-            while($row = $result->fetch_assoc()) {
-            ?>
-            <?php include('./components/mini_company_card.php');?>
-            <?php }?>
+
 
         </div>
 

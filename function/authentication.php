@@ -33,9 +33,12 @@ if(array_key_exists("user_login",$_POST)){
             $_SESSION['ses_role_id'] = $row['role_id'];
             $_SESSION['ses_user_state'] = $row['state'];
             if($row['role_id'] == 2){
-                $_SESSION['ses_full_name'] = $row['first_name']. " ".$row['last_name'];
-                $_SESSION['ses_first_name'] = $row['first_name'];
-                $_SESSION['ses_last_name'] = $row['last_name'];
+                $sql = "SELECT * FROM employies WHERE user_id='".$row['user_id']."'";
+                $result = $__conn->query($sql);
+                $row1 = $result->fetch_assoc();
+                $_SESSION['ses_full_name'] = $row1['first_name']. " ".$row1['last_name'];
+                $_SESSION['ses_first_name'] = $row1['first_name'];
+                $_SESSION['ses_last_name'] = $row1['last_name'];
             }
             if($row['role_id'] == 3){
                 $sql1 = "SELECT * FROM companies WHERE user_id='" . $row['user_id'] . "'";

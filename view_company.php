@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php $__siteroot = "."; ?>
+<?php $__siteroot = ""; ?>
 
 <head>
     <title>Job Gate</title>
-    <!-- include header links -->
-    <?php include('../components/header_links.php');?>
+    <?php include('./components/header_links.php');?>
+    <script type="text/javascript" src="./js/md5.js"></script>
+    <script type="text/javascript" src="./js/validationPatterns.js"></script>
 </head>
 
 <body>
-    <!-- include navigation -->
-    <?php include('../components/navigation.php');?>
+    <?php include('./components/navigation.php');?>
     <div class="row gx-0">
         <!-- left bar -->
         <div class="col-lg-3 px-3 py-3">
@@ -24,7 +24,7 @@
                 <div class="mini-company-card card-basic over mb-2">
                     <div class="row">
                         <div class="col-12 d-flex">
-                            <div class="img"><img src="../uploads/user/<?php echo $row['logo']; ?>" alt=""></div>
+                            <div class="img"><img src="./uploads/user/<?php echo $row['logo']; ?>" alt=""></div>
                             <div class="ms-3">
                                 <div class="name"><?php echo $row['name']; ?></div>
                                 <div class="address"><?php echo $row['address']; ?></div>
@@ -156,7 +156,7 @@
             </div>
         </div>
     </div>
-    <?php include('../components/footer.php');?>
+    <?php include('./components/footer.php');?>
 </body>
 
 </html>

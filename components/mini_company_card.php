@@ -1,4 +1,4 @@
-<a class="no-link" href="view_company.php?id=<?php echo $row['id']; ?>">
+<a class="no-link" href="./view_company.php?id=<?php echo $row['user_id']; ?>">
     <div class="mini-company-card card-basic mb-2">
         <div class="row">
             <div class="col-12 d-flex">

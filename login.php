@@ -99,7 +99,7 @@
                                 document.location.href = "./user_admin/dashboard.php";
                             }
                             if (x.role == 2) {
-                                document.location.href = "em_dashboard.php";
+                                document.location.href = "./user_employee/dashboard.php";
                             }
                             if (x.role == 3) {
                                 document.location.href = "./user_company/dashboard.php";

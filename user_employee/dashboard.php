@@ -15,9 +15,9 @@
 
         <!-- left bar -->
         <div class="col-lg-3 px-3 py-3">
-            <div class="btn-title">Company Manage</div>
+            <div class="btn-title">Employee Manage</div>
             <?php $admin_menu = $admin_submenu = ""; ?>
-            <?php include('components/company_menu_card.php');?>
+            <?php include('components/employee_menu_card.php');?>
         </div>
 
         <!-- middle bar -->
