@@ -72,73 +72,42 @@
                     <?php } ?>
                     <div id="follow<?php echo $row['user_id']; ?>" class="btn-wrap mt-2">
                         <?php 
-                if(array_key_exists('ses_user_id', $_SESSION)){
-                    $id = $_SESSION['ses_user_id'];
-                    $cid = $row['user_id'];
-                    $sql2 = "SELECT * FROM follows WHERE user_id='$id' AND company_id='$cid'";
-                    $result2 = $__conn->query($sql2);
-                    $row2 = $result2->fetch_assoc();
-                    if ($result2->num_rows == 0) {
-                        if($_SESSION['ses_role_id'] == 2){
-                            echo '<button id="flow-'.$row['id'].'" class="btn-secondary ms-2" onclick="followCompany('.$row['id'].')">Follow</button>';
-                        } 
-                    } else { 
-                        if($_SESSION['ses_role_id'] == 2){
-                            echo '<button id="flow-'.$row['id'].'" class="btn-ternary ms-2" onclick="unfollowCompany('.$row['id'].')">Unfollow</button>';
-                        } 
-                    } 
-                } 
-                ?>
+                    if(array_key_exists('ses_user_id', $_SESSION)){
+                    $sql1 = "SELECT * FROM follows WHERE user_id=" . $_SESSION['ses_user_id'] . " AND company_id='".$row['user_id']."'";
+                    $result1 = $__conn->query($sql1);
+                    $color = $name = "";
+                    if ($result1->num_rows == 1) {
+                        $name = "UNFOLLOW";
+                        $color = "red";
+                    } else {
+                        $name = "FOLLOW";
+                        $color = "blue";
+                    }
+              
+                    ?>
+                        <button class="btn-<?php echo $color;?> marg-r"
+                            onclick="followCompany(<?php echo $row['user_id']; ?>)"><?php echo $name;?></button>
+                        <?php }?>
                     </div>
                 </div>
                 <script>
-                function followCompany(y) {
-                    let user_id = "<?php echo $_SESSION['ses_user_id']; ?>";
+                function followCompany(x) {
                     let data = new FormData();
-                    data.append('user_id', user_id);
-                    data.append('company_id', y);
-                    data.append('followCompany', 'true');
-                    var xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
-                            let x = JSON.parse(xhttp.responseText);
-                            if (x.code === "code_1") {
-                                swal("Unexpected Error", "Unexpected error caused when following the company",
-                                    "error");
-                            } else if (x.code === "code_2") {
-                                let wrap = document.getElementById('follow' + x.com_id);
-                                wrap.innerHTML = '<button id="flow-' + x.com_id +
-                                    '" class="btn-ternary ms-2" onclick="unfollowCompany(' + x.com_id +
-                                    ')">Unfollow</button>';
-                            }
-                        }
-                    };
-                    xhttp.open("POST", "database/employee/functions.php", true);
-                    xhttp.send(data);
-                }
+                    data.append('id', x);
+                    data.append('followChange', 'true');
 
-                function unfollowCompany(y) {
-                    let user_id = "<?php echo $_SESSION['ses_user_id']; ?>";
-                    let data = new FormData();
-                    data.append('user_id', user_id);
-                    data.append('company_id', y);
-                    data.append('unfollowCompany', 'true');
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function() {
                         if (this.readyState == 4 && this.status == 200) {
                             let x = JSON.parse(xhttp.responseText);
                             if (x.code === "code_1") {
-                                swal("Unexpected Error", "Unexpected error caused when unfollowing the company",
-                                    "error");
+                                swal("Unexpected Error", "Unexpected error occured");
                             } else if (x.code === "code_2") {
-                                let wrap = document.getElementById('follow' + x.com_id);
-                                wrap.innerHTML = '<button id="flow-' + x.com_id +
-                                    '" class="btn-secondary ms-2" onclick="followCompany(' + x.com_id +
-                                    ')">Follow</button>';
+                                location.reload();
                             }
                         }
                     };
-                    xhttp.open("POST", "database/employee/functions.php", true);
+                    xhttp.open("POST", "./function/company.php", true);
                     xhttp.send(data);
                 }
                 </script>

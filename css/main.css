@@ -138,6 +138,24 @@ body {
   color: #fff;
 }
 
+.btn-blue,
+.btn-blue:active,
+.btn-blue:focus {
+  line-height: 15px;
+  padding: 8px 15px;
+  color: #fff;
+  background-color: var(--blue-3) !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  border: none !important;
+  text-transform: uppercase !important;
+}
+
+.btn-blue:hover {
+  background-color: var(--blue-2) !important;
+  color: #fff;
+}
+
 .btn-green.s,
 .btn-red.s {
   box-shadow: var(--shadow-btn) !important;

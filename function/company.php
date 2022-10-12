@@ -5,6 +5,8 @@ include_once('../database/send_mail.php');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+$data ="";
+
 if(array_key_exists('updateEmail',$_POST)){
     $email = $_POST['email'];
     $id = $_POST['id'];
@@ -177,11 +179,24 @@ if(array_key_exists("companySearchJobs", $_POST)){
      }
 }
 
-
-
-
-
-
-
+// follow function
+if(array_key_exists("followChange", $_POST)){
+    $id = $_POST['id'];
+    $user_id = $_SESSION['ses_user_id'];
+    $sql = "SELECT * FROM follows WHERE user_id='$user_id' AND company_id='$id'";
+    $result = $__conn->query($sql);
+    if ($result->num_rows == 1) {
+        $sql2 = "DELETE FROM follows WHERE user_id='$user_id' AND company_id='$id'";
+    } else {
+        $sql2 = "INSERT INTO follows VALUES(NULL, '$user_id', '$id')";
+    }
+    if($__conn->query($sql2) === TRUE){
+        $data = [ 'code' => 'code_2']; // ok
+    } else {
+        $data = [ 'code' => 'code_1']; // unexpected error
+    }
+    header('Content-type: application/json');
+    echo json_encode( $data );
+}
 
 ?>
