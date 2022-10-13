@@ -51,7 +51,6 @@
                 </div>
             </div>
             <div class="profile-title">Personal Details</div>
-            <hr class="marg">
             <div class="card-basic marg-b">
                 <div class="row company-view pe-3">
                     <div class="col-12 text-center">
@@ -74,7 +73,6 @@
                 </div>
             </div>
             <div class="profile-title">Contact Details</div>
-            <hr class="marg">
             <div class="card-basic marg-b">
                 <div class="row company-view pe-3">
                     <div class="col-12 text-center">
@@ -102,16 +100,15 @@
                 </div>
             </div>
             <div class="profile-title">Skills</div>
-            <hr class="marg">
-            <div class="card-basic marg-b">
+            <div class="card-basic marg-b pad-b-0">
                 <div class="row company-view pe-3">
                     <div class="col-12 text-center">
                         <?php if(!empty($row['skills'])){?>
-                        <div class="special marg-b">
+                        <div class="special d-flex justify-content-center marg-b">
                             <?php 
                             $str_arr = explode (",", $row['skills']);
                             foreach($str_arr as $x){
-                                echo "<span class=\"skill-tag\">$x</span>";
+                                echo "<div class=\"skill-tag\">$x</div>";
                             }
                             ?>
                         </div>
@@ -120,7 +117,6 @@
                 </div>
             </div>
             <div class="profile-title">Educational Qualifications</div>
-            <hr class="marg">
             <div class="card-basic marg-b pad-b-0">
                 <div class="row company-view ">
                     <div class="col-12 text-center">
@@ -134,7 +130,6 @@
                 </div>
             </div>
             <div class="profile-title">Work Experience</div>
-            <hr class="marg">
             <div class="card-basic marg-b">
                 <div class="row company-view">
                     <div class="col-12 text-center">

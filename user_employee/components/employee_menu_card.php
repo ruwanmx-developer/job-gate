@@ -9,7 +9,7 @@
             <div class="ms-4 name active">EMPLOYEE PROFILE</div>
         </div>
     </a>
-    <a href="em_profile_edit.php" class="no-link ">
+    <a href="edit_employee_details.php" class="no-link ">
         <div id="em_m_1_2" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "em_m_1_2"){ echo "active"; }?>"></div>
             <div class="ms-4 name active">EDIT EMPLOYEE PROFILE</div>
