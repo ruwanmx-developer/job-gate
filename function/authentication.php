@@ -12,6 +12,18 @@ if(array_key_exists("logout", $_GET)){
     header("location: ../index.php");
 }
 
+// log out function 
+if(array_key_exists("check_auth", $_POST)){
+    $data = "";
+    if(array_key_exists('ses_user_id',$_SESSION)){
+        $data = [ 'code' => 'code_1' ]; //logged
+    } else {
+        $data = [ 'code' => 'code_2' ]; // unlogged
+    }
+    header('Content-type: application/json');
+    echo json_encode( $data );
+}
+
 // user login function
 if(array_key_exists("user_login",$_POST)){
     $_email = $_POST["email"];

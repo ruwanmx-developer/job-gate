@@ -16,7 +16,7 @@
             <div class="li-points"> <?php echo $row['district']; ?> <i class="bi bi-geo-alt"></i></div>
             <div class="li-points"> <?php echo $row['name']; ?> <i class="bi bi-clock"></i></div>
             <div class="btn-wrap-right mt-2">
-                <button class="btn-green">APPLY FOR JOB</button>
+                <button class="btn-green" onclick="apply_job(<?php echo $row['id']; ?>)">APPLY FOR JOB</button>
             </div>
         </div>
     </div>

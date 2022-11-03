@@ -17,7 +17,6 @@
         <div class="col-lg-3 px-3 py-3">
             <div class="btn-title">Employee Manage</div>
             <?php 
-
             $admin_menu = "em_m_1";
             $admin_submenu = "em_m_1_2"; 
             ?>

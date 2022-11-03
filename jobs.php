@@ -49,6 +49,53 @@
         </div>
     </div>
     <?php include('./components/footer.php');?>
+    <script>
+    function check_auth(x) {
+        let data = new FormData();
+        data.append('check_auth', 'true');
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let x = JSON.parse(xhttp.responseText);
+                if (x.code === "code_1") {
+                    apply_job(x);
+                } else if (x.code === "code_2") {
+                    swal("Login Required",
+                        "You have to logged to the system to apply for jobs", "warning");
+                }
+            }
+        };
+        xhttp.open("POST", "./function/authentication.php", true);
+        xhttp.send(data);
+    }
+
+    function apply_job(x) {
+        let data = new FormData();
+        data.append('id', x);
+        data.append('apply_job', 'true');
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let x = JSON.parse(xhttp.responseText);
+                if (x.code === "code_1") {
+                    swal("Job Applied Already",
+                        "You have applied this job already. Wait until company responds.",
+                        "warning");
+                } else if (x.code === "code_2") {
+                    swal("Job Applied",
+                        "You have applied for the job. Usually it takes 2 business days to take actions.",
+                        "success");
+                } else if (x.code === "code_3") {
+                    swal("Unexpected Error", "Unexpected error caused when applying the job", "error");
+                }
+            }
+        };
+        xhttp.open("POST", "./function/job.php", true);
+        xhttp.send(data);
+    }
+    </script>
 </body>
 
 </html>
