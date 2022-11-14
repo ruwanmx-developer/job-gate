@@ -78,6 +78,14 @@ body {
   line-height: 35px;
   color: var(--bgc-3);
 }
+.title-bar-2 {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 35px;
+  color: var(--bgc-3);
+}
 
 .origin-height {
   min-height: calc(100vh - 56px);
