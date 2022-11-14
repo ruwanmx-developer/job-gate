@@ -167,43 +167,43 @@
         const email_pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
         if (email === "") {
-            swal("Empty Field", "Please enter your email address to continue", "warning");
+            Swal.fire("Empty Field", "Please enter your email address to continue", "warning");
             return;
         }
         if (!(email_pattern.test(email))) {
-            swal("Invalid field", email + " is not an valid email address. Enter a valid email address", "error");
+            Swal.fire("Invalid field", email + " is not an valid email address. Enter a valid email address", "error");
             return;
         }
         if (password === "") {
-            swal("Empty Field", "Please enter your password to continue", "warning");
+            Swal.fire("Empty Field", "Please enter your password to continue", "warning");
             return;
         }
         if (cpassword === "") {
-            swal("Empty Field", "Please confirm your password to continue", "warning");
+            Swal.fire("Empty Field", "Please confirm your password to continue", "warning");
             return;
         }
         if (cpassword !== password) {
-            swal("Invalid Field", "Passwords doesn't match", "error");
+            Swal.fire("Invalid Field", "Passwords doesn't match", "error");
             return;
         }
         if (fname === "") {
-            swal("Empty Field", "Please enter your first name to continue", "warning");
+            Swal.fire("Empty Field", "Please enter your first name to continue", "warning");
             return;
         }
         if (!(name_pattern.test(fname))) {
-            swal("Invalid field", fname + " is not a valid name. Enter a valid name", "error");
+            Swal.fire("Invalid field", fname + " is not a valid name. Enter a valid name", "error");
             return;
         }
         if (lname === "") {
-            swal("Empty Field", "Please enter your last name to continue", "warning");
+            Swal.fire("Empty Field", "Please enter your last name to continue", "warning");
             return;
         }
         if (!(name_pattern.test(lname))) {
-            swal("Invalid field", fname + " is not a valid name. Enter a valid name", "error");
+            Swal.fire("Invalid field", fname + " is not a valid name. Enter a valid name", "error");
             return;
         }
         if (uploaded_image === "") {
-            swal("Empty Field", "Please enter your profle image to continue", "warning");
+            Swal.fire("Empty Field", "Please enter your profle image to continue", "warning");
             return;
         }
 
@@ -220,11 +220,11 @@
             if (this.readyState == 4 && this.status == 200) {
                 let x = JSON.parse(xhttp.responseText);
                 if (x.code === "code_1") {
-                    swal("Existing Email", email + " address is already registerd in our database", "error");
+                    Swal.fire("Existing Email", email + " address is already registerd in our database", "error");
                 } else if (x.code === "code_2") {
-                    swal("Unexpected Error", "Unexpected error caused when creating the users", "error");
+                    Swal.fire("Unexpected Error", "Unexpected error caused when creating the users", "error");
                 } else if (x.code === "code_3") {
-                    swal("Sign Up Successfull", "Successfull", "success").then((value) => {
+                    Swal.fire("Sign Up Successfull", "Successfull", "success").then((value) => {
                         if (x.role == 1) {
                             document.location.href = "ad_dashboard.php";
                         }

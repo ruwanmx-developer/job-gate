@@ -54,7 +54,7 @@
                 if (this.readyState == 4 && this.status == 200) {
                     let x = JSON.parse(xhttp.responseText);
                     if (x.code === "code_1") {
-                        swal("Unexpected Error", "Unexpected error occured");
+                        Swal.fire("Unexpected Error", "Unexpected error occured");
                     } else if (x.code === "code_2") {
                         location.reload();
                     }

@@ -100,7 +100,7 @@
                 if (this.readyState == 4 && this.status == 200) {
                     let x = JSON.parse(xhttp.responseText);
                     if (x.code === "code_1") {
-                        swal("Unexpected Error", "Unexpected error caused when blocking the company", "error");
+                        Swal.fire("Unexpected Error", "Unexpected error caused when blocking the company", "error");
                     } else if (x.code === "code_2") {
                         location.reload();
                     }

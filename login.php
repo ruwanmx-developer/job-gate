@@ -68,15 +68,15 @@
             const pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
             if (email === "") {
-                swal("Empty Field", "Please enter your email address to continue", "warning");
+                Swal.fire("Empty Field", "Please enter your email address to continue", "warning");
                 return;
             }
             if (!(pattern.test(email))) {
-                swal("Invalid field", email + " is not an valid email address. Enter a valid email address", "error");
+                Swal.fire("Invalid field", email + " is not an valid email address. Enter a valid email address", "error");
                 return false;
             }
             if (password === "") {
-                swal("Empty Field", "Please enter your password to continue", "warning");
+                Swal.fire("Empty Field", "Please enter your password to continue", "warning");
                 return;
             }
 
@@ -90,11 +90,23 @@
                 if (this.readyState == 4 && this.status == 200) {
                     let x = JSON.parse(xhttp.responseText);
                     if (x.code === "code_1") {
-                        swal("Unregisterd Email", email + " address in not registerd in our database", "error");
+                        Swal.fire({
+                            title: 'Unregisterd Email',
+                            icon: 'error',
+                            html: '<b>' + email + '</b> address in not registerd in our database',
+                        })
                     } else if (x.code === "code_2") {
-                        swal("Wrong Password", "The password you enter is not the valid password", "error");
+                        Swal.fire({
+                            title: 'Wrong Password',
+                            icon: 'error',
+                            html: 'The password you enter is not the valid password',
+                        })
                     } else if (x.code === "code_3") {
-                        swal("Login Successfull", "Successfull", "success").then((value) => {
+                        Swal.fire({
+                            title: 'Login Successfull',
+                            icon: 'success',
+                            html: 'Successfull',
+                        }).then((value) => {
                             if (x.role == 1) {
                                 document.location.href = "./user_admin/dashboard.php";
                             }

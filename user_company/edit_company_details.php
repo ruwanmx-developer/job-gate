@@ -55,7 +55,7 @@
                             var uploaded_image = "";
                             function updateLogo() {
                                 if (uploaded_image === "") {
-                                    swal("Empty Field", "Please select an image for your company logo to continue", "warning");
+                                    Swal.fire("Empty Field", "Please select an image for your company logo to continue", "warning");
                                     return;
                                 }
                                 let data = new FormData();
@@ -68,11 +68,11 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            swal("Update Success", "Company logo is updated", "success");
+                                            Swal.fire("Update Success", "Company logo is updated", "success");
                                             //location.reload();
                                             uploaded_image = "";
                                         } else if (x.code === "code_2") {
-                                            swal("Unexpected Error",
+                                            Swal.fire("Unexpected Error",
                                                 "Unexpected error caused when updating the logo", "error");
                                         }
                                     }
@@ -170,11 +170,11 @@
                             function updateEmail() {
                                 let email = document.getElementById('email').value;
                                 if (email === "") {
-                                    swal("Empty Field", "Please enter your email address to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your email address to continue", "warning");
                                     return;
                                 }
                                 if (!(email_pattern.test(email))) {
-                                    swal("Invalid field", email +
+                                    Swal.fire("Invalid field", email +
                                         " is not an valid email address. Enter a valid email address", "error");
                                     return;
                                 }
@@ -188,9 +188,9 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            swal("Update Success", email + " is updated", "success");
+                                            Swal.fire("Update Success", email + " is updated", "success");
                                         } else if (x.code === "code_2") {
-                                            swal("Unexpected Error",
+                                            Swal.fire("Unexpected Error",
                                                 "Unexpected error caused when updating the email", "error");
                                         }
                                     }
@@ -228,19 +228,19 @@
                                 let new_password = document.getElementById('new_password').value;
                                 let cpassword = document.getElementById('cpassword').value;
                                 if (cr_password === "") {
-                                    swal("Empty Field", "Please enter your current password to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your current password to continue", "warning");
                                     return;
                                 }
                                 if (new_password === "") {
-                                    swal("Empty Field", "Please enter a new password to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter a new password to continue", "warning");
                                     return;
                                 }
                                 if (cpassword === "") {
-                                    swal("Empty Field", "Please confirm your password to continue", "warning");
+                                    Swal.fire("Empty Field", "Please confirm your password to continue", "warning");
                                     return;
                                 }
                                 if (cpassword !== new_password) {
-                                    swal("Invalid Field", "Passwords doesn't match", "error");
+                                    Swal.fire("Invalid Field", "Passwords doesn't match", "error");
                                     return;
                                 }
 
@@ -258,15 +258,15 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            swal("Update Success", "Your password is updated", "success");
+                                            Swal.fire("Update Success", "Your password is updated", "success");
                                             document.getElementById('cr_password').value = "";
                                             document.getElementById('new_password').value = "";
                                             document.getElementById('cpassword').value = "";
                                         } else if (x.code === "code_2") {
-                                            swal("Unexpected Error",
+                                            Swal.fire("Unexpected Error",
                                                 "Unexpected error caused when updating the email", "error");
                                         } else if (x.code === "code_3") {
-                                            swal("Invalid Password",
+                                            Swal.fire("Invalid Password",
                                                 "Enter the correct current password to continue", "error");
                                         }
                                     }
@@ -292,7 +292,7 @@
                             function updateDescription() {
                                 let description = document.getElementById('description').value;
                                 if (description === "") {
-                                    swal("Empty Field", "Please enter your company description to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your company description to continue", "warning");
                                     return;
                                 }
 
@@ -306,10 +306,10 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            swal("Update Success", "Company description is updated", "success");
+                                            Swal.fire("Update Success", "Company description is updated", "success");
                                             document.getElementById('description').value = description;
                                         } else if (x.code === "code_2") {
-                                            swal("Unexpected Error",
+                                            Swal.fire("Unexpected Error",
                                                 "Unexpected error caused when updating the description", "error"
                                             );
                                         }
@@ -329,11 +329,11 @@
                             function updateAddress() {
                                 let caddress = document.getElementById('caddress').value;
                                 if (caddress === "") {
-                                    swal("Empty Field", "Please enter your company address to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your company address to continue", "warning");
                                     return;
                                 }
                                 if (!(address_pattern.test(caddress))) {
-                                    swal("Invalid field", caddress +
+                                    Swal.fire("Invalid field", caddress +
                                         " is not a valid company address. Enter a valid company address",
                                         "error");
                                     return;
@@ -349,10 +349,10 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            swal("Update Success", "Company address is updated", "success");
+                                            Swal.fire("Update Success", "Company address is updated", "success");
                                             document.getElementById('caddress').value = caddress;
                                         } else if (x.code === "code_2") {
-                                            swal("Unexpected Error",
+                                            Swal.fire("Unexpected Error",
                                                 "Unexpected error caused when updating the address", "error");
                                         }
                                     }
@@ -371,11 +371,11 @@
                             function updateCompanyName() {
                                 let cname = document.getElementById('cname').value;
                                 if (cname === "") {
-                                    swal("Empty Field", "Please enter your company name to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your company name to continue", "warning");
                                     return;
                                 }
                                 if (!(cname_pattern.test(cname))) {
-                                    swal("Invalid field", cname +
+                                    Swal.fire("Invalid field", cname +
                                         " is not a valid company name. Enter a valid company name", "error");
                                     return;
                                 }
@@ -389,10 +389,10 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            swal("Update Success", "Company name is updated", "success");
+                                            Swal.fire("Update Success", "Company name is updated", "success");
                                             document.getElementById('cname').value = cname;
                                         } else if (x.code === "code_2") {
-                                            swal("Unexpected Error",
+                                            Swal.fire("Unexpected Error",
                                                 "Unexpected error caused when updating the name", "error");
                                         }
                                     }
@@ -411,7 +411,7 @@
                             function updateWebsite() {
                                 let website = document.getElementById('website').value;
                                 if (website === "") {
-                                    swal("Empty Field", "Please enter your company website to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your company website to continue", "warning");
                                     return;
                                 }
 
@@ -425,10 +425,10 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            swal("Update Success", "Company website is updated", "success");
+                                            Swal.fire("Update Success", "Company website is updated", "success");
                                             document.getElementById('website').value = website;
                                         } else if (x.code === "code_2") {
-                                            swal("Unexpected Error",
+                                            Swal.fire("Unexpected Error",
                                                 "Unexpected error caused when updating the website", "error");
                                         }
                                     }
@@ -447,7 +447,7 @@
                             function updateLinkedIn() {
                                 let linkedin = document.getElementById('linkedin').value;
                                 if (linkedin === "") {
-                                    swal("Empty Field", "Please enter your company linkedin to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your company linkedin to continue", "warning");
                                     return;
                                 }
 
@@ -461,10 +461,10 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            swal("Update Success", "Company linkedin is updated", "success");
+                                            Swal.fire("Update Success", "Company linkedin is updated", "success");
                                             document.getElementById('linkedin').value = linkedin;
                                         } else if (x.code === "code_2") {
-                                            swal("Unexpected Error",
+                                            Swal.fire("Unexpected Error",
                                                 "Unexpected error caused when updating the linkedin", "error");
                                         }
                                     }
@@ -483,7 +483,7 @@
                             function updateMobile() {
                                 let mobile = document.getElementById('mobile').value;
                                 if (mobile === "") {
-                                    swal("Empty Field", "Please enter your company mobile to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your company mobile to continue", "warning");
                                     return;
                                 }
 
@@ -497,10 +497,10 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            swal("Update Success", "Company mobile is updated", "success");
+                                            Swal.fire("Update Success", "Company mobile is updated", "success");
                                             document.getElementById('mobile').value = mobile;
                                         } else if (x.code === "code_2") {
-                                            swal("Unexpected Error",
+                                            Swal.fire("Unexpected Error",
                                                 "Unexpected error caused when updating the mobile", "error");
                                         }
                                     }

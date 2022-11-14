@@ -59,11 +59,11 @@
             const pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
             if (email === "") {
-                swal("Empty Field", "Please enter your email address to continue", "warning");
+                Swal.fire("Empty Field", "Please enter your email address to continue", "warning");
                 return;
             }
             if (!(pattern.test(email))) {
-                swal("Invalid field", email + " is not an valid email address. Enter a valid email address", "error");
+                Swal.fire("Invalid field", email + " is not an valid email address. Enter a valid email address", "error");
                 return false;
             }
 
@@ -71,7 +71,7 @@
             data.append('email', email);
             data.append('userForgotPassword', 'true');
 
-            swal({
+            Swal.fire({
                 title: "Sending Email...",
                 text: "Please wait",
                 icon: "site_images/loading.gif",
@@ -84,17 +84,17 @@
                 if (this.readyState == 4 && this.status == 200) {
                     let x = JSON.parse(xhttp.responseText);
                     if (x.code === "code_1") {
-                        swal("Unregisterd Email", email + " address in not registerd in our database", "error");
+                        Swal.fire("Unregisterd Email", email + " address in not registerd in our database", "error");
                     } else if (x.code === "code_2") {
-                        swal("Email Sent", "The password reset link has send to the " + email + " address",
+                        Swal.fire("Email Sent", "The password reset link has send to the " + email + " address",
                             "success").then((value) => {
                             document.location.href = "login.php";
                         });
                     } else if (x.code === "code_3") {
-                        swal("Unexpected Error", "Unexpected error caused when sending the email, Try Again",
+                        Swal.fire("Unexpected Error", "Unexpected error caused when sending the email, Try Again",
                             "error");
                     } else if (x.code === "code_4") {
-                        swal("Reset Link", "One password reset link has already send to the " + email +
+                        Swal.fire("Reset Link", "One password reset link has already send to the " + email +
                             " address", "warning");
                     }
                 }

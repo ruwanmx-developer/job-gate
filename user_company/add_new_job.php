@@ -84,7 +84,7 @@
                     <input type="text" class="form-control" id="salary"
                         placeholder="Enter your salary for this job (USD)">
                 </div>
-                
+
                 <div class="mb-2">
                     <label for="company1" class="form-label">Company</label>
                     <input type="text" disabled class="form-control" id="company1"
@@ -130,50 +130,53 @@
             const salary_pattern = /^[0-9]+$/;
 
             if (title === "") {
-                swal("Empty Field", "Please enter your job title to continue", "warning");
+
+                Swal.fire("Empty Field", "Please enter your job title to continue", "warning");
                 return;
             }
             if (!(title_pattern.test(title))) {
-                swal("Invalid field", title + " is not an valid job title. Enter a valid job title", "error");
+                Swal.fire("Invalid field", title + " is not an valid job title. Enter a valid job title", "error");
                 return;
             }
             if (desc === "") {
-                swal("Empty Field", "Please enter your job description to continue", "warning");
+                Swal.fire("Empty Field", "Please enter your job description to continue", "warning");
                 return;
             }
             if (!(description_pattern.test(desc))) {
-                swal("Invalid field", "Your description is not a valid job description. Enter a valid job description",
+                Swal.fire("Invalid field",
+                    "Your description is not a valid job description. Enter a valid job description",
                     "error");
                 return;
             }
             if (category === "") {
-                swal("Empty Field", "Please select a job category from the list to continue", "warning");
+                Swal.fire("Empty Field", "Please select a job category from the list to continue", "warning");
                 return;
             }
             if (jtype === "") {
-                swal("Empty Field", "Please select a job type from the list to continue", "warning");
+                Swal.fire("Empty Field", "Please select a job type from the list to continue", "warning");
                 return;
             }
             if (stype === "") {
-                swal("Empty Field", "Please select a salary type from the list to continue", "warning");
+                Swal.fire("Empty Field", "Please select a salary type from the list to continue", "warning");
                 return;
             }
             if (salary === "") {
-                swal("Empty Field", "Please enter your offering salary to continue", "warning");
+                Swal.fire("Empty Field", "Please enter your offering salary to continue", "warning");
                 return;
             }
             if (!(salary_pattern.test(salary))) {
-                swal("Invalid field", salary + " is not a valid salary. Enter a valid salary", "error");
+                Swal.fire("Invalid field", salary + " is not a valid salary. Enter a valid salary", "error");
                 return;
             }
             if (company === "") {
-                swal("Empty Field", "You have to reload the page. Page not fully loaded", "warning").then((value) => {
-                    window.location.reload();
-                });
+                Swal.fire("Empty Field", "You have to reload the page. Page not fully loaded", "warning").then((
+                    value) => {
+                        window.location.reload();
+                    });
                 return;
             }
             if (district === "") {
-                swal("Empty Field", "Please select a district from the list to continue", "warning");
+                Swal.fire("Empty Field", "Please select a district from the list to continue", "warning");
                 return;
             }
 
@@ -193,11 +196,12 @@
                 if (this.readyState == 4 && this.status == 200) {
                     let x = JSON.parse(xhttp.responseText);
                     if (x.code === "code_1") {
-                        swal("Success", "Your job added to database and set to public", "success").then((value) => {
-                            document.location.href = "co_manage_active_jobs.php";
-                        });
+                        Swal.fire("Success", "Your job added to database and set to public", "success").then((
+                            value) => {
+                                document.location.href = "co_manage_active_jobs.php";
+                            });
                     } else if (x.code === "code_2") {
-                        swal("Unexpected Error", "Unexpected error caused when creating the job", "error");
+                        Swal.fire("Unexpected Error", "Unexpected error caused when creating the job", "error");
                     }
                 }
             };

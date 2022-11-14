@@ -58,11 +58,11 @@
                 function updateJobCategory(x) {
                     let category = document.getElementById('update_category_' + x).value;
                     if (category === "") {
-                        swal("Empty Field", "Please enter data to continue", "warning");
+                        Swal.fire("Empty Field", "Please enter data to continue", "warning");
                         return;
                     }
                     if (!(job_category_pattern.test(category))) {
-                        swal("Invalid field", category +
+                        Swal.fire("Invalid field", category +
                             " is not an valid job category. Enter a valid job category", "error");
                         return;
                     }
@@ -71,14 +71,14 @@
                     data.append('id', x);
                     let text = (x == '_1') ? "add" : "update";
                     data.append('updateJobCategory', 'true');
-                    swal("Update Field", "Do you want to " + text + " the job category", "warning").then((value) => {
+                    Swal.fire("Update Field", "Do you want to " + text + " the job category", "warning").then((value) => {
                         if (value) {
                             var xhttp = new XMLHttpRequest();
                             xhttp.onreadystatechange = function() {
                                 if (this.readyState == 4 && this.status == 200) {
                                     let x = JSON.parse(xhttp.responseText);
                                     if (x.code === "code_1") {
-                                        swal("Unexpected Error",
+                                        Swal.fire("Unexpected Error",
                                             "Unexpected error caused when updating the category",
                                             "error");
                                     } else if (x.code === "code_2") {
@@ -122,11 +122,11 @@
                 function updateJobType(x) {
                     let type = document.getElementById('update_type_' + x).value;
                     if (type === "") {
-                        swal("Empty Field", "Please enter data to continue", "warning");
+                        Swal.fire("Empty Field", "Please enter data to continue", "warning");
                         return;
                     }
                     if (!(job_category_pattern.test(type))) {
-                        swal("Invalid field", type +
+                        Swal.fire("Invalid field", type +
                             " is not an valid job type. Enter a valid job type", "error");
                         return;
                     }
@@ -135,14 +135,14 @@
                     data.append('id', x);
                     let text = (x == '_1') ? "add" : "update";
                     data.append('updateJobType', 'true');
-                    swal("Update Field", "Do you want to " + text + " the job category", "warning").then((value) => {
+                    Swal.fire("Update Field", "Do you want to " + text + " the job category", "warning").then((value) => {
                         if (value) {
                             var xhttp = new XMLHttpRequest();
                             xhttp.onreadystatechange = function() {
                                 if (this.readyState == 4 && this.status == 200) {
                                     let x = JSON.parse(xhttp.responseText);
                                     if (x.code === "code_1") {
-                                        swal("Unexpected Error",
+                                        Swal.fire("Unexpected Error",
                                             "Unexpected error caused when updating the type",
                                             "error");
                                     } else if (x.code === "code_2") {
@@ -186,11 +186,11 @@
                 function updateSalaryType(x) {
                     let type = document.getElementById('update_salary_' + x).value;
                     if (type === "") {
-                        swal("Empty Field", "Please enter data to continue", "warning");
+                        Swal.fire("Empty Field", "Please enter data to continue", "warning");
                         return;
                     }
                     if (!(job_category_pattern.test(type))) {
-                        swal("Invalid field", type +
+                        Swal.fire("Invalid field", type +
                             " is not an valid job type. Enter a valid salary type", "error");
                         return;
                     }
@@ -199,14 +199,14 @@
                     data.append('id', x);
                     let text = (x == '_1') ? "add" : "update";
                     data.append('updateSalaryType', 'true');
-                    swal("Update Field", "Do you want to " + text + " the salary type", "warning").then((value) => {
+                    Swal.fire("Update Field", "Do you want to " + text + " the salary type", "warning").then((value) => {
                         if (value) {
                             var xhttp = new XMLHttpRequest();
                             xhttp.onreadystatechange = function() {
                                 if (this.readyState == 4 && this.status == 200) {
                                     let x = JSON.parse(xhttp.responseText);
                                     if (x.code === "code_1") {
-                                        swal("Unexpected Error",
+                                        Swal.fire("Unexpected Error",
                                             "Unexpected error caused when updating the salary type",
                                             "error");
                                     } else if (x.code === "code_2") {

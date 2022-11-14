@@ -111,7 +111,7 @@
                         if (this.readyState == 4 && this.status == 200) {
                             let x = JSON.parse(xhttp.responseText);
                             if (x.code === "code_2") {
-                                swal("Unexpected Error",
+                                Swal.fire("Unexpected Error",
                                     "Unexpected error caused when deleting the message",
                                     "error");
                             } else if (x.code === "code_1") {
@@ -140,7 +140,7 @@
                 if (this.readyState == 4 && this.status == 200) {
                     let x = JSON.parse(xhttp.responseText);
                     if (x.code === "code_2") {
-                        swal("Unexpected Error", "Unexpected error caused when sending the message", "error");
+                        Swal.fire("Unexpected Error", "Unexpected error caused when sending the message", "error");
                     } else if (x.code === "code_1") {
                         location.reload();
                     }

@@ -171,52 +171,52 @@
         let enc_pass = md5(password);
 
         if (email === "") {
-            swal("Empty Field", "Please enter your email address to continue", "warning");
+            Swal.fire("Empty Field", "Please enter your email address to continue", "warning");
             return;
         }
         if (!(email_pattern.test(email))) {
-            swal("Invalid field", email + " is not an valid email address. Enter a valid email address", "error");
+            Swal.fire("Invalid field", email + " is not an valid email address. Enter a valid email address", "error");
             return;
         }
         if (password === "") {
-            swal("Empty Field", "Please enter your password to continue", "warning");
+            Swal.fire("Empty Field", "Please enter your password to continue", "warning");
             return;
         }
         if (cpassword === "") {
-            swal("Empty Field", "Please confirm your password to continue", "warning");
+            Swal.fire("Empty Field", "Please confirm your password to continue", "warning");
             return;
         }
         if (cpassword !== password) {
-            swal("Invalid Field", "Passwords doesn't match", "error");
+            Swal.fire("Invalid Field", "Passwords doesn't match", "error");
             return;
         }
         if (cname === "") {
-            swal("Empty Field", "Please enter your company name to continue", "warning");
+            Swal.fire("Empty Field", "Please enter your company name to continue", "warning");
             return;
         }
         if (!(cname_pattern.test(cname))) {
-            swal("Invalid field", cname + " is not a valid company name. Enter a valid company name", "error");
+            Swal.fire("Invalid field", cname + " is not a valid company name. Enter a valid company name", "error");
             return;
         }
         if (caddress === "") {
-            swal("Empty Field", "Please enter your company address to continue", "warning");
+            Swal.fire("Empty Field", "Please enter your company address to continue", "warning");
             return;
         }
         if (!(address_pattern.test(caddress))) {
-            swal("Invalid field", caddress + " is not a valid company address. Enter a valid company address",
+            Swal.fire("Invalid field", caddress + " is not a valid company address. Enter a valid company address",
                 "error");
             return;
         }
         if (description === "") {
-            swal("Empty Field", "Please enter your company description to continue", "warning");
+            Swal.fire("Empty Field", "Please enter your company description to continue", "warning");
             return;
         }
         if (uploaded_image === "") {
-            swal("Empty Field", "Please enter your company logo to continue", "warning");
+            Swal.fire("Empty Field", "Please enter your company logo to continue", "warning");
             return;
         }
         // if (!(description_pattern.test(description))) {
-        //     swal("Invalid field", " Your company description isn't valid. Enter a valid company description",
+        //     Swal.fire("Invalid field", " Your company description isn't valid. Enter a valid company description",
         //         "error");
         //     return;
         // }
@@ -235,11 +235,11 @@
             if (this.readyState == 4 && this.status == 200) {
                 let x = JSON.parse(xhttp.responseText);
                 if (x.code === "code_1") {
-                    swal("Existing Email", email + " address is already registerd in our database", "error");
+                    Swal.fire("Existing Email", email + " address is already registerd in our database", "error");
                 } else if (x.code === "code_2") {
-                    swal("Unexpected Error", "Unexpected error caused when creating the users", "error");
+                    Swal.fire("Unexpected Error", "Unexpected error caused when creating the users", "error");
                 } else if (x.code === "code_3") {
-                    swal("Sign Up Successfull", "Successfull", "success").then((value) => {
+                    Swal.fire("Sign Up Successfull", "Successfull", "success").then((value) => {
                         if (x.role == 1) {
                             document.location.href = "ad_dashboard.php";
                         }

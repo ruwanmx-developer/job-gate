@@ -86,15 +86,15 @@
             let token = qs.token;
 
             if (password === "") {
-                swal("Empty Field", "Please enter your new password to continue", "warning");
+                Swal.fire("Empty Field", "Please enter your new password to continue", "warning");
                 return;
             }
             if (cpassword === "") {
-                swal("Empty Field", "Please confirm your new password to continue", "warning");
+                Swal.fire("Empty Field", "Please confirm your new password to continue", "warning");
                 return;
             }
             if (cpassword !== password) {
-                swal("Invalid Field", "Passwords doesn't match", "error");
+                Swal.fire("Invalid Field", "Passwords doesn't match", "error");
                 return;
             }
 
@@ -108,14 +108,14 @@
                 if (this.readyState == 4 && this.status == 200) {
                     let x = JSON.parse(xhttp.responseText);
                     if (x.code === "code_1") {
-                        swal("Success", "Your password has reset successfully", "success").then((value) => {
+                        Swal.fire("Success", "Your password has reset successfully", "success").then((value) => {
                             document.location.href = "login.php";
                         });
                     } else if (x.code === "code_2") {
-                        swal("Unexpected Error", "Unexpected error caused when sending the email, Try Again",
+                        Swal.fire("Unexpected Error", "Unexpected error caused when sending the email, Try Again",
                             "error");
                     } else if (x.code === "code_3") {
-                        swal("Reset Link Expired", "Reset link expired or invalid reset link", "error");
+                        Swal.fire("Reset Link Expired", "Reset link expired or invalid reset link", "error");
                     }
                 }
             };

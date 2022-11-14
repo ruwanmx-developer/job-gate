@@ -61,7 +61,7 @@
                 if (x.code === "code_1") {
                     apply_job(x);
                 } else if (x.code === "code_2") {
-                    swal("Login Required",
+                    Swal.fire("Login Required",
                         "You have to logged to the system to apply for jobs", "warning");
                 }
             }
@@ -80,15 +80,15 @@
             if (this.readyState == 4 && this.status == 200) {
                 let x = JSON.parse(xhttp.responseText);
                 if (x.code === "code_1") {
-                    swal("Job Applied Already",
+                    Swal.fire("Job Applied Already",
                         "You have applied this job already. Wait until company responds.",
                         "warning");
                 } else if (x.code === "code_2") {
-                    swal("Job Applied",
+                    Swal.fire("Job Applied",
                         "You have applied for the job. Usually it takes 2 business days to take actions.",
                         "success");
                 } else if (x.code === "code_3") {
-                    swal("Unexpected Error", "Unexpected error caused when applying the job", "error");
+                    Swal.fire("Unexpected Error", "Unexpected error caused when applying the job", "error");
                 }
             }
         };
