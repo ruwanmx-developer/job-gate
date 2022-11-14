@@ -248,4 +248,19 @@ if(array_key_exists("sendMessage", $_POST)){
     echo json_encode( $data );
 }
 
+// delete messages
+if(array_key_exists("deleteMessage", $_POST)){
+    $id = $_POST['id'];
+    $data = "";
+
+    $sql = "DELETE FROM messages WHERE id='$id'";
+    if($__conn->query($sql) === TRUE){
+        $data = [ 'code' => 'code_1' ];
+    } else {
+        $data = [ 'code' => 'code_2' ];
+    }
+    header('Content-type: application/json');
+    echo json_encode( $data );
+}
+
 ?>

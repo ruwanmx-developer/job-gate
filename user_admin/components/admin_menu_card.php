@@ -1,3 +1,16 @@
+<div id="ad_m_0" onclick="setMenu('ad_m_0_wrap')" class="menu-item mb-2 company-prim">
+    <div class="activebar <?php if($admin_menu == "ad_m_0"){ echo "active"; }?>"></div>
+    <div class="ms-4 name active">DASHBOARD</div>
+</div>
+<div id="ad_m_0_wrap" class="<?php if($admin_menu == "ad_m_0"){ echo "no-fade-jq"; }?>">
+    <a href="dashboard.php" class="no-link">
+        <div id="ad_m_0_1" class="menu-item mb-2 ms-4 company-sec">
+            <div class="activebar <?php if($admin_submenu == "ad_m_0_1"){ echo "active"; }?>"></div>
+            <div class="ms-4 name active">SUMMARY</div>
+        </div>
+    </a>
+</div>
+
 <div id="ad_m_1" onclick="setMenu('ad_m_1_wrap')" class="menu-item mb-2 company-prim">
     <div class="activebar <?php if($admin_menu == "ad_m_1"){ echo "active"; }?>"></div>
     <div class="ms-4 name active">MANAGE COMPANIES</div>
@@ -62,14 +75,24 @@
             <div class="ms-4 name active">SEND EMPLOYEE MESSAGE</div>
         </div>
     </a>
+    <a href="messages_cmp.php" class="no-link">
+        <div id="ad_m_4_2" class="menu-item mb-2 ms-4 company-sec">
+            <div class="activebar <?php if($admin_submenu == "ad_m_4_2"){ echo "active"; }?>"></div>
+            <div class="ms-4 name active">SEND COMPANY MESSAGE</div>
+        </div>
+    </a>
 </div>
 
 <script>
+const a0 = document.getElementById("ad_m_0_wrap");
 const a1 = document.getElementById("ad_m_1_wrap");
 const a2 = document.getElementById("ad_m_2_wrap");
 const a3 = document.getElementById("ad_m_3_wrap");
 const a4 = document.getElementById("ad_m_4_wrap");
 
+if (!$(a0).is('.no-fade-jq')) {
+    $(a0).hide();
+}
 if (!$(a1).is('.no-fade-jq')) {
     $(a1).hide();
 }

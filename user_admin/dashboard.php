@@ -16,8 +16,11 @@
         <!-- left bar -->
         <div class="col-lg-3 px-3 py-3">
             <div class="btn-title">System Manage</div>
-            <?php $admin_menu = $admin_submenu = ""; ?>
-            <?php include('components/admin_menu_card.php');?>
+            <?php 
+            $admin_menu = "ad_m_0";
+            $admin_submenu = "ad_m_0_1"; 
+            ?>
+            <?php include('./components/admin_menu_card.php');?>
         </div>
 
         <!-- middle bar -->
