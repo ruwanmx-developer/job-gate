@@ -84,7 +84,7 @@ body {
 }
 
 .no-link {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .text-right {
@@ -537,6 +537,69 @@ body {
   box-shadow: var(--shadow-box);
   border-radius: 40px;
 }
+/* job-application-card */
+.job-application-card .name-wrap {
+  display: flex;
+}
+
+.job-application-card .name-wrap .id {
+  font-size: 14px;
+  color: var(--blue-1);
+  font-weight: 700;
+  width: 30px;
+}
+
+.job-application-card .name-wrap .name {
+  font-size: 14px;
+  color: var(--bgc-1);
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.job-application-card .li-desc {
+  font-size: 12px;
+  color: var(--bgc-4);
+  font-weight: 300;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-box-orient: vertical;
+}
+
+.job-application-card .li-desc span {
+  font-size: 12px;
+  color: var(--bgc-2);
+  font-weight: 500;
+}
+
+.job-application-card .logo-wrap {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 5px;
+}
+
+.job-application-card .btn-wrap {
+  text-align: right;
+  margin-left: 10px;
+  max-width: 180px;
+}
+
+.job-application-card .btn-wrap button {
+  font-size: 13px;
+  width: 100%;
+}
+
+.job-application-card .img {
+  display: flex;
+  align-items: flex-end;
+}
+
+.job-application-card img {
+  width: 60px;
+  border: 1px solid var(--bgc-5);
+  box-shadow: var(--shadow-box);
+  border-radius: 40px;
+}
 /* empty */
 .empty {
   text-align: center;
@@ -782,4 +845,110 @@ body {
   font-weight: 700;
   text-align: center;
   line-height: 17px;
+}
+
+/* messages */
+.msg-wrap {
+  overflow-y: scroll;
+  min-height: calc(100vh - 215px);
+  max-height: calc(100vh - 215px);
+  padding-right: 15px;
+}
+.message_contact_card {
+  display: flex;
+  align-items: center;
+}
+.message_contact_card.new {
+  display: flex;
+  align-items: center;
+  background-color: var(--bgc-7);
+}
+.message_contact_card img {
+  width: 50px;
+}
+.message_contact_card .data {
+  padding-left: 10px;
+}
+.message_contact_card .data .name {
+  font-weight: 700;
+  font-size: 14px;
+  color: #000;
+}
+.message_contact_card .data .message {
+  font-weight: 400;
+  color: #666;
+  font-size: 13px;
+  max-height: 38px;
+  overflow: hidden;
+}
+.message_contact_card.new .data .message {
+  font-weight: 600;
+  color: #444;
+}
+.message_contact_card .data .time {
+  font-weight: 500;
+  color: #444;
+  font-size: 13px;
+  padding-top: 5px;
+  text-align: right;
+  padding-left: 10px;
+}
+
+.chat_message_card {
+  display: flex;
+  align-items: flex-start;
+}
+
+.chat_message_card img {
+  width: 50px;
+}
+.chat_message_card.user .data {
+  padding-right: 10px;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
+  width: 100%;
+  color: var(--bgc-2);
+}
+.chat_message_card.non-user .data {
+  padding-left: 10px;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
+  width: 100%;
+  color: var(--bgc-2);
+}
+.chat_message_card.user .data .time {
+  color: var(--blue-2);
+  text-align: right;
+  padding-bottom: 5px;
+  font-weight: 600;
+  width: 100%;
+}
+.chat_message_card.user .data .time span.read {
+  background-color: var(--blue-3);
+  padding: 1px 10px;
+  color: #fff;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.chat_message_card.user .data .time span.unread {
+  background-color: var(--red-4);
+  padding: 1px 10px;
+  color: #fff;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.chat_message_card.non-user .data .time {
+  padding-bottom: 5px;
+  width: 100%;
+  font-weight: 600;
+  color: var(--green-2);
+}
+.chat_message_card.user .data .message {
+  color: var(--blue-3);
+  text-align: right;
+}
+.chat_message_card.non-user .data .message {
+  color: var(--green-3);
 }

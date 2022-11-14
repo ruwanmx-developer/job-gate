@@ -231,4 +231,21 @@ if(array_key_exists("resetPassword", $_POST)){
     echo json_encode( $data );
 }
 
+// send messages
+if(array_key_exists("sendMessage", $_POST)){
+    $reciver = $_POST['reciver'];
+    $message = $_POST['message'];
+    $sender = $_SESSION['ses_user_id'];
+    $data = "";
+
+    $sql = "INSERT INTO messages VALUES(NULL,'$sender','$reciver','$message',CURTIME(),1)";
+    if($__conn->query($sql) === TRUE){
+        $data = [ 'code' => 'code_1' ];
+    } else {
+        $data = [ 'code' => 'code_2' ];
+    }
+    header('Content-type: application/json');
+    echo json_encode( $data );
+}
+
 ?>

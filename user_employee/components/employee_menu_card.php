@@ -22,7 +22,7 @@
     <div class=" ms-4 name active">MANAGE JOBS APPLICATIONS</div>
 </div>
 <div id="em_m_2_wrap" class="<?php if($admin_menu == "em_m_2"){ echo "no-fade-jq"; }?>">
-    <a href="em_add_new_job.php" class="no-link ">
+    <a href="view_pending_applications.php" class="no-link ">
         <div id="em_m_2_1" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "em_m_2_1"){ echo "active"; }?>"></div>
             <div class=" ms-4 name active">PENDING APPLICATIONS</div>

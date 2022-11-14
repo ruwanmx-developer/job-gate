@@ -60,6 +60,7 @@
                     echo "Verify";
                 }?>
                             </button>
+                            <button class="btn-green">Message</button>
                         </div>
                         <div class="special mb-2">
                             Email : <span><?php echo $row['email']; ?></span>
