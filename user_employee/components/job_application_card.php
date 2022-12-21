@@ -10,7 +10,7 @@ $title = $row5['title'];
             <div class="name-wrap">
                 <div class="name"><?php echo $title; ?></div>
             </div>
-            <div class="li-desc"><span>Status : </span><?php echo $row['status']; ?></div>
+            <div class="li-desc"><span>Status : </span><?php echo ($row['status'] == 1) ? "Pending" : "asdasd"; ?></div>
             <div class="li-desc"><span>Applied Date : </span><?php echo $row['applied_date'];?></div>
         </div>
     </div>

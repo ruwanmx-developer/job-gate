@@ -18,7 +18,7 @@
             <div class="btn-title">System Manage</div>
             <?php 
 
-            $admin_menu = "ad_m_1";
+            $admin_menu = "ad_m_2";
             $admin_submenu = $_GET['ref']; 
             ?>
             <?php include('./components/admin_menu_card.php');?>
@@ -43,24 +43,27 @@
                         <div class="name"><?php echo $row['first_name'] . " " . $row['last_name'] ; ?></div>
                         <div class="address"><?php echo $row['address']; ?></div>
                         <div class="btn-wrap marg-b">
-                            <button class="<?php
-                if($row['state'] == 1){
-                    echo "btn-red";
-                }else if($row['state'] == 2){
-                    echo "btn-green";
-                } else if($row['state'] == 3){
-                    echo "btn-green";
-                }?>" onmousedown="changeCompanyState(<?php echo $row['user_id']; ?>,<?php echo ($row['state'] == 1) ? '2' : '1'; ?>)">
+                            <button class="
+                            <?php
+                            if($row['state'] == 1){
+                                echo "btn-red";
+                            }else if($row['state'] == 2){
+                                echo "btn-green";
+                            } else if($row['state'] == 3){
+                                echo "btn-green";
+                            }?>"
+                                onmousedown="changeCompanyState(<?php echo $row['user_id']; ?>,<?php echo ($row['state'] == 1) ? '2' : '1'; ?>)">
                                 <?php
-                if($row['state'] == 1){
-                    echo "Block";
-                }else if($row['state'] == 2){
-                    echo "Unblock";
-                } else if($row['state'] == 3){
-                    echo "Verify";
-                }?>
+                            if($row['state'] == 1){
+                                echo "Block";
+                            }else if($row['state'] == 2){
+                                echo "Unblock";
+                            } else if($row['state'] == 3){
+                                echo "Verify";
+                            }?>
                             </button>
-                            <button class="btn-green">Message</button>
+                            <a href="send_emp_message.php?id=<?php echo $row['user_id']; ?>"> <button
+                                    class="btn-green">Message</button></a>
                         </div>
                         <div class="special mb-2">
                             Email : <span><?php echo $row['email']; ?></span>

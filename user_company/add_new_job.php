@@ -171,8 +171,8 @@
             if (company === "") {
                 Swal.fire("Empty Field", "You have to reload the page. Page not fully loaded", "warning").then((
                     value) => {
-                        window.location.reload();
-                    });
+                    window.location.reload();
+                });
                 return;
             }
             if (district === "") {
@@ -198,8 +198,8 @@
                     if (x.code === "code_1") {
                         Swal.fire("Success", "Your job added to database and set to public", "success").then((
                             value) => {
-                                document.location.href = "co_manage_active_jobs.php";
-                            });
+                            document.location.href = "active_jobs.php";
+                        });
                     } else if (x.code === "code_2") {
                         Swal.fire("Unexpected Error", "Unexpected error caused when creating the job", "error");
                     }

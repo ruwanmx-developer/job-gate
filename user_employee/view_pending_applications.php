@@ -25,19 +25,24 @@
 
         <!-- middle bar -->
         <div class="col-lg-9 py-3 pe-3 ps-3 ps-lg-0">
+
             <div class="title-bar card-basic py-2 mb-3">
                 PENDING APPLICATIONS
             </div>
-            <?php 
+            <div class="row gx-3">
+
+                <?php 
             $uid = $_SESSION['ses_user_id'];
             $sql = "SELECT * FROM job_applications WHERE user_id='$uid' AND status=1";
             $result = $__conn->query($sql);
             while($row = $result->fetch_assoc()) {
             ?>
-            <div class="col-12 col-md-6 col-xl-4">
-                <?php include('components/job_application_card.php');?>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <?php include('components/job_application_card.php');?>
+                </div>
+                <?php } ?>
+
             </div>
-            <?php } ?>
         </div>
     </div>
     <?php include($__siteroot.'./components/footer.php');?>

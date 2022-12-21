@@ -65,7 +65,6 @@ if(array_key_exists("user_login",$_POST)){
     echo json_encode( $data );
 }
 
-
 // com signup function
 if(array_key_exists("com_signup",$_POST)){
     $email = $_POST["email"];

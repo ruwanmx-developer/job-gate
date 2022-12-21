@@ -50,7 +50,7 @@
     </div>
     <?php include('./components/footer.php');?>
     <script>
-    function check_auth(x) {
+    function check_auth(y) {
         let data = new FormData();
         data.append('check_auth', 'true');
 
@@ -59,7 +59,7 @@
             if (this.readyState == 4 && this.status == 200) {
                 let x = JSON.parse(xhttp.responseText);
                 if (x.code === "code_1") {
-                    apply_job(x);
+                    apply_job(y);
                 } else if (x.code === "code_2") {
                     Swal.fire("Login Required",
                         "You have to logged to the system to apply for jobs", "warning");
