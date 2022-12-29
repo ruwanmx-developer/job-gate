@@ -33,7 +33,7 @@
             $row = $result->fetch_assoc();
             ?>
             <div class="row gx-3">
-                <div class="col-12">
+                <div class="col-12 marg-b">
                     <div class="card-basic">
                         <div class="row company-view pe-3">
                             <div class="col-12 d-flex justify-content-center marg-b">

@@ -28,21 +28,21 @@
             <div class=" ms-4 name active">PENDING APPLICATIONS</div>
         </div>
     </a>
-    <a href="em_manage_active_jobs.php" class="no-link ">
+    <a href="view_accepted_applications.php" class="no-link ">
         <div id="em_m_2_2" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "em_m_2_2"){ echo "active"; }?>"></div>
             <div class=" ms-4 name active">ACCEPTED APPLICATIONS</div>
         </div>
     </a>
-    <a href="" class="no-link ">
+    <a href="view_rejected_applications.php" class="no-link ">
         <div id="em_m_2_3" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if($admin_submenu == "em_m_2_3"){ echo "active"; }?>"></div>
             <div class=" ms-4 name active">REJECTED APPLICATIONS</div>
         </div>
     </a>
     <a href="" class="no-link ">
-        <div id="em_m_2_3" class="menu-item mb-2 ms-4 company-sec">
-            <div class="activebar <?php if($admin_submenu == "em_m_2_3"){ echo "active"; }?>"></div>
+        <div id="em_m_2_4" class="menu-item mb-2 ms-4 company-sec">
+            <div class="activebar <?php if($admin_submenu == "em_m_2_4"){ echo "active"; }?>"></div>
             <div class=" ms-4 name active">INVITATIONS</div>
         </div>
     </a>
