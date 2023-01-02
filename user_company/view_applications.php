@@ -3,7 +3,7 @@
 <?php $__siteroot = "."; ?>
 
 <head>
-    <title>Closed Jobs</title>
+    <title>Active Jobs</title>
     <!-- include header links -->
     <?php include($__siteroot . './components/header_links.php'); ?>
 </head>
@@ -17,8 +17,8 @@
         <div class="col-lg-3 px-3 py-3">
             <div class="btn-title">System Manage</div>
             <?php
-            $admin_menu = "co_m_2";
-            $admin_submenu = "co_m_2_3";
+            $admin_menu = "co_m_3";
+            $admin_submenu = "co_m_3_1";
             ?>
             <?php include('./components/company_menu_card.php'); ?>
         </div>
@@ -26,7 +26,7 @@
         <!-- middle bar -->
         <div class="col-lg-9 py-3 pe-3 ps-3 ps-lg-0">
             <div class="title-bar card-basic py-2 mb-3">
-                CLOSED JOBS
+                MANAGE CURRENT ACTIVE JOBS
             </div>
             <div class="row gx-3">
                 <div class="col-12">
@@ -44,7 +44,7 @@
 
                         let data = new FormData();
                         data.append('search_val', inp);
-                        data.append('state', 2);
+                        data.append('state', 1);
                         data.append('companySearchJobs', 'true');
 
                         var xhttp = new XMLHttpRequest();
@@ -66,14 +66,14 @@
             </div>
             <div id="company_wrap" class="row gx-3">
                 <?php
-                $sql = "SELECT a.id, a.title, b.name AS category, a.description,a.created_at, c.name AS salary_type, a.salary FROM jobs a INNER JOIN job_categories b ON a.job_category_id = b.id INNER JOIN salary_types c ON a.salary_type_id = c.id WHERE state=2 AND user_id='" . $_SESSION['ses_user_id'] . "'";
+                $sql = "SELECT a.id, a.user_id, a.job_id, a.status, a.message, a.applied_date, responded_date, b.user_id AS company_id, c.first_name, c.last_name,  b.title FROM job_applications a INNER JOIN jobs b ON a.job_id=b.id INNER JOIN employies c ON a.user_id=c.user_id WHERE b.state=1 AND b.user_id=" . $_SESSION['ses_user_id'];
                 $result = $__conn->query($sql);
                 $count = 0;
                 while ($row = $result->fetch_assoc()) {
                     $count++;
                 ?>
                 <div class="col-12 col-md-6 col-xl-4">
-                    <?php include('components/job_card.php'); ?>
+                    <?php include('components/application_card.php'); ?>
                 </div>
                 <?php } ?>
                 <?php if ($count == 0) { ?>

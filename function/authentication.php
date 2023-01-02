@@ -96,6 +96,7 @@ if (array_key_exists("com_signup", $_POST)) {
                 $_SESSION['ses_company_name'] = $cname;
                 $_SESSION['ses_role_id'] = 3;
                 $_SESSION['ses_user_state'] = 2;
+                $_SESSION['ses_user_id'] = $row['user_id'];
                 $data = ['code' => 'code_3', 'role' => 3]; // success
             } else {
                 $data = ['code' => 'code_2']; // unexpected

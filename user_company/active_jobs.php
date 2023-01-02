@@ -5,22 +5,22 @@
 <head>
     <title>Active Jobs</title>
     <!-- include header links -->
-    <?php include($__siteroot . './components/header_links.php');?>
+    <?php include($__siteroot . './components/header_links.php'); ?>
 </head>
 
 <body>
     <!-- include navigation -->
-    <?php include($__siteroot . './components/navigation.php');?>
+    <?php include($__siteroot . './components/navigation.php'); ?>
     <div class="row gx-0">
 
         <!-- left bar -->
         <div class="col-lg-3 px-3 py-3">
             <div class="btn-title">System Manage</div>
-            <?php 
+            <?php
             $admin_menu = "co_m_2";
-            $admin_submenu = "co_m_2_2"; 
+            $admin_submenu = "co_m_2_2";
             ?>
-            <?php include('./components/company_menu_card.php');?>
+            <?php include('./components/company_menu_card.php'); ?>
         </div>
 
         <!-- middle bar -->
@@ -65,25 +65,28 @@
                 </div>
             </div>
             <div id="company_wrap" class="row gx-3">
-                <?php 
-                $sql = "SELECT a.id, a.title, b.name AS category, a.description,a.created_at, c.name AS salary_type, a.salary FROM jobs a INNER JOIN job_categories b ON a.job_category_id = b.id INNER JOIN salary_types c ON a.salary_type_id = c.id WHERE state=1 AND user_id='".$_SESSION['ses_user_id']."'";
+                <?php
+                $sql = "SELECT a.id, a.title, b.name AS category, a.description,a.created_at, c.name AS salary_type, a.salary FROM jobs a INNER JOIN job_categories b ON a.job_category_id = b.id INNER JOIN salary_types c ON a.salary_type_id = c.id WHERE state=1 AND user_id='" . $_SESSION['ses_user_id'] . "'";
                 $result = $__conn->query($sql);
                 $count = 0;
-                while($row = $result->fetch_assoc()) {
+                while ($row = $result->fetch_assoc()) {
                     $count++;
                 ?>
                 <div class="col-12 col-md-6 col-xl-4">
-                    <?php include('components/job_card.php');?>
+                    <?php include('components/job_card.php'); ?>
                 </div>
-                <?php }?>
-                <?php if($count == 0){ ?>
+                <?php } ?>
+                <?php if ($count == 0) { ?>
                 <div class="d-flex justify-content-center">
                     <div class="empty pt-5">
                         <div class="empty-img">
-                            <img src="./img/empty.png" alt="">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076402.png" alt="">
                         </div>
                         <div class="empty-message b">
-                            Oops! There are no data to view.
+                            We didn't find any results
+                        </div>
+                        <div class="empty-message r">
+                            Make sure that everything is spelt correctly or try different keywords.
                         </div>
                     </div>
                 </div>
@@ -91,7 +94,7 @@
             </div>
         </div>
     </div>
-    <?php include($__siteroot.'./components/footer.php');?>
+    <?php include($__siteroot . './components/footer.php'); ?>
 </body>
 
 </html>

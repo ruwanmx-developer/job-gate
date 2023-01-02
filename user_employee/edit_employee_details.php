@@ -286,19 +286,19 @@
                         <div class="sep-link mb-1">Change Employee Infomation</div>
                         <label class="form-label">Employee First Name</label>
                         <div class="input-group mb-2">
-                            <input type="text" id="cname" class="form-control" placeholder="Company Name"
+                            <input type="text" id="cname" class="form-control" placeholder="Employee Gender"
                                 value="<?php echo $row['first_name']; ?>">
                             <button class="btn btn-outline-update" onclick="updateCompanyName()">Update</button>
                             <script>
                             function updateCompanyName() {
                                 let cname = document.getElementById('cname').value;
                                 if (cname === "") {
-                                    Swal.fire("Empty Field", "Please enter your company name to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your employee name to continue", "warning");
                                     return;
                                 }
                                 if (!(cname_pattern.test(cname))) {
                                     Swal.fire("Invalid field", cname +
-                                        " is not a valid company name. Enter a valid company name", "error");
+                                        " is not a valid employee name. Enter a valid employee name", "error");
                                     return;
                                 }
                                 let data = new FormData();
@@ -311,7 +311,7 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            Swal.fire("Update Success", "Company name is updated", "success");
+                                            Swal.fire("Update Success", "Employee name is updated", "success");
                                             document.getElementById('cname').value = cname;
                                         } else if (x.code === "code_2") {
                                             Swal.fire("Unexpected Error",
