@@ -59,7 +59,16 @@
   line-height: 17px;
   color: var(--blue-3);
 }
-
+.form-group {
+  background: #f8fafc;
+  border: 1px solid #9fa2e7 !important;
+  font-weight: 400;
+  border-radius: 5px 0 0 5px;
+  font-size: 12px;
+  line-height: 17px;
+  padding: 6px 6px 0 6px;
+  color: var(--blue-3);
+}
 .input-group .btn-search {
   border: 1px solid #9fa2e7;
   color: var(--blue-2);

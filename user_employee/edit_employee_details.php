@@ -5,22 +5,22 @@
 <head>
     <title>View Company</title>
     <!-- include header links -->
-    <?php include($__siteroot . './components/header_links.php');?>
+    <?php include($__siteroot . './components/header_links.php'); ?>
 </head>
 
 <body>
     <!-- include navigation -->
-    <?php include($__siteroot . './components/navigation.php');?>
+    <?php include($__siteroot . './components/navigation.php'); ?>
     <div class="row gx-0">
 
         <!-- left bar -->
         <div class="col-lg-3 px-3 py-3">
             <div class="btn-title">Employee Manage</div>
-            <?php 
+            <?php
             $admin_menu = "em_m_1";
-            $admin_submenu = "em_m_1_2"; 
+            $admin_submenu = "em_m_1_2";
             ?>
-            <?php include('./components/employee_menu_card.php');?>
+            <?php include('./components/employee_menu_card.php'); ?>
         </div>
 
         <!-- middle bar -->
@@ -33,8 +33,7 @@
             $sql = "SELECT a.*, b.* FROM employies a INNER JOIN users b ON a.user_id = b.user_id WHERE a.user_id='$id'";
             $result = $__conn->query($sql);
             if ($result->num_rows == 0) {
-                
-            } 
+            }
             $row = $result->fetch_assoc();
             ?>
             <div class="co-profile-edit-wrap card-basic mb-3">
@@ -45,8 +44,8 @@
                         <div class="col-12">
                             <label for="upload_image">
                                 <div class="form-control upload text-center">
-                                    <?php $image = ($row['image'] == NULL) ? "site_images/home.png" : "uploads/user/" . $row['image']?>
-                                    <img class="upload-img" src="<?php echo $__siteroot ."./" . $image; ?>" alt="">
+                                    <?php $image = ($row['image'] == NULL) ? "site_images/home.png" : "uploads/user/" . $row['image'] ?>
+                                    <img class="upload-img" src="<?php echo $__siteroot . "./" . $image; ?>" alt="">
                                 </div>
                                 <input type="file" name="upload_image" id="upload_image" class="d-none">
                             </label>
@@ -229,7 +228,8 @@
                                 let new_password = document.getElementById('new_password').value;
                                 let cpassword = document.getElementById('cpassword').value;
                                 if (cr_password === "") {
-                                    Swal.fire("Empty Field", "Please enter your current password to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your current password to continue",
+                                        "warning");
                                     return;
                                 }
                                 if (new_password === "") {
@@ -444,7 +444,7 @@
                             }
                             </script>
                         </div>
-                        <label class="form-label">Employee Desctiption</label>
+                        <label class="form-label">Employee Description</label>
                         <div class="input-group mb-2">
                             <input type="text" id="description" class="form-control" placeholder="Description"
                                 value="<?php echo $row['description']; ?>">
@@ -453,7 +453,8 @@
                             function updateDescription() {
                                 let description = document.getElementById('description').value;
                                 if (description === "") {
-                                    Swal.fire("Empty Field", "Please enter your company description to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your company description to continue",
+                                        "warning");
                                     return;
                                 }
 
@@ -467,7 +468,8 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            Swal.fire("Update Success", "Company description is updated", "success");
+                                            Swal.fire("Update Success", "Company description is updated",
+                                                "success");
                                             document.getElementById('description').value = description;
                                         } else if (x.code === "code_2") {
                                             Swal.fire("Unexpected Error",
@@ -490,7 +492,8 @@
                             function updateAddress() {
                                 let caddress = document.getElementById('caddress').value;
                                 if (caddress === "") {
-                                    Swal.fire("Empty Field", "Please enter your company address to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your company address to continue",
+                                        "warning");
                                     return;
                                 }
                                 if (!(address_pattern.test(caddress))) {
@@ -533,7 +536,8 @@
                             function updateWebsite() {
                                 let website = document.getElementById('website').value;
                                 if (website === "") {
-                                    Swal.fire("Empty Field", "Please enter your company website to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your company website to continue",
+                                        "warning");
                                     return;
                                 }
 
@@ -569,7 +573,8 @@
                             function updateLinkedIn() {
                                 let linkedin = document.getElementById('linkedin').value;
                                 if (linkedin === "") {
-                                    Swal.fire("Empty Field", "Please enter your company linkedin to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your company linkedin to continue",
+                                        "warning");
                                     return;
                                 }
 
@@ -605,7 +610,8 @@
                             function updateLinkedIn() {
                                 let linkedin = document.getElementById('linkedin').value;
                                 if (linkedin === "") {
-                                    Swal.fire("Empty Field", "Please enter your company linkedin to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your company linkedin to continue",
+                                        "warning");
                                     return;
                                 }
 
@@ -671,9 +677,287 @@
                     </div>
                 </div>
             </div>
+            <div class="co-profile-edit-wrap card-basic mb-3">
+                <div class="form-area">
+                    <div class="row">
+                        <div class="sep-link mb-1">Ordinary Level Examination</div>
+                        <label class="form-label">Information and Communication Technology</label>
+                        <div class="input-group mb-1">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">A Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">B Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">C Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">S Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Fail</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">None</label>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
+                        </div>
+                        <label class="form-label">English Language</label>
+                        <div class="input-group  mb-1">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">A Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">B Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">C Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">S Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Fail</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">None</label>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
+                        </div>
+                        <label class="form-label">Maths</label>
+                        <div class="input-group  mb-1">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">A Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">B Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">C Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">S Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Fail</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">None</label>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
+                        </div>
+                        <label class="form-label">Science</label>
+                        <div class="input-group">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">A Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">B Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">C Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">S Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Fail</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">None</label>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="co-profile-edit-wrap card-basic mb-3">
+                <div class="form-area">
+                    <div class="row">
+                        <div class="sep-link mb-1">Advance Level Examination</div>
+                        <label class="form-label">Information and Communication Technology</label>
+                        <div class="input-group mb-1">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">A Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">B Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">C Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">S Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Fail</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">None</label>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
+                        </div>
+                        <label class="form-label">Genaral English</label>
+                        <div class="input-group">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">A Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">B Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">C Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">S Pass</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Fail</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">None</label>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="co-profile-edit-wrap card-basic mb-3">
+                <div class="form-area">
+                    <div class="row">
+                        <div class="sep-link mb-1">Professional Qualifications</div>
+                        <label class="form-label">Work Experience</label>
+                        <div class="input-group">
+                            <input type="text" id="email" class="form-control" placeholder="Work Experince"
+                                value="<?php echo $row['email']; ?>">
+                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
+                            <script>
+                            function updateEmail() {
+                                let email = document.getElementById('email').value;
+                                if (email === "") {
+                                    Swal.fire("Empty Field", "Please enter your email address to continue", "warning");
+                                    return;
+                                }
+                                if (!(email_pattern.test(email))) {
+                                    Swal.fire("Invalid field", email +
+                                        " is not an valid email address. Enter a valid email address", "error");
+                                    return;
+                                }
+                                let data = new FormData();
+                                data.append('email', email);
+                                data.append('id', <?php echo $_SESSION['ses_user_id']; ?>);
+                                data.append('updateEmail', 'true');
+
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.onreadystatechange = function() {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        let x = JSON.parse(xhttp.responseText);
+                                        if (x.code === "code_1") {
+                                            Swal.fire("Update Success", email + " is updated", "success");
+                                        } else if (x.code === "code_2") {
+                                            Swal.fire("Unexpected Error",
+                                                "Unexpected error caused when updating the email", "error");
+                                        }
+                                    }
+                                };
+                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.send(data);
+                            }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <?php include($__siteroot.'./components/footer.php');?>
+    <?php include($__siteroot . './components/footer.php'); ?>
 </body>
 
 </html>

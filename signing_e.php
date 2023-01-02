@@ -4,12 +4,12 @@
 
 <head>
     <title>Job Gate</title>
-    <?php include('./components/header_links.php');?>
+    <?php include('./components/header_links.php'); ?>
     <script type="text/javascript" src="./js/md5.js"></script>
 </head>
 
 <body>
-    <?php include('./components/navigation.php');?>
+    <?php include('./components/navigation.php'); ?>
     <div class="row gx-0">
         <div class="col-12 col-lg-6">
             <div class="jumb-wrap d-flex align-items-center">
@@ -153,7 +153,7 @@
             </div>
         </div>
     </div>
-    <?php include('./components/footer.php');?>
+    <?php include('./components/footer.php'); ?>
     <script>
     function emp_signup() {
         let email = document.getElementById("email").value;
@@ -226,13 +226,13 @@
                 } else if (x.code === "code_3") {
                     Swal.fire("Sign Up Successfull", "Successfull", "success").then((value) => {
                         if (x.role == 1) {
-                            document.location.href = "ad_dashboard.php";
+                            document.location.href = "./user_admin/dashboard.php";
                         }
                         if (x.role == 2) {
-                            document.location.href = "em_dashboard.php";
+                            document.location.href = "./user_employee/dashboard.php";
                         }
                         if (x.role == 3) {
-                            document.location.href = "co_dashboard.php";
+                            document.location.href = "./user_company/dashboard.php";
                         }
                     });
                 }
