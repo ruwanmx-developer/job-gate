@@ -26,7 +26,7 @@
         <!-- middle bar -->
         <div class="col-lg-9 py-3 pe-3 ps-3 ps-lg-0">
             <div class="title-bar card-basic py-2 mb-3">
-                MANAGE CURRENT ACTIVE JOBS
+                VIEW APPLICATIONS
             </div>
             <div class="row gx-3">
                 <div class="col-12">
