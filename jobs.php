@@ -41,7 +41,7 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/4076/4076402.png" alt="">
                     </div>
                     <div class="empty-message b">
-                        We didn't find any results
+                        There are no data to show today
                     </div>
                     <div class="empty-message r">
                         Make sure that everything is spelt correctly or try different keywords.

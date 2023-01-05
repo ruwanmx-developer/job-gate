@@ -77,7 +77,7 @@
 <div id="em_m_3_wrap" class="<?php if ($admin_menu == "em_m_3") {
                                     echo "no-fade-jq";
                                 } ?>">
-    <a href="" class="no-link ">
+    <a href="view_companies.php" class="no-link ">
         <div id="em_m_3_1" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if ($admin_submenu == "em_m_3_1") {
                                         echo "active";

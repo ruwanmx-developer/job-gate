@@ -22,7 +22,7 @@
         <!-- middle bar -->
         <div id="job-results" class="col-lg-9 py-3 pe-3 ps-3 ps-lg-0">
             <?php
-            $sql = "SELECT * FROM companies";
+            $sql = "SELECT a.* FROM companies a INNER JOIN users b ON a.user_id=b.user_id WHERE b.state=1";
             $result = $__conn->query($sql);
             $count = 0;
             while ($row = $result->fetch_assoc()) {
@@ -37,7 +37,7 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/4076/4076402.png" alt="">
                     </div>
                     <div class="empty-message b">
-                        We didn't find any results
+                        There are no data to show today
                     </div>
                     <div class="empty-message r">
                         Make sure that everything is spelt correctly or try different keywords.

@@ -78,7 +78,7 @@
                                         }
                                     }
                                 };
-                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.open("POST", "../function/employee.php", true);
                                 xhttp.send(data);
                             }
                             </script>
@@ -286,25 +286,25 @@
                         <div class="sep-link mb-1">Change Employee Infomation</div>
                         <label class="form-label">Employee First Name</label>
                         <div class="input-group mb-2">
-                            <input type="text" id="cname" class="form-control" placeholder="Employee Gender"
+                            <input type="text" id="fname" class="form-control" placeholder="Employee First Name"
                                 value="<?php echo $row['first_name']; ?>">
-                            <button class="btn btn-outline-update" onclick="updateCompanyName()">Update</button>
+                            <button class="btn btn-outline-update" onclick="updateFirstName()">Update</button>
                             <script>
-                            function updateCompanyName() {
-                                let cname = document.getElementById('cname').value;
+                            function updateFirstName() {
+                                let cname = document.getElementById('fname').value;
                                 if (cname === "") {
-                                    Swal.fire("Empty Field", "Please enter your employee name to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your first name to continue", "warning");
                                     return;
                                 }
                                 if (!(cname_pattern.test(cname))) {
                                     Swal.fire("Invalid field", cname +
-                                        " is not a valid employee name. Enter a valid employee name", "error");
+                                        " is not a valid employee name. Enter a valid first name", "error");
                                     return;
                                 }
                                 let data = new FormData();
                                 data.append('cname', cname);
                                 data.append('id', <?php echo $_SESSION['ses_user_id']; ?>);
-                                data.append('updateCompanyName', 'true');
+                                data.append('updateFirstName', 'true');
 
                                 var xhttp = new XMLHttpRequest();
                                 xhttp.onreadystatechange = function() {
@@ -312,94 +312,94 @@
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
                                             Swal.fire("Update Success", "Employee name is updated", "success");
-                                            document.getElementById('cname').value = cname;
+                                            document.getElementById('fname').value = cname;
                                         } else if (x.code === "code_2") {
                                             Swal.fire("Unexpected Error",
                                                 "Unexpected error caused when updating the name", "error");
                                         }
                                     }
                                 };
-                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.open("POST", "../function/employee.php", true);
                                 xhttp.send(data);
                             }
                             </script>
                         </div>
                         <label class="form-label">Employee Last Name</label>
                         <div class="input-group mb-2">
-                            <input type="text" id="cname" class="form-control" placeholder="Company Name"
+                            <input type="text" id="lname" class="form-control" placeholder="Employee Last Name"
                                 value="<?php echo $row['last_name']; ?>">
-                            <button class="btn btn-outline-update" onclick="updateCompanyName()">Update</button>
+                            <button class="btn btn-outline-update" onclick="updateLastName()">Update</button>
                             <script>
-                            function updateCompanyName() {
-                                let cname = document.getElementById('cname').value;
+                            function updateLastName() {
+                                let cname = document.getElementById('lname').value;
                                 if (cname === "") {
-                                    Swal.fire("Empty Field", "Please enter your company name to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your last name to continue", "warning");
                                     return;
                                 }
                                 if (!(cname_pattern.test(cname))) {
                                     Swal.fire("Invalid field", cname +
-                                        " is not a valid company name. Enter a valid company name", "error");
+                                        " is not a valid company name. Enter a valid last name", "error");
                                     return;
                                 }
                                 let data = new FormData();
                                 data.append('cname', cname);
                                 data.append('id', <?php echo $_SESSION['ses_user_id']; ?>);
-                                data.append('updateCompanyName', 'true');
+                                data.append('updateLastName', 'true');
 
                                 var xhttp = new XMLHttpRequest();
                                 xhttp.onreadystatechange = function() {
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            Swal.fire("Update Success", "Company name is updated", "success");
-                                            document.getElementById('cname').value = cname;
+                                            Swal.fire("Update Success", "Employee name is updated", "success");
+                                            document.getElementById('lname').value = cname;
                                         } else if (x.code === "code_2") {
                                             Swal.fire("Unexpected Error",
                                                 "Unexpected error caused when updating the name", "error");
                                         }
                                     }
                                 };
-                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.open("POST", "../function/employee.php", true);
                                 xhttp.send(data);
                             }
                             </script>
                         </div>
                         <label class="form-label">Employee Gender</label>
                         <div class="input-group mb-2">
-                            <input type="text" id="cname" class="form-control" placeholder="Company Name"
+                            <input type="text" id="gender" class="form-control" placeholder="Gender"
                                 value="<?php echo $row['gender']; ?>">
-                            <button class="btn btn-outline-update" onclick="updateCompanyName()">Update</button>
+                            <button class="btn btn-outline-update" onclick="updateGender()">Update</button>
                             <script>
-                            function updateCompanyName() {
-                                let cname = document.getElementById('cname').value;
+                            function updateGender() {
+                                let cname = document.getElementById('gender').value;
                                 if (cname === "") {
-                                    Swal.fire("Empty Field", "Please enter your company name to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your gender to continue", "warning");
                                     return;
                                 }
                                 if (!(cname_pattern.test(cname))) {
                                     Swal.fire("Invalid field", cname +
-                                        " is not a valid company name. Enter a valid company name", "error");
+                                        " is not a valid company name. Enter a valid gender", "error");
                                     return;
                                 }
                                 let data = new FormData();
                                 data.append('cname', cname);
                                 data.append('id', <?php echo $_SESSION['ses_user_id']; ?>);
-                                data.append('updateCompanyName', 'true');
+                                data.append('updateGender', 'true');
 
                                 var xhttp = new XMLHttpRequest();
                                 xhttp.onreadystatechange = function() {
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            Swal.fire("Update Success", "Company name is updated", "success");
-                                            document.getElementById('cname').value = cname;
+                                            Swal.fire("Update Success", "Gender is updated", "success");
+                                            document.getElementById('gender').value = cname;
                                         } else if (x.code === "code_2") {
                                             Swal.fire("Unexpected Error",
                                                 "Unexpected error caused when updating the name", "error");
                                         }
                                     }
                                 };
-                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.open("POST", "../function/employee.php", true);
                                 xhttp.send(data);
                             }
                             </script>
