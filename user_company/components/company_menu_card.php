@@ -77,7 +77,7 @@
             <div class=" ms-4 name active">VIEW APPLICATIONS</div>
         </div>
     </a>
-    <a href="search_employies.php" class="no-link ">
+    <a href="view_users.php" class="no-link ">
         <div id="co_m_3_2" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if ($admin_submenu == "co_m_3_2") {
                                         echo "active";

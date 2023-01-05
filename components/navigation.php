@@ -10,7 +10,7 @@
                 <?php if (array_key_exists("ses_role_id", $_SESSION)) {
                     if ($_SESSION['ses_role_id'] === '2') { ?>
                 <li class="nav-item">
-                    <a class="nav-link " href="<?php echo $__siteroot; ?>./jobs.php">Jobssdsad</a>
+                    <a class="nav-link " href="<?php echo $__siteroot; ?>./jobs.php">Jobs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo $__siteroot; ?>./companies.php">Companies</a>

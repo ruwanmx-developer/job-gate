@@ -57,16 +57,51 @@
                         xhttp.send(data);
                     }
 
-                    function viewCompanyDetails(x) {
-                        window.location.href = './view_company_details.php?id=' + x +
-                            "&ref=<?php echo $admin_submenu; ?>";
+                    function viewEmployeeDetails(x, c) {
+                        Swal.fire({
+                            icon: 'question',
+                            html: 'Do you want to reject this request?',
+                            showCancelButton: true,
+                            focusConfirm: false,
+                            cancelButtonText: 'View Profile',
+                            confirmButtonText: 'Reject',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                let data = new FormData();
+                                data.append('id', c);
+                                data.append('rejectApplication', 'true');
+
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.onreadystatechange = function() {
+
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        let x = JSON.parse(xhttp.responseText);
+
+                                        if (x.code === "code_1") {
+                                            Swal.fire("Unexpected Error",
+                                                "Unexpected error caused when rejecting the application",
+                                                "error"
+                                            );
+                                        } else if (x.code === "code_2") {
+                                            location.reload();
+                                        }
+                                    }
+                                };
+                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.send(data);
+                            } else {
+                                window.location.href = './view_employee_details.php?id=' + x +
+                                    "&ref=<?php echo $admin_submenu; ?>";
+                            }
+                        })
+
                     }
                     </script>
                 </div>
             </div>
             <div id="company_wrap" class="row gx-3">
                 <?php
-                $sql = "SELECT a.id, a.user_id, a.job_id, a.status, a.message, a.applied_date, responded_date, b.user_id AS company_id, c.first_name, c.last_name,  b.title FROM job_applications a INNER JOIN jobs b ON a.job_id=b.id INNER JOIN employies c ON a.user_id=c.user_id WHERE b.state=1 AND b.user_id=" . $_SESSION['ses_user_id'];
+                $sql = "SELECT a.id, a.user_id, a.job_id, a.status, a.message, a.applied_date, responded_date, b.user_id AS company_id, c.first_name, c.last_name,  b.title FROM job_applications a INNER JOIN jobs b ON a.job_id=b.id INNER JOIN employies c ON a.user_id=c.user_id WHERE a.status=1 AND b.state=1 AND b.user_id=" . $_SESSION['ses_user_id'];
                 $result = $__conn->query($sql);
                 $count = 0;
                 while ($row = $result->fetch_assoc()) {
