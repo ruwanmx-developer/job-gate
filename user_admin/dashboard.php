@@ -5,22 +5,22 @@
 <head>
     <title>Admin Dashboard</title>
     <!-- include header links -->
-    <?php include('../components/header_links.php');?>
+    <?php include('../components/header_links.php'); ?>
 </head>
 
 <body>
     <!-- include navigation -->
-    <?php include('../components/navigation.php');?>
+    <?php include('../components/navigation.php'); ?>
     <div class="row gx-0">
 
         <!-- left bar -->
         <div class="col-lg-3 px-3 py-3">
             <div class="btn-title">System Manage</div>
-            <?php 
+            <?php
             $admin_menu = "ad_m_0";
-            $admin_submenu = "ad_m_0_1"; 
+            $admin_submenu = "ad_m_0_1";
             ?>
-            <?php include('./components/admin_menu_card.php');?>
+            <?php include('./components/admin_menu_card.php'); ?>
         </div>
 
         <!-- middle bar -->
@@ -44,15 +44,15 @@
                             'Employies'
                         ],
                         datasets: [{
-                            label: 'My First Dataset',
+                            label: '',
                             data: [
-                                <?php 
-                        $sql = "SELECT role_id, count(*) AS count FROM users GROUP BY role_id ORDER BY role_id";
-                        $result = $__conn->query($sql);
-                        while($row = $result->fetch_assoc()) {
-                            echo $row['count'] . ",";
-                        }
-                        ?>
+                                <?php
+                                    $sql = "SELECT role_id, count(*) AS count FROM users GROUP BY role_id ORDER BY role_id";
+                                    $result = $__conn->query($sql);
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo $row['count'] . ",";
+                                    }
+                                    ?>
                             ],
                             backgroundColor: [
                                 'rgb(255, 99, 132)',
@@ -88,15 +88,15 @@
                             'Closed',
                         ],
                         datasets: [{
-                            label: 'My First Dataset',
+                            label: '',
                             data: [
-                                <?php 
-                        $sql = "SELECT count(*) AS count FROM jobs GROUP BY state ORDER BY state";
-                        $result = $__conn->query($sql);
-                        while($row = $result->fetch_assoc()) {
-                            echo $row['count'] . ",";
-                        }
-                        ?>
+                                <?php
+                                    $sql = "SELECT count(*) AS count FROM jobs GROUP BY state ORDER BY state";
+                                    $result = $__conn->query($sql);
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo $row['count'] . ",";
+                                    }
+                                    ?>
                             ],
                             backgroundColor: [
                                 'rgb(75, 192, 192)',
@@ -121,7 +121,7 @@
             </div>
         </div>
     </div>
-    <?php include('../components/footer.php');?>
+    <?php include('../components/footer.php'); ?>
 </body>
 
 </html>

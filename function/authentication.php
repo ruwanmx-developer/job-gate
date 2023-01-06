@@ -133,7 +133,7 @@ if (array_key_exists("emp_signup", $_POST)) {
             list(, $logo) = explode(',', $logo);
             $logo = base64_decode($logo);
             file_put_contents('../uploads/user/' . $image, $logo);
-            $sql = "INSERT INTO employies VALUES ('" . $row['user_id'] . "', '$fname', '$lname',NULL,NULL,NULL,'$image', NULL, NULL,NULL,NULL,NULL,NULL)";
+            $sql = "INSERT INTO employies VALUES ('" . $row['user_id'] . "', '$fname', '$lname',NULL,NULL,NULL,'$image', NULL, NULL,NULL,NULL,NULL,NULL,NULL,NULL)";
             if (($__conn->query($sql) === TRUE)) {
                 $_SESSION['ses_email'] = $email;
                 $_SESSION['ses_full_name'] = $fname . " " . $lname;

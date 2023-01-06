@@ -5,22 +5,22 @@
 <head>
     <title>View Users</title>
     <!-- include header links -->
-    <?php include($__siteroot . './components/header_links.php');?>
+    <?php include($__siteroot . './components/header_links.php'); ?>
 </head>
 
 <body>
     <!-- include navigation -->
-    <?php include($__siteroot . './components/navigation.php');?>
+    <?php include($__siteroot . './components/navigation.php'); ?>
     <div class="row gx-0">
 
         <!-- left bar -->
         <div class="col-lg-3 px-3 py-3">
             <div class="btn-title">System Manage</div>
-            <?php 
+            <?php
             $admin_menu = "ad_m_2";
-            $admin_submenu = "ad_m_2_1"; 
+            $admin_submenu = "ad_m_2_1";
             ?>
-            <?php include('./components/admin_menu_card.php');?>
+            <?php include('./components/admin_menu_card.php'); ?>
         </div>
 
         <!-- middle bar -->
@@ -64,25 +64,28 @@
                 </div>
             </div>
             <div id="company_wrap" class="row gx-3">
-                <?php 
+                <?php
                 $sql = "SELECT a.first_name, a.last_name, a.image, a.user_id, b.state, b.email FROM employies a INNER JOIN users b ON a.user_id = b.user_id";
                 $result = $__conn->query($sql);
                 $count = 0;
-                while($row = $result->fetch_assoc()) {
+                while ($row = $result->fetch_assoc()) {
                     $count++;
                 ?>
                 <div class="col-12 col-md-6 col-xl-4">
-                    <?php include('components/admin_user_card.php');?>
+                    <?php include('components/admin_user_card.php'); ?>
                 </div>
-                <?php }?>
-                <?php if($count == 0){ ?>
+                <?php } ?>
+                <?php if ($count == 0) { ?>
                 <div class="d-flex justify-content-center">
                     <div class="empty pt-5">
                         <div class="empty-img">
-                            <img src="./img/empty.png" alt="">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076402.png" alt="">
                         </div>
                         <div class="empty-message b">
-                            Oops! There are no companies to view.
+                            There are no data to show today
+                        </div>
+                        <div class="empty-message r">
+                            Make sure that everything is spelt correctly or try different keywords.
                         </div>
                     </div>
                 </div>
@@ -90,7 +93,7 @@
             </div>
         </div>
     </div>
-    <?php include($__siteroot.'./components/footer.php');?>
+    <?php include($__siteroot . './components/footer.php'); ?>
 </body>
 
 </html>
