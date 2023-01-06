@@ -184,5 +184,3 @@ if(array_key_exists("updateSalaryType", $_POST)){
     header('Content-type: application/json');
     echo json_encode( $data );
 }
-
-?>
