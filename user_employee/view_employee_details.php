@@ -134,12 +134,11 @@
                         <div class="profile-title marg-b marg-t-0">Educational Qualifications</div>
                         <div class="row company-view ">
                             <div class="col-12 text-center">
-                                <?php
-                                $sql = "SELECT * FROM educations WHERE user_id='$id'";
-                                $result = $__conn->query($sql);
-                                while ($row = $result->fetch_assoc()) {
-                                    include('./components/education_card.php');
-                                } ?>
+                                <?php if (!empty($row['education'])) { ?>
+                                <div class="special marg-b">
+                                    <?php echo $row['education']; ?>
+                                </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -149,12 +148,11 @@
                         <div class="profile-title marg-b marg-t-0">Work Experience</div>
                         <div class="row company-view ">
                             <div class="col-12 text-center">
-                                <?php
-                                $sql = "SELECT * FROM educations WHERE user_id='$id'";
-                                $result = $__conn->query($sql);
-                                while ($row = $result->fetch_assoc()) {
-                                    include('./components/education_card.php');
-                                } ?>
+                                <?php if (!empty($row['work'])) { ?>
+                                <div class="special marg-b">
+                                    <?php echo $row['work']; ?>
+                                </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

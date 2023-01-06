@@ -55,7 +55,7 @@ if (array_key_exists('updatePassword', $_POST)) {
 if (array_key_exists('updateDescription', $_POST)) {
     $description = $_POST['description'];
     $id = $_POST['id'];
-    $sql = "UPDATE companies SET description='$description' WHERE user_id='$id'";
+    $sql = "UPDATE employies SET description='$description' WHERE user_id='$id'";
     if ($__conn->query($sql) === TRUE) {
         $data = ['code' => 'code_1']; // ok
     } else {
@@ -68,7 +68,7 @@ if (array_key_exists('updateDescription', $_POST)) {
 if (array_key_exists('updateAddress', $_POST)) {
     $caddress = $_POST['caddress'];
     $id = $_POST['id'];
-    $sql = "UPDATE companies SET address='$caddress' WHERE user_id='$id'";
+    $sql = "UPDATE employies SET address='$caddress' WHERE user_id='$id'";
     if ($__conn->query($sql) === TRUE) {
         $data = ['code' => 'code_1']; // ok
     } else {
@@ -102,6 +102,18 @@ if (array_key_exists('updateLastName', $_POST)) {
     header('Content-type: application/json');
     echo json_encode($data);
 }
+if (array_key_exists('updateBirthday', $_POST)) {
+    $cname = $_POST['cname'];
+    $id = $_POST['id'];
+    $sql = "UPDATE employies SET birthday='$cname' WHERE user_id='$id'";
+    if ($__conn->query($sql) === TRUE) {
+        $data = ['code' => 'code_1']; // ok
+    } else {
+        $data = ['code' => 'code_2']; // unexpected error
+    }
+    header('Content-type: application/json');
+    echo json_encode($data);
+}
 if (array_key_exists('updateGender', $_POST)) {
     $cname = $_POST['cname'];
     $id = $_POST['id'];
@@ -117,7 +129,7 @@ if (array_key_exists('updateGender', $_POST)) {
 if (array_key_exists('updateWebsite', $_POST)) {
     $website = $_POST['website'];
     $id = $_POST['id'];
-    $sql = "UPDATE companies SET website='$website' WHERE user_id='$id'";
+    $sql = "UPDATE employies SET website='$website' WHERE user_id='$id'";
     if ($__conn->query($sql) === TRUE) {
         $data = ['code' => 'code_1']; // ok
     } else {
@@ -129,7 +141,19 @@ if (array_key_exists('updateWebsite', $_POST)) {
 if (array_key_exists('updateLinkedIn', $_POST)) {
     $linkedin = $_POST['linkedin'];
     $id = $_POST['id'];
-    $sql = "UPDATE companies SET linkedin='$linkedin' WHERE user_id='$id'";
+    $sql = "UPDATE employies SET linkedin='$linkedin' WHERE user_id='$id'";
+    if ($__conn->query($sql) === TRUE) {
+        $data = ['code' => 'code_1']; // ok
+    } else {
+        $data = ['code' => 'code_2']; // unexpected error
+    }
+    header('Content-type: application/json');
+    echo json_encode($data);
+}
+if (array_key_exists('updateGithub', $_POST)) {
+    $github = $_POST['github'];
+    $id = $_POST['id'];
+    $sql = "UPDATE employies SET github='$github' WHERE user_id='$id'";
     if ($__conn->query($sql) === TRUE) {
         $data = ['code' => 'code_1']; // ok
     } else {
@@ -141,7 +165,43 @@ if (array_key_exists('updateLinkedIn', $_POST)) {
 if (array_key_exists('updateMobile', $_POST)) {
     $mobile = $_POST['mobile'];
     $id = $_POST['id'];
-    $sql = "UPDATE companies SET mobile='$mobile' WHERE user_id='$id'";
+    $sql = "UPDATE employies SET mobile='$mobile' WHERE user_id='$id'";
+    if ($__conn->query($sql) === TRUE) {
+        $data = ['code' => 'code_1']; // ok
+    } else {
+        $data = ['code' => 'code_2']; // unexpected error
+    }
+    header('Content-type: application/json');
+    echo json_encode($data);
+}
+if (array_key_exists('updateEducation', $_POST)) {
+    $education = $_POST['education'];
+    $id = $_POST['id'];
+    $sql = "UPDATE employies SET education='$education' WHERE user_id='$id'";
+    if ($__conn->query($sql) === TRUE) {
+        $data = ['code' => 'code_1']; // ok
+    } else {
+        $data = ['code' => 'code_2']; // unexpected error
+    }
+    header('Content-type: application/json');
+    echo json_encode($data);
+}
+if (array_key_exists('updateSkills', $_POST)) {
+    $skills = $_POST['skills'];
+    $id = $_POST['id'];
+    $sql = "UPDATE employies SET skills='$skills' WHERE user_id='$id'";
+    if ($__conn->query($sql) === TRUE) {
+        $data = ['code' => 'code_1']; // ok
+    } else {
+        $data = ['code' => 'code_2']; // unexpected error
+    }
+    header('Content-type: application/json');
+    echo json_encode($data);
+}
+if (array_key_exists('updateWork', $_POST)) {
+    $work = $_POST['work'];
+    $id = $_POST['id'];
+    $sql = "UPDATE employies SET work='$work' WHERE user_id='$id'";
     if ($__conn->query($sql) === TRUE) {
         $data = ['code' => 'code_1']; // ok
     } else {

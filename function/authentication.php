@@ -99,10 +99,10 @@ if (array_key_exists("com_signup", $_POST)) {
                 $_SESSION['ses_user_id'] = $row['user_id'];
                 $data = ['code' => 'code_3', 'role' => 3]; // success
             } else {
-                $data = ['code' => 'code_2']; // unexpected
+                $data = ['code' => 'code_21']; // unexpected
             }
         } else {
-            $data = ['code' => 'code_2']; // unexpected
+            $data = ['code' => 'code_22']; // unexpected
         }
     }
     header('Content-type: application/json');

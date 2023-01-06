@@ -408,30 +408,30 @@
                         <div class="input-group mb-2">
                             <input type="date" id="cname" class="form-control" placeholder="Company Name"
                                 value="<?php echo $row['birthday']; ?>">
-                            <button class="btn btn-outline-update" onclick="updateCompanyName()">Update</button>
+                            <button class="btn btn-outline-update" onclick="updateBirthday()">Update</button>
                             <script>
-                            function updateCompanyName() {
+                            function updateBirthday() {
                                 let cname = document.getElementById('cname').value;
                                 if (cname === "") {
                                     Swal.fire("Empty Field", "Please enter your company name to continue", "warning");
                                     return;
                                 }
-                                if (!(cname_pattern.test(cname))) {
-                                    Swal.fire("Invalid field", cname +
-                                        " is not a valid company name. Enter a valid company name", "error");
-                                    return;
-                                }
+                                // if (!(cname_pattern.test(cname))) {
+                                //     Swal.fire("Invalid field", cname +
+                                //         " is not a valid company name. Enter a valid company name", "error");
+                                //     return;
+                                // }
                                 let data = new FormData();
                                 data.append('cname', cname);
                                 data.append('id', <?php echo $_SESSION['ses_user_id']; ?>);
-                                data.append('updateCompanyName', 'true');
+                                data.append('updateBirthday', 'true');
 
                                 var xhttp = new XMLHttpRequest();
                                 xhttp.onreadystatechange = function() {
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            Swal.fire("Update Success", "Company name is updated", "success");
+                                            Swal.fire("Update Success", "Employee Birthday is updated", "success");
                                             document.getElementById('cname').value = cname;
                                         } else if (x.code === "code_2") {
                                             Swal.fire("Unexpected Error",
@@ -439,7 +439,7 @@
                                         }
                                     }
                                 };
-                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.open("POST", "../function/employee.php", true);
                                 xhttp.send(data);
                             }
                             </script>
@@ -468,7 +468,7 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            Swal.fire("Update Success", "Company description is updated",
+                                            Swal.fire("Update Success", "Employee description is updated",
                                                 "success");
                                             document.getElementById('description').value = description;
                                         } else if (x.code === "code_2") {
@@ -478,27 +478,27 @@
                                         }
                                     }
                                 };
-                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.open("POST", "../function/employee.php", true);
                                 xhttp.send(data);
                             }
                             </script>
                         </div>
                         <label class="form-label">Employee Address</label>
                         <div class="input-group mb-2">
-                            <input type="text" id="caddress" class="form-control" placeholder="Company Address"
+                            <input type="text" id="caddress" class="form-control" placeholder="Employee Address"
                                 value="<?php echo $row['address']; ?>">
                             <button class="btn btn-outline-update" onclick="updateAddress()">Update</button>
                             <script>
                             function updateAddress() {
                                 let caddress = document.getElementById('caddress').value;
                                 if (caddress === "") {
-                                    Swal.fire("Empty Field", "Please enter your company address to continue",
+                                    Swal.fire("Empty Field", "Please enter your address to continue",
                                         "warning");
                                     return;
                                 }
                                 if (!(address_pattern.test(caddress))) {
                                     Swal.fire("Invalid field", caddress +
-                                        " is not a valid company address. Enter a valid company address",
+                                        " is not a valid company address. Enter a valid address",
                                         "error");
                                     return;
                                 }
@@ -513,7 +513,7 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            Swal.fire("Update Success", "Company address is updated", "success");
+                                            Swal.fire("Update Success", "Employee address is updated", "success");
                                             document.getElementById('caddress').value = caddress;
                                         } else if (x.code === "code_2") {
                                             Swal.fire("Unexpected Error",
@@ -521,7 +521,7 @@
                                         }
                                     }
                                 };
-                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.open("POST", "../function/employee.php", true);
                                 xhttp.send(data);
                             }
                             </script>
@@ -529,14 +529,14 @@
 
                         <label class="form-label">Employee Website</label>
                         <div class="input-group mb-2">
-                            <input type="text" id="website" class="form-control" placeholder="Company Website"
+                            <input type="text" id="website" class="form-control" placeholder="Employee Website"
                                 value="<?php echo $row['website']; ?>">
                             <button class="btn btn-outline-update" onclick="updateWebsite()">Update</button>
                             <script>
                             function updateWebsite() {
                                 let website = document.getElementById('website').value;
                                 if (website === "") {
-                                    Swal.fire("Empty Field", "Please enter your company website to continue",
+                                    Swal.fire("Empty Field", "Please enter your website to continue",
                                         "warning");
                                     return;
                                 }
@@ -551,7 +551,7 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            Swal.fire("Update Success", "Company website is updated", "success");
+                                            Swal.fire("Update Success", "Employee website is updated", "success");
                                             document.getElementById('website').value = website;
                                         } else if (x.code === "code_2") {
                                             Swal.fire("Unexpected Error",
@@ -559,21 +559,21 @@
                                         }
                                     }
                                 };
-                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.open("POST", "../function/employee.php", true);
                                 xhttp.send(data);
                             }
                             </script>
                         </div>
                         <label class="form-label">Employee LinkedIn</label>
                         <div class="input-group mb-2">
-                            <input type="text" id="linkedin" class="form-control" placeholder="Company LinkedIn"
+                            <input type="text" id="linkedin" class="form-control" placeholder="Employee LinkedIn"
                                 value="<?php echo $row['linkedin']; ?>">
                             <button class="btn btn-outline-update" onclick="updateLinkedIn()">Update</button>
                             <script>
                             function updateLinkedIn() {
                                 let linkedin = document.getElementById('linkedin').value;
                                 if (linkedin === "") {
-                                    Swal.fire("Empty Field", "Please enter your company linkedin to continue",
+                                    Swal.fire("Empty Field", "Please enter your linkedin to continue",
                                         "warning");
                                     return;
                                 }
@@ -588,7 +588,7 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            Swal.fire("Update Success", "Company linkedin is updated", "success");
+                                            Swal.fire("Update Success", "Employee linkedin is updated", "success");
                                             document.getElementById('linkedin').value = linkedin;
                                         } else if (x.code === "code_2") {
                                             Swal.fire("Unexpected Error",
@@ -596,58 +596,58 @@
                                         }
                                     }
                                 };
-                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.open("POST", "../function/employee.php", true);
                                 xhttp.send(data);
                             }
                             </script>
                         </div>
                         <label class="form-label">Employee Github</label>
                         <div class="input-group mb-2">
-                            <input type="text" id="linkedin" class="form-control" placeholder="Company LinkedIn"
-                                value="<?php echo $row['linkedin']; ?>">
-                            <button class="btn btn-outline-update" onclick="updateLinkedIn()">Update</button>
+                            <input type="text" id="github" class="form-control" placeholder="Employee Github"
+                                value="<?php echo $row['github']; ?>">
+                            <button class="btn btn-outline-update" onclick="updateGithub()">Update</button>
                             <script>
-                            function updateLinkedIn() {
-                                let linkedin = document.getElementById('linkedin').value;
-                                if (linkedin === "") {
-                                    Swal.fire("Empty Field", "Please enter your company linkedin to continue",
+                            function updateGithub() {
+                                let github = document.getElementById('github').value;
+                                if (github === "") {
+                                    Swal.fire("Empty Field", "Please enter your linkedin to continue",
                                         "warning");
                                     return;
                                 }
 
                                 let data = new FormData();
-                                data.append('linkedin', linkedin);
+                                data.append('github', github);
                                 data.append('id', <?php echo $_SESSION['ses_user_id']; ?>);
-                                data.append('updateLinkedIn', 'true');
+                                data.append('updateGithub', 'true');
 
                                 var xhttp = new XMLHttpRequest();
                                 xhttp.onreadystatechange = function() {
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            Swal.fire("Update Success", "Company linkedin is updated", "success");
-                                            document.getElementById('linkedin').value = linkedin;
+                                            Swal.fire("Update Success", "Employee github is updated", "success");
+                                            document.getElementById('github').value = github;
                                         } else if (x.code === "code_2") {
                                             Swal.fire("Unexpected Error",
-                                                "Unexpected error caused when updating the linkedin", "error");
+                                                "Unexpected error caused when updating the github", "error");
                                         }
                                     }
                                 };
-                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.open("POST", "../function/employee.php", true);
                                 xhttp.send(data);
                             }
                             </script>
                         </div>
                         <label class="form-label">Employee Mobile No</label>
                         <div class="input-group">
-                            <input type="text" id="mobile" class="form-control" placeholder="Company Mobile No"
+                            <input type="text" id="mobile" class="form-control" placeholder="Employee Mobile No"
                                 value="<?php echo $row['mobile']; ?>">
                             <button class="btn btn-outline-update" onclick="updateMobile()">Update</button>
                             <script>
                             function updateMobile() {
                                 let mobile = document.getElementById('mobile').value;
                                 if (mobile === "") {
-                                    Swal.fire("Empty Field", "Please enter your company mobile to continue", "warning");
+                                    Swal.fire("Empty Field", "Please enter your mobile to continue", "warning");
                                     return;
                                 }
 
@@ -661,7 +661,7 @@
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            Swal.fire("Update Success", "Company mobile is updated", "success");
+                                            Swal.fire("Update Success", "Employee mobile is updated", "success");
                                             document.getElementById('mobile').value = mobile;
                                         } else if (x.code === "code_2") {
                                             Swal.fire("Unexpected Error",
@@ -669,7 +669,55 @@
                                         }
                                     }
                                 };
-                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.open("POST", "../function/employee.php", true);
+                                xhttp.send(data);
+                            }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="co-profile-edit-wrap card-basic mb-3">
+                <div class="form-area">
+                    <div class="row">
+                        <div class="sep-link mb-1">Educational Qualifications</div>
+                        <label class="form-label">Education</label>
+                        <div class="input-group">
+                            <input type="text" id="education" class="form-control" placeholder="Work Experince"
+                                value="<?php echo $row['education']; ?>">
+                            <button class="btn btn-outline-update" onclick="updateEducation()">Update</button>
+                            <script>
+                            function updateEducation() {
+                                let education = document.getElementById('education').value;
+                                if (education === "") {
+                                    Swal.fire("Empty Field", "Please enter your education to continue", "warning");
+                                    return;
+                                }
+                                // if (!(email_pattern.test(education))) {
+                                //     Swal.fire("Invalid field", education +
+                                //         " is not an valid email address. Enter a valid education", "error");
+                                //     return;
+                                // }
+                                let data = new FormData();
+                                data.append('education', education);
+                                data.append('id', <?php echo $_SESSION['ses_user_id']; ?>);
+                                data.append('updateEducation', 'true');
+
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.onreadystatechange = function() {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        let x = JSON.parse(xhttp.responseText);
+                                        if (x.code === "code_1") {
+                                            Swal.fire("Update Success", "Employee education is updated", "success");
+                                        } else if (x.code === "code_2") {
+                                            Swal.fire("Unexpected Error",
+                                                "Unexpected error caused when updating the education", "error");
+                                        }
+                                    }
+                                };
+                                xhttp.open("POST", "../function/employee.php", true);
                                 xhttp.send(data);
                             }
                             </script>
@@ -680,274 +728,88 @@
             <div class="co-profile-edit-wrap card-basic mb-3">
                 <div class="form-area">
                     <div class="row">
-                        <div class="sep-link mb-1">Ordinary Level Examination</div>
-                        <label class="form-label">Information and Communication Technology</label>
-                        <div class="input-group mb-1">
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">A Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">B Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">C Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">S Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Fail</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">None</label>
-                                </div>
-                            </div>
-                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
-                        </div>
-                        <label class="form-label">English Language</label>
-                        <div class="input-group  mb-1">
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">A Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">B Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">C Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">S Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Fail</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">None</label>
-                                </div>
-                            </div>
-                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
-                        </div>
-                        <label class="form-label">Maths</label>
-                        <div class="input-group  mb-1">
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">A Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">B Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">C Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">S Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Fail</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">None</label>
-                                </div>
-                            </div>
-                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
-                        </div>
-                        <label class="form-label">Science</label>
-                        <div class="input-group">
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">A Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">B Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">C Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">S Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Fail</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">None</label>
-                                </div>
-                            </div>
-                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="co-profile-edit-wrap card-basic mb-3">
-                <div class="form-area">
-                    <div class="row">
-                        <div class="sep-link mb-1">Advance Level Examination</div>
-                        <label class="form-label">Information and Communication Technology</label>
-                        <div class="input-group mb-1">
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">A Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">B Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">C Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">S Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Fail</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">None</label>
-                                </div>
-                            </div>
-                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
-                        </div>
-                        <label class="form-label">Genaral English</label>
-                        <div class="input-group">
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">A Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">B Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">C Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">S Pass</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Fail</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">None</label>
-                                </div>
-                            </div>
-                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="co-profile-edit-wrap card-basic mb-3">
-                <div class="form-area">
-                    <div class="row">
                         <div class="sep-link mb-1">Professional Qualifications</div>
                         <label class="form-label">Work Experience</label>
                         <div class="input-group">
-                            <input type="text" id="email" class="form-control" placeholder="Work Experince"
-                                value="<?php echo $row['email']; ?>">
-                            <button class="btn btn-outline-update" onclick="updateEmail()">Update</button>
+                            <input type="text" id="work" class="form-control" placeholder="Work Experince"
+                                value="<?php echo $row['work']; ?>">
+                            <button class="btn btn-outline-update" onclick="updateWork()">Update</button>
                             <script>
-                            function updateEmail() {
-                                let email = document.getElementById('email').value;
-                                if (email === "") {
+                            function updateWork() {
+                                let work = document.getElementById('work').value;
+                                if (work === "") {
                                     Swal.fire("Empty Field", "Please enter your email address to continue", "warning");
                                     return;
                                 }
-                                if (!(email_pattern.test(email))) {
-                                    Swal.fire("Invalid field", email +
-                                        " is not an valid email address. Enter a valid email address", "error");
-                                    return;
-                                }
+                                // if (!(email_pattern.test(work))) {
+                                //     Swal.fire("Invalid field", work +
+                                //         " is not an valid email address. Enter a valid email address", "error");
+                                //     return;
+                                // }
                                 let data = new FormData();
-                                data.append('email', email);
+                                data.append('work', work);
                                 data.append('id', <?php echo $_SESSION['ses_user_id']; ?>);
-                                data.append('updateEmail', 'true');
+                                data.append('updateWork', 'true');
 
                                 var xhttp = new XMLHttpRequest();
                                 xhttp.onreadystatechange = function() {
                                     if (this.readyState == 4 && this.status == 200) {
                                         let x = JSON.parse(xhttp.responseText);
                                         if (x.code === "code_1") {
-                                            Swal.fire("Update Success", email + " is updated", "success");
+                                            Swal.fire("Update Success", "Employee work is updated", "success");
                                         } else if (x.code === "code_2") {
                                             Swal.fire("Unexpected Error",
-                                                "Unexpected error caused when updating the email", "error");
+                                                "Unexpected error caused when updating the work", "error");
                                         }
                                     }
                                 };
-                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.open("POST", "../function/employee.php", true);
+                                xhttp.send(data);
+                            }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="co-profile-edit-wrap card-basic mb-3">
+                <div class="form-area">
+                    <div class="row">
+                        <div class="sep-link mb-1">Other Skills</div>
+                        <label class="form-label">Education</label>
+                        <div class="input-group">
+                            <input type="text" id="skills" class="form-control" placeholder="Work Experince"
+                                value="<?php echo $row['skills']; ?>">
+                            <button class="btn btn-outline-update" onclick="updateSkills()">Update</button>
+                            <script>
+                            function updateSkills() {
+                                let skills = document.getElementById('skills').value;
+                                if (skills === "") {
+                                    Swal.fire("Empty Field", "Please enter your education to continue", "warning");
+                                    return;
+                                }
+                                // if (!(email_pattern.test(education))) {
+                                //     Swal.fire("Invalid field", education +
+                                //         " is not an valid email address. Enter a valid education", "error");
+                                //     return;
+                                // }
+                                let data = new FormData();
+                                data.append('skills', skills);
+                                data.append('id', <?php echo $_SESSION['ses_user_id']; ?>);
+                                data.append('updateSkills', 'true');
+
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.onreadystatechange = function() {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        let x = JSON.parse(xhttp.responseText);
+                                        if (x.code === "code_1") {
+                                            Swal.fire("Update Success", "Employee skills is updated", "success");
+                                        } else if (x.code === "code_2") {
+                                            Swal.fire("Unexpected Error",
+                                                "Unexpected error caused when updating the skills", "error");
+                                        }
+                                    }
+                                };
+                                xhttp.open("POST", "../function/employee.php", true);
                                 xhttp.send(data);
                             }
                             </script>
