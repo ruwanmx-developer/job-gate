@@ -47,7 +47,13 @@
                                     <span><?php echo $row['email']; ?></span>
                                 </div>
 
-                                <div class="desc-1"><?php echo $row['description']; ?></div>
+                                <div class="desc-1 marg-b"><?php echo $row['description']; ?></div>
+                                <div class="btn-wrap marg-b">
+                                    <button class="btn-blue"> Invite
+                                    </button>
+                                    <a href="send_emp_message.php?id=<?php echo $row['user_id']; ?>"> <button
+                                            class="btn-green">Message</button></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -125,32 +131,31 @@
                     </div>
                 </div>
                 <div class="col-12 marg-b">
-
-                    <div class="card-basic marg-b pad-b-0">
+                    <div class="card-basic pad-b-0">
                         <div class="profile-title marg-b marg-t-0">Educational Qualifications</div>
                         <div class="row company-view ">
                             <div class="col-12 text-center">
-                                <?php
-                                $sql = "SELECT * FROM educations WHERE user_id='$id'";
-                                $result = $__conn->query($sql);
-                                while ($row = $result->fetch_assoc()) {
-                                    include('./components/education_card.php');
-                                } ?>
+                                <?php if (!empty($row['education'])) { ?>
+                                <div class="special marg-b">
+                                    <?php echo $row['education']; ?>
+                                </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-
-
-
-            <div class="profile-title">Work Experience</div>
-            <div class="card-basic marg-b">
-                <div class="row company-view">
-                    <div class="col-12 text-center">
-
+                <div class="col-12 marg-b">
+                    <div class="card-basic marg-b pad-b-0">
+                        <div class="profile-title marg-b marg-t-0">Work Experience</div>
+                        <div class="row company-view ">
+                            <div class="col-12 text-center">
+                                <?php if (!empty($row['work'])) { ?>
+                                <div class="special marg-b">
+                                    <?php echo $row['work']; ?>
+                                </div>
+                                <?php } ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
