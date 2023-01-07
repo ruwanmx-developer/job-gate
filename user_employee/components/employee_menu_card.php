@@ -95,12 +95,12 @@
 <div id="em_m_4_wrap" class="<?php if ($admin_menu == "em_m_4") {
                                     echo "no-fade-jq";
                                 } ?>">
-    <a href="messages_emp.php" class="no-link">
+    <a href="messages_cmp.php" class="no-link">
         <div id="em_m_4_1" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if ($admin_submenu == "em_m_4_1") {
                                         echo "active";
                                     } ?>"></div>
-            <div class="ms-4 name active">SEND EMPLOYEE MESSAGE</div>
+            <div class="ms-4 name active">SEND COMPANY MESSAGE</div>
         </div>
     </a>
     <a href="messages_adm.php" class="no-link">
