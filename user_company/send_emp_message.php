@@ -68,7 +68,7 @@
                                         </div>
                                     </div>
                                     <div class="img-wrap">
-                                        <img src="../uploads/user/user_1.png" alt="">
+                                        <img src="../uploads/user/<?php echo $_SESSION['ses_user_image']; ?>" alt="">
                                     </div>
                                 </div>
                             </div>

@@ -35,7 +35,7 @@
                     $user_image = "../site_images/admin.png";
                     $user_id = $_SESSION['ses_user_id'];
                     $ouser_id = $_GET['id'];
-                    $sql = "SELECT a.id,a.message, DATE_FORMAT(a.send_date,'%H:%i %Y-%m-%e') AS send_date, a.states, a.sender_id,b.name,b.logo FROM messages a INNER JOIN companies b ON a.sender_id = b.user_id OR a.reciver_id = b.user_id WHERE (a.reciver_id = '$ouser_id' AND a.sender_id = '$user_id') OR (a.reciver_id = '$user_id' AND a.sender_id = '$ouser_id')";
+                    $sql = "SELECT a.id,a.message, DATE_FORMAT(a.send_date,'%H:%i %Y-%m-%e') AS send_date, a.states, a.sender_id, b.email FROM messages a INNER JOIN users b ON a.sender_id = b.user_id OR a.reciver_id = b.user_id WHERE (a.reciver_id = '$ouser_id' AND a.sender_id = '$user_id') OR (a.reciver_id = '$user_id' AND a.sender_id = '$ouser_id') GROUP BY a.id";
                     $result = $__conn->query($sql);
                     while ($row = $result->fetch_assoc()) {
                         if ($user_id != $row['sender_id']) {
@@ -43,11 +43,11 @@
                             <div class="col-10">
                                 <div class="card-basic chat_message_card non-user new marg-b">
                                     <div class="img-wrap">
-                                        <img src="../uploads/user/<?php echo $row['logo']; ?>" alt="">
+                                        <img src="../site_images/user.png" alt="">
                                     </div>
                                     <div class="data">
                                         <div class="time">
-                                            <?php echo $row['send_date'] . " - " . $row['name']; ?>
+                                            <?php echo $row['send_date'] . " - " . $row['email']; ?>
                                         </div>
                                         <div class="message new" id="msg_<?php echo $row['id']; ?>">
                                             <?php echo $row['message']; ?>
@@ -71,7 +71,7 @@
                                         </div>
                                     </div>
                                     <div class="img-wrap">
-                                        <img src="../uploads/user/user_1.png" alt="">
+                                        <img src="../uploads/user/<?php echo $_SESSION['ses_user_image']; ?>" alt="">
                                     </div>
                                 </div>
                             </div>

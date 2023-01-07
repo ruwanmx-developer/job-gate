@@ -44,6 +44,7 @@ if (array_key_exists("user_login", $_POST)) {
             $_SESSION['ses_email'] = $row['email'];
             $_SESSION['ses_role_id'] = $row['role_id'];
             $_SESSION['ses_user_state'] = $row['state'];
+            $_SESSION['ses_user_image'] = '../site_images/user.png';
             if ($row['role_id'] == 2) {
                 $sql = "SELECT * FROM employies WHERE user_id='" . $row['user_id'] . "'";
                 $result = $__conn->query($sql);
@@ -51,12 +52,14 @@ if (array_key_exists("user_login", $_POST)) {
                 $_SESSION['ses_full_name'] = $row1['first_name'] . " " . $row1['last_name'];
                 $_SESSION['ses_first_name'] = $row1['first_name'];
                 $_SESSION['ses_last_name'] = $row1['last_name'];
+                $_SESSION['ses_user_image'] = $row1['image'];
             }
             if ($row['role_id'] == 3) {
                 $sql1 = "SELECT * FROM companies WHERE user_id='" . $row['user_id'] . "'";
                 $result1 = $__conn->query($sql1);
                 $row1 = $result1->fetch_assoc();
                 $_SESSION['ses_company_name'] = $row1['name'];
+                $_SESSION['ses_user_image'] = $row1['logo'];
             }
             $data = ['code' => 'code_3', 'role' => $row['role_id']];
         }
@@ -97,6 +100,7 @@ if (array_key_exists("com_signup", $_POST)) {
                 $_SESSION['ses_role_id'] = 3;
                 $_SESSION['ses_user_state'] = 2;
                 $_SESSION['ses_user_id'] = $row['user_id'];
+                $_SESSION['ses_user_image'] = $image;
                 $data = ['code' => 'code_3', 'role' => 3]; // success
             } else {
                 $data = ['code' => 'code_21']; // unexpected
@@ -141,6 +145,7 @@ if (array_key_exists("emp_signup", $_POST)) {
                 $_SESSION['ses_role_id'] = 2;
                 $_SESSION['ses_user_id'] = $row['user_id'];
                 $_SESSION['ses_user_state'] = 1;
+                $_SESSION['ses_user_image'] = $image;
                 $data = ['code' => 'code_3', 'role' => 2]; // success
             } else {
                 $data = ['code' => 'code_2']; // unexpected

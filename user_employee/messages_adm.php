@@ -15,12 +15,12 @@
 
         <!-- left bar -->
         <div class="col-lg-3 px-3 py-3">
-            <div class="btn-title">System Manage</div>
+            <div class="btn-title">Employee Manage</div>
             <?php
-            $admin_menu = "ad_m_4";
-            $admin_submenu = "ad_m_4_2";
+            $admin_menu = "em_m_4";
+            $admin_submenu = "em_m_4_2";
             ?>
-            <?php include('./components/admin_menu_card.php'); ?>
+            <?php include('./components/employee_menu_card.php'); ?>
         </div>
 
         <!-- middle bar -->
@@ -32,30 +32,20 @@
                 <?php
                 $user_image = "../site_images/admin.png";
                 $user_id = $_SESSION['ses_user_id'];
-                $sql = "SELECT a.sender_id, a.reciver_id, b.name, b.logo FROM messages a INNER JOIN companies b ON a.sender_id = b.user_id OR a.reciver_id = b.user_id GROUP BY b.user_id";
+                $sql = "SELECT * FROM users WHERE role_id=1";
                 $result = $__conn->query($sql);
                 $name = "";
                 $nid = "";
                 while ($row = $result->fetch_assoc()) {
-                    if ($row['sender_id'] != $user_id) {
-                        $sql2 = "SELECT * FROM companies WHERE user_id='" . $row['sender_id'] . "'";
-                        $result2 = $__conn->query($sql2);
-                        $row2 = $result2->fetch_assoc();
-                        $nid = $row['sender_id'];
-                        $name = $row2['name'];
-                    } else {
-                        $sql2 = "SELECT * FROM companies WHERE user_id='" . $row['reciver_id'] . "'";
-                        $result2 = $__conn->query($sql2);
-                        $row2 = $result2->fetch_assoc();
-                        $nid = $row['reciver_id'];
-                        $name = $row2['name'];
-                    }
+                    $name = $row['email'];
+                    $nid = $row['user_id'];
+                    $image = "../site_images/user.png";
                 ?>
                     <div class="col-4">
-                        <a class="no-link" href="send_cmp_message.php?id=<?php echo $nid; ?>">
+                        <a class="no-link" href="send_adm_message.php?id=<?php echo $nid; ?>">
                             <div class="card-basic message_contact_card mb-3">
                                 <div class="img-wrap">
-                                    <img src="../uploads/user/<?php echo $row['logo']; ?>" alt="">
+                                    <img src="<?php echo $image ?>" alt="">
                                 </div>
                                 <div class="data">
                                     <div class="name"><?php echo $name; ?></div>

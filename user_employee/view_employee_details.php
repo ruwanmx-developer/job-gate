@@ -37,9 +37,7 @@
                     <div class="card-basic">
                         <div class="row company-view pe-3">
                             <div class="col-12 d-flex justify-content-center marg-b">
-                                <div class="img"><img class="logo-shadow img-fluid"
-                                        src="<?php echo $__siteroot; ?>./uploads/user/<?php echo $row['image']; ?>"
-                                        alt="">
+                                <div class="img"><img class="logo-shadow img-fluid" src="<?php echo $__siteroot; ?>./uploads/user/<?php echo $row['image']; ?>" alt="">
                                 </div>
                             </div>
                             <div class="col-12 text-center">
@@ -66,17 +64,17 @@
                                     Last Name : <span><?php echo $row['last_name']; ?></span>
                                 </div>
                                 <?php if ($row['gender'] != "") { ?>
-                                <div class="special marg-b">
-                                    Gender : <span><?php echo $row['gender']; ?></span>
-                                </div><?php } ?>
+                                    <div class="special marg-b">
+                                        Gender : <span><?php echo $row['gender']; ?></span>
+                                    </div><?php } ?>
                                 <?php if ($row['address'] != "") { ?>
-                                <div class="special marg-b">
-                                    Home Address : <span><?php echo $row['address']; ?></span>
-                                </div><?php } ?>
+                                    <div class="special marg-b">
+                                        Home Address : <span><?php echo $row['address']; ?></span>
+                                    </div><?php } ?>
                                 <?php if ($row['birthday'] != "") { ?>
-                                <div class="special">
-                                    Birthday : <span><?php echo $row['birthday']; ?></span>
-                                </div><?php } ?>
+                                    <div class="special">
+                                        Birthday : <span><?php echo $row['birthday']; ?></span>
+                                    </div><?php } ?>
                             </div>
                         </div>
                     </div>
@@ -87,24 +85,24 @@
                         <div class="row company-view pe-3">
                             <div class="col-12 text-center">
                                 <?php if (!empty($row['website'])) { ?>
-                                <div class="special marg-b">
-                                    Website : <span><?php echo $row['website']; ?></span>
-                                </div>
+                                    <div class="special marg-b">
+                                        Website : <span><?php echo $row['website']; ?></span>
+                                    </div>
                                 <?php } ?>
                                 <?php if (!empty($row['linkedin'])) { ?>
-                                <div class="special marg-b">
-                                    LinkedIn : <span><?php echo $row['linkedin']; ?></span>
-                                </div>
+                                    <div class="special marg-b">
+                                        LinkedIn : <span><?php echo $row['linkedin']; ?></span>
+                                    </div>
                                 <?php } ?>
                                 <?php if (!empty($row['github'])) { ?>
-                                <div class="special marg-b">
-                                    Github : <span><?php echo $row['github']; ?></span>
-                                </div>
+                                    <div class="special marg-b">
+                                        Github : <span><?php echo $row['github']; ?></span>
+                                    </div>
                                 <?php } ?>
                                 <?php if (!empty($row['mobile'])) { ?>
-                                <div class="special">
-                                    Mobile : <span><?php echo $row['mobile']; ?></span>
-                                </div>
+                                    <div class="special">
+                                        Mobile : <span><?php echo $row['mobile']; ?></span>
+                                    </div>
                                 <?php } ?>
                             </div>
                         </div>
@@ -116,14 +114,14 @@
                         <div class="row company-view">
                             <div class="col-12 text-center">
                                 <?php if (!empty($row['skills'])) { ?>
-                                <div class="special d-flex justify-content-center">
-                                    <?php
+                                    <div class="special d-flex justify-content-center">
+                                        <?php
                                         $str_arr = explode(",", $row['skills']);
                                         foreach ($str_arr as $x) {
                                             echo "<div class=\"skill-tag\">$x</div>";
                                         }
                                         ?>
-                                </div>
+                                    </div>
                                 <?php } ?>
                             </div>
                         </div>
@@ -135,9 +133,9 @@
                         <div class="row company-view ">
                             <div class="col-12 text-center">
                                 <?php if (!empty($row['education'])) { ?>
-                                <div class="special marg-b">
-                                    <?php echo $row['education']; ?>
-                                </div>
+                                    <div class="special marg-b">
+                                        <?php echo $row['education']; ?>
+                                    </div>
                                 <?php } ?>
                             </div>
                         </div>
@@ -149,9 +147,9 @@
                         <div class="row company-view ">
                             <div class="col-12 text-center">
                                 <?php if (!empty($row['work'])) { ?>
-                                <div class="special marg-b">
-                                    <?php echo $row['work']; ?>
-                                </div>
+                                    <div class="special marg-b">
+                                        <?php echo $row['work']; ?>
+                                    </div>
                                 <?php } ?>
                             </div>
                         </div>

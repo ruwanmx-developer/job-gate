@@ -17,10 +17,10 @@
         <div class="col-lg-3 px-3 py-3">
             <div class="btn-title">System Manage</div>
             <?php
-            $admin_menu = "ad_m_4";
-            $admin_submenu = "ad_m_4_1";
+            $admin_menu = "em_m_4";
+            $admin_submenu = "em_m_4_2";
             ?>
-            <?php include('./components/admin_menu_card.php'); ?>
+            <?php include('./components/employee_menu_card.php'); ?>
         </div>
 
         <!-- middle bar -->
@@ -35,21 +35,23 @@
                     $user_image = "../site_images/admin.png";
                     $user_id = $_SESSION['ses_user_id'];
                     $ouser_id = $_GET['id'];
-                    $sql = "SELECT a.id,a.message, DATE_FORMAT(a.send_date,'%H:%i %Y-%m-%e') AS send_date, a.states, a.sender_id,b.first_name,b.last_name,b.image FROM messages a INNER JOIN employies b ON a.sender_id = b.user_id OR a.reciver_id = b.user_id WHERE (a.reciver_id = '$ouser_id' AND a.sender_id = '$user_id') OR (a.reciver_id = '$user_id' AND a.sender_id = '$ouser_id')";
+                    $sql = "SELECT a.id,a.message, DATE_FORMAT(a.send_date,'%H:%i %Y-%m-%e') AS send_date, a.states, a.sender_id,b.name,b.logo FROM messages a INNER JOIN companies b ON a.sender_id = b.user_id OR a.reciver_id = b.user_id WHERE (a.reciver_id = '$ouser_id' AND a.sender_id = '$user_id') OR (a.reciver_id = '$user_id' AND a.sender_id = '$ouser_id')";
                     $result = $__conn->query($sql);
                     while ($row = $result->fetch_assoc()) {
                         if ($user_id != $row['sender_id']) {
                     ?>
-                    <div class="col-10 ">
+                    <div class="col-10">
                         <div class="card-basic chat_message_card non-user new marg-b">
                             <div class="img-wrap">
-                                <img src="../uploads/user/<?php echo $row['image']; ?>" alt="">
+                                <img src="../site_images/user.png" alt="">
                             </div>
                             <div class="data">
                                 <div class="time">
-                                    <?php echo $row['send_date'] . " - " . $row['first_name'] . " " . $row['last_name']; ?>
+                                    <?php echo $row['send_date'] . " - " . $row['name']; ?>
                                 </div>
-                                <div class="message new"><?php echo $row['message']; ?></div>
+                                <div class="message new" id="msg_<?php echo $row['id']; ?>">
+                                    <?php echo $row['message']; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -58,6 +60,7 @@
                             $read = ($row['states'] == 1) ? "Unread" : "Read";
                             $style = ($row['states'] == 1) ? "unread" : "read";
                         ?>
+
                     <div class="offset-2 col-10 ">
                         <div class="card-basic chat_message_card user new marg-b"
                             onclick="openMessage(<?php echo $row['id']; ?>)">
@@ -69,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="img-wrap">
-                                <img src="../site_images/user.png" alt="">
+                                <img src="../uploads/user/<?php echo $row['logo']; ?>" alt="">
                             </div>
                         </div>
                     </div>
@@ -140,7 +143,7 @@
                 if (this.readyState == 4 && this.status == 200) {
                     let x = JSON.parse(xhttp.responseText);
                     if (x.code === "code_2") {
-                        Swal.fire("Unexpected Error", "Unexpected error caused when sending the money", "error");
+                        Swal.fire("Unexpected Error", "Unexpected error caused when sending the message", "error");
                     } else if (x.code === "code_1") {
                         location.reload();
                     }

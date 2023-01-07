@@ -16,11 +16,11 @@
         <!-- left bar -->
         <div class="col-lg-3 px-3 py-3">
             <div class="btn-title">Companies</div>
-            <?php include('./components/job_filter_card.php'); ?>
+            <?php include('./components/company-filter-card.php'); ?>
         </div>
 
         <!-- middle bar -->
-        <div id="job-results" class="col-lg-9 py-3 pe-3 ps-3 ps-lg-0">
+        <div id="company-results" class="col-lg-9 py-3 pe-3 ps-3 ps-lg-0">
             <?php
             $sql = "SELECT a.* FROM companies a INNER JOIN users b ON a.user_id=b.user_id WHERE b.state=1";
             $result = $__conn->query($sql);
@@ -28,44 +28,44 @@
             while ($row = $result->fetch_assoc()) {
                 $count++;
             ?>
-            <?php include('./components/company_card.php'); ?>
+                <?php include('./components/company_card.php'); ?>
             <?php } ?>
             <?php if ($count == 0) { ?>
-            <div class="d-flex justify-content-center">
-                <div class="empty pt-5">
-                    <div class="empty-img">
-                        <img src="https://cdn-icons-png.flaticon.com/512/4076/4076402.png" alt="">
-                    </div>
-                    <div class="empty-message b">
-                        There are no data to show today
-                    </div>
-                    <div class="empty-message r">
-                        Make sure that everything is spelt correctly or try different keywords.
+                <div class="d-flex justify-content-center">
+                    <div class="empty pt-5">
+                        <div class="empty-img">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076402.png" alt="">
+                        </div>
+                        <div class="empty-message b">
+                            There are no data to show today
+                        </div>
+                        <div class="empty-message r">
+                            Make sure that everything is spelt correctly or try different keywords.
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php } ?>
         </div>
         <script>
-        function followCompany(x) {
-            let data = new FormData();
-            data.append('id', x);
-            data.append('followChange', 'true');
+            function followCompany(x) {
+                let data = new FormData();
+                data.append('id', x);
+                data.append('followChange', 'true');
 
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    let x = JSON.parse(xhttp.responseText);
-                    if (x.code === "code_1") {
-                        Swal.fire("Unexpected Error", "Unexpected error occured");
-                    } else if (x.code === "code_2") {
-                        location.reload();
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let x = JSON.parse(xhttp.responseText);
+                        if (x.code === "code_1") {
+                            Swal.fire("Unexpected Error", "Unexpected error occured");
+                        } else if (x.code === "code_2") {
+                            location.reload();
+                        }
                     }
-                }
-            };
-            xhttp.open("POST", "./function/company.php", true);
-            xhttp.send(data);
-        }
+                };
+                xhttp.open("POST", "./function/company.php", true);
+                xhttp.send(data);
+            }
         </script>
     </div>
     <?php include('./components/footer.php'); ?>
