@@ -39,7 +39,7 @@ function filterCompanyByAll() {
             document.getElementById("company-results").innerHTML = xhttp.responseText;
         }
     };
-    xhttp.open("POST", "database/company/functions.php", true);
+    xhttp.open("POST", "./function/company.php", true);
     xhttp.send(data);
 }
 </script>

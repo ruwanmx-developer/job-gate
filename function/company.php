@@ -178,6 +178,35 @@ if (array_key_exists("companySearchJobs", $_POST)) {
     </div>';
     }
 }
+// admin search function
+if (array_key_exists("filterCompanyByAll", $_POST)) {
+    $search = $_POST['search_val'];
+    $dist = $_POST['dist'];
+    $sql = "SELECT a.* FROM companies a INNER JOIN users c ON a.user_id=c.user_id WHERE c.state=1 AND a.name LIKE '%$search%' AND a.district_id LIKE '%$dist%'";
+    $result = $__conn->query($sql);
+    $count = 0;
+    $__siteroot = ".";
+    while ($row = $result->fetch_assoc()) {
+        $count++;
+
+        include('../components/company_card.php');
+    }
+    if ($count == 0) {
+        echo '<div class="d-flex justify-content-center">
+        <div class="empty pt-5">
+                    <div class="empty-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4076/4076402.png" alt="">
+                    </div>
+                    <div class="empty-message b">
+                        There are no data to show today
+                    </div>
+                    <div class="empty-message r">
+                        Make sure that everything is spelt correctly or try different keywords.
+                    </div>
+                </div>
+    </div>';
+    }
+}
 
 // follow function
 if (array_key_exists("followChange", $_POST)) {
