@@ -57,16 +57,48 @@
                         xhttp.send(data);
                     }
 
-                    function viewCompanyDetails(x) {
-                        window.location.href = './view_company_details.php?id=' + x +
-                            "&ref=<?php echo $admin_submenu; ?>";
+                    function changeState(id) {
+                        Swal.fire({
+                            title: 'Chnage State',
+                            text: "Do you really want to close this job?",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes, Close it!'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                let data = new FormData();
+                                data.append('id', id);
+                                data.append('changeJobState', 'true');
+
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.onreadystatechange = function() {
+                                    let x = JSON.parse(xhttp.responseText);
+                                    if (x.code === "code_2") {
+                                        Swal.fire("Success",
+                                                "Job closed. No one will able to send applications for this job",
+                                                "success")
+                                            .then((
+                                                value) => {
+                                                location.reload();
+                                            });
+                                    } else if (x.code === "code_1") {
+                                        Swal.fire("Unexpected Error",
+                                            "Unexpected error caused when changing the job state",
+                                            "error");
+                                    }
+                                };
+                                xhttp.open("POST", "../function/company.php", true);
+                                xhttp.send(data);
+                            }
+                        })
+
                     }
                     </script>
                 </div>
             </div>
             <div id="company_wrap" class="row gx-3">
                 <?php
-                $sql = "SELECT a.id, a.title, b.name AS category, a.description,a.created_at, c.name AS salary_type, a.salary FROM jobs a INNER JOIN job_categories b ON a.job_category_id = b.id INNER JOIN salary_types c ON a.salary_type_id = c.id WHERE state=1 AND user_id='" . $_SESSION['ses_user_id'] . "'";
+                $sql = "SELECT a.id,a.user_id, a.title, b.name AS category, a.description,a.created_at, c.name AS salary_type, a.salary FROM jobs a INNER JOIN job_categories b ON a.job_category_id = b.id INNER JOIN salary_types c ON a.salary_type_id = c.id WHERE state=1 AND user_id='" . $_SESSION['ses_user_id'] . "'";
                 $result = $__conn->query($sql);
                 $count = 0;
                 while ($row = $result->fetch_assoc()) {

@@ -3,7 +3,7 @@
 <?php $__siteroot = "."; ?>
 
 <head>
-    <title>Active Companies</title>
+    <title>Active Jobs</title>
     <!-- include header links -->
     <?php include($__siteroot . './components/header_links.php'); ?>
 </head>
@@ -17,35 +17,35 @@
         <div class="col-lg-3 px-3 py-3">
             <div class="btn-title">System Manage</div>
             <?php
-            $admin_menu = "ad_m_1";
-            $admin_submenu = "ad_m_1_1";
+            $admin_menu = "co_m_3";
+            $admin_submenu = "co_m_3_3";
             ?>
-            <?php include('./components/admin_menu_card.php'); ?>
+            <?php include('./components/company_menu_card.php'); ?>
         </div>
 
         <!-- middle bar -->
         <div class="col-lg-9 py-3 pe-3 ps-3 ps-lg-0">
             <div class="title-bar card-basic py-2 mb-3">
-                ACTIVE COMPANIES
+                VIEW APPLICATIONS
             </div>
             <div class="row gx-3">
                 <div class="col-12">
                     <div class="card-basic mb-3">
                         <div class="input-group">
-                            <input class="form-control" type="text" name="search_q" onkeyup="adminSearchCompany()"
-                                id="search_q" placeholder="Search By Company Name">
+                            <input class="form-control" type="text" name="search_q" onkeyup="companySearchJobs()"
+                                id="search_q" placeholder="Search By Job Title">
                             <!-- <button class="btn btn-search"  type="button"><i class="bi bi-search"></i></button> -->
                         </div>
                     </div>
                     <script>
-                    function adminSearchCompany() {
+                    function companySearchJobs() {
                         let op = document.getElementById('company_wrap');
                         let inp = document.getElementById('search_q').value;
 
                         let data = new FormData();
                         data.append('search_val', inp);
                         data.append('state', 1);
-                        data.append('adminSearchCompany', 'true');
+                        data.append('companySearchJobs', 'true');
 
                         var xhttp = new XMLHttpRequest();
                         xhttp.onreadystatechange = function() {
@@ -53,27 +53,39 @@
                                 op.innerHTML = xhttp.responseText;
                             }
                         };
-                        xhttp.open("POST", "../function/admin.php", true);
+                        xhttp.open("POST", "../function/company.php", true);
                         xhttp.send(data);
                     }
 
-                    function viewCompanyDetails(x) {
-                        window.location.href = './view_company_details.php?id=' + x +
-                            "&ref=<?php echo $admin_submenu; ?>";
+                    function viewEmployeeDetails(x, c) {
+                        Swal.fire({
+                            icon: 'question',
+                            html: 'Do you want to reject this request?',
+                            showCancelButton: true,
+                            focusConfirm: false,
+                            cancelButtonText: 'Cancel',
+                            confirmButtonText: 'View Profile',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = './view_employee_details.php?id=' + x +
+                                    "&ref=<?php echo $admin_submenu; ?>";
+                            }
+                        })
+
                     }
                     </script>
                 </div>
             </div>
             <div id="company_wrap" class="row gx-3">
                 <?php
-                $sql = "SELECT a.name, a.logo, a.user_id, b.state, b.email FROM companies a INNER JOIN users b ON a.user_id = b.user_id WHERE b.state=1";
+                $sql = "SELECT a.id, a.user_id, a.job_id, a.status, a.message, a.applied_date, responded_date, b.user_id AS company_id, c.first_name, c.last_name,  b.title FROM job_applications a INNER JOIN jobs b ON a.job_id=b.id INNER JOIN employies c ON a.user_id=c.user_id WHERE a.status=3 AND b.state=1 AND b.user_id=" . $_SESSION['ses_user_id'];
                 $result = $__conn->query($sql);
                 $count = 0;
                 while ($row = $result->fetch_assoc()) {
                     $count++;
                 ?>
-                <div class="col-12 col-md-6 col-xl-4 mb-3">
-                    <?php include('components/admin_company_card.php'); ?>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <?php include('components/application_card.php'); ?>
                 </div>
                 <?php } ?>
                 <?php if ($count == 0) { ?>
@@ -83,7 +95,7 @@
                             <img src="https://cdn-icons-png.flaticon.com/512/4076/4076402.png" alt="">
                         </div>
                         <div class="empty-message b">
-                            There are no data to show today
+                            We didn't find any results
                         </div>
                         <div class="empty-message r">
                             Make sure that everything is spelt correctly or try different keywords.

@@ -247,6 +247,24 @@ if (array_key_exists("rejectApplication", $_POST)) {
     header('Content-type: application/json');
     echo json_encode($data);
 }
+if (array_key_exists("changeJobState", $_POST)) {
+    $id = $_POST['id'];
+    $sql = "SELECT * FROM jobs WHERE id='$id'";
+    $result = $__conn->query($sql);
+    if ($result->num_rows == 1) {
+        $sql2 = "UPDATE jobs SET state=2 WHERE id='$id'";
+        if ($__conn->query($sql2) === TRUE) {
+            $data = ['code' => 'code_2']; // ok
+        } else {
+            $data = ['code' => 'code_1']; // unexpected error
+        }
+    } else {
+        $data = ['code' => 'code_1']; // unexpected error
+    }
+
+    header('Content-type: application/json');
+    echo json_encode($data);
+}
 
 if (array_key_exists("inviteUser", $_POST)) {
     $user_id = $_POST['user_id'];

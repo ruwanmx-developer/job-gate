@@ -5,8 +5,8 @@
 <head>
     <title>Job Gate</title>
     <?php include($__siteroot . './components/header_links.php'); ?>
-    <script type="text/javascript" src="./js/md5.js"></script>
-    <script type="text/javascript" src="./js/validationPatterns.js"></script>
+    <script type="text/javascript" src="../js/md5.js"></script>
+    <!-- <script type="text/javascript" src="../js/validationPatterns.js"></script> -->
 </head>
 
 <body>
@@ -80,6 +80,53 @@
                         </div>
                     </div>
                     <script>
+                    function check_auth(y) {
+                        let data = new FormData();
+                        data.append('check_auth', 'true');
+
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                let x = JSON.parse(xhttp.responseText);
+                                if (x.code === "code_1") {
+                                    apply_job(y);
+                                } else if (x.code === "code_2") {
+                                    Swal.fire("Login Required",
+                                        "You have to logged to the system to apply for jobs", "warning");
+                                }
+                            }
+                        };
+                        xhttp.open("POST", "../function/authentication.php", true);
+                        xhttp.send(data);
+                    }
+
+                    function apply_job(x) {
+                        let data = new FormData();
+                        data.append('id', x);
+                        data.append('apply_job', 'true');
+
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                let x = JSON.parse(xhttp.responseText);
+                                if (x.code === "code_1") {
+                                    Swal.fire("Job Applied Already",
+                                        "You have applied this job already. Wait until company responds.",
+                                        "warning");
+                                } else if (x.code === "code_2") {
+                                    Swal.fire("Job Applied",
+                                        "You have applied for the job. Usually it takes 2 business days to take actions.",
+                                        "success");
+                                } else if (x.code === "code_3") {
+                                    Swal.fire("Unexpected Error", "Unexpected error caused when applying the job",
+                                        "error");
+                                }
+                            }
+                        };
+                        xhttp.open("POST", "../function/job.php", true);
+                        xhttp.send(data);
+                    }
+
                     function followCompany(x) {
                         let data = new FormData();
                         data.append('id', x);
@@ -96,28 +143,34 @@
                                 }
                             }
                         };
-                        xhttp.open("POST", "./function/company.php", true);
+                        xhttp.open("POST", "../function/company.php", true);
                         xhttp.send(data);
                     }
                     </script>
                 </div>
             </div>
-            <div class="card-basic mt-3">
+            <div class="mt-3">
                 <div class="row company-view pe-3">
                     <div class="col-12">
                         <!-- <hr class="mt-4 mb-4"> -->
                         <div class="title-1 mb-3">Jobs Listed By <?php echo $row['name']; ?></div>
-                        <?php
-                        // $sql = "SELECT a.id, a.title, b.name AS category, a.description, a.salary, f.id AS company_id, f.name AS company, d.district, e.name FROM job a INNER JOIN job_category b ON a.category = b.id INNER JOIN district d ON a.district = d.id INNER JOIN job_type e ON a.type = e.id INNER JOIN company f ON a.company = f.id WHERE a.company = $id";
-                        // $result = $__conn->query($sql);
-                        // while($row = $result->fetch_assoc()) {
-                        ?>
-                        <?php //include('components/job/job-card.php');
-                        ?>
-                        <?php //}
-                        ?>
                     </div>
                 </div>
+            </div>
+
+            <div class="row company-view">
+                <div class="col-12">
+                    <!-- <hr class="mt-4 mb-4"> -->
+
+                    <?php
+                    $sql = "SELECT a.id, a.title, b.name AS category, a.description, a.salary, g.name AS salary_type, f.user_id AS company_id, f.name AS company, d.district, e.name FROM jobs a INNER JOIN job_categories b ON a.job_category_id = b.id INNER JOIN districts d ON a.district_id = d.id INNER JOIN job_types e ON a.job_type_id = e.id INNER JOIN companies f ON a.user_id = f.user_id INNER JOIN salary_types g ON a.salary_type_id = g.id WHERE a.user_id='$id'";
+                    $result = $__conn->query($sql);
+                    while ($row = $result->fetch_assoc()) {
+                    ?>
+                    <?php include('./components/job_card.php'); ?>
+                    <?php } ?>
+                </div>
+
             </div>
         </div>
     </div>

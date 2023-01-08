@@ -92,12 +92,12 @@ if ($result->num_rows == 1) {
             <div class=" ms-4 name active">SEARCH EMPLOYEES</div>
         </div>
     </a>
-    <a href="" class="no-link ">
+    <a href="rejected_applications.php" class="no-link ">
         <div id="co_m_3_3" class="menu-item mb-2 ms-4 company-sec">
             <div class="activebar <?php if ($admin_submenu == "co_m_3_3") {
                                             echo "active";
                                         } ?>"></div>
-            <div class=" ms-4 name active">APPROVED APPLICATIONS</div>
+            <div class=" ms-4 name active">REJECTED APPLICATIONS</div>
         </div>
     </a>
 </div>

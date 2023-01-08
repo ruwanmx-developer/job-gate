@@ -16,9 +16,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo $__siteroot; ?>./companies.php">Companies</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Services</a>
-                </li>
+                </li> -->
                 <?php }
                 } else { ?>
                 <li class="nav-item">
@@ -27,9 +27,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo $__siteroot; ?>./companies.php">Companies</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Services</a>
-                </li>
+                </li> -->
                 <?php } ?>
             </ul>
             <div class="d-flex">

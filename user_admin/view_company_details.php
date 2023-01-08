@@ -63,6 +63,9 @@
                             </button>
                             <a href="send_cmp_message.php?id=<?php echo $row['user_id']; ?>"> <button
                                     class="btn-green">Message</button></a>
+                            <a href="company_report.php?id=<?php echo $row['user_id']; ?>"><button
+                                    class="btn-green">Print
+                                    Details</button></a>
                         </div>
                         <div class="special mb-2">
                             Email : <span><?php echo $row['email']; ?></span>
