@@ -42,6 +42,14 @@
             <div class=" ms-4 name active">PENDING APPLICATIONS</div>
         </div>
     </a>
+    <a href="view_rejected_applications.php" class="no-link ">
+        <div id="em_m_2_2" class="menu-item mb-2 ms-4 company-sec">
+            <div class="activebar <?php if ($admin_submenu == "em_m_2_2") {
+                                        echo "active";
+                                    } ?>"></div>
+            <div class=" ms-4 name active">REJECTED APPLICATIONS</div>
+        </div>
+    </a>
 
 </div>
 

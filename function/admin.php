@@ -78,22 +78,26 @@ if (array_key_exists("change_company_state", $_POST)) {
     } else {
         $sql1 = "UPDATE users SET state = $state WHERE user_id = '$id'";
         if ($__conn->query($sql1) === TRUE) {
-
             // sendmail
-            // $sql = "SELECT * FROM users WHERE user_id='$id'";
-            // $result = $__conn->query($sql);
-            // $row = $result->fetch_assoc();
-            // $type = ($row['role_id'] == 2) ? "Employee" : "Company" ;
-            // $state =  ($row['state'] == 1) ? "Active" : "Blocked" ;
-            // $subject = 'Account State Changed';
 
-            // $message = "Hello " . $row['email']. ",<br>";
-            // $message .= "Our administration had desided to change your state of your $type account to $state. You can go to your profile and check out for more details.";
-            // $headers = "From: Job Gate System\r\n";
-            // $headers .= "Content-type: text/html\r\n";
+            $sql = "SELECT * FROM users WHERE user_id='$id'";
+            $result = $__conn->query($sql);
+            $row = $result->fetch_assoc();
+            $to = $row['email'];
+            $type = ($row['role_id'] == 2) ? "Employee" : "Company";
+            $state =  ($row['state'] == 1) ? "Active" : "Blocked";
+            $subject = 'Account State Changed';
 
-            // mail($to, $subject, $message, $headers);
-            $data = ['code' => 'code_2']; // company acepted
+            $message = "Hello " . $row['email'] . ",<br>";
+            $message .= "Our administration had desided to change your state of your $type account to $state. You can go to your profile and check out for more details.";
+            $headers = "From: Job Gate System\r\n";
+            $headers .= "Content-type: text/html\r\n";
+
+            if (mail($to, $subject, $message, $headers) === TRUE) {
+                $data = ['code' => 'code_2'];
+            } else {
+                $data = ['code' => 'code_3'];
+            }
         } else {
             $data = ['code' => 'code_1']; // unexpected error
         }

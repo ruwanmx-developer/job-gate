@@ -32,7 +32,7 @@
                 <?php
                 $user_image = "../site_images/admin.png";
                 $user_id = $_SESSION['ses_user_id'];
-                $sql = "SELECT a.sender_id, a.reciver_id, b.first_name, b.last_name, b.image FROM messages a INNER JOIN employies b ON a.sender_id = b.user_id OR a.reciver_id = b.user_id GROUP BY b.user_id";
+                $sql = "SELECT a.sender_id, a.reciver_id, b.first_name, b.last_name, b.image FROM messages a INNER JOIN employies b ON a.sender_id = b.user_id OR a.reciver_id = b.user_id WHERE a.reciver_id='$user_id' OR a.sender_id='$user_id' GROUP BY b.user_id";
                 $result = $__conn->query($sql);
                 $name = "";
                 $nid = "";
@@ -51,19 +51,19 @@
                         $name = $row2['first_name'] . " " . $row2['last_name'];
                     }
                 ?>
-                    <div class="col-4">
-                        <a class="no-link" href="send_emp_message.php?id=<?php echo $nid; ?>">
-                            <div class="card-basic message_contact_card mb-3">
-                                <div class="img-wrap">
-                                    <img src="../uploads/user/<?php echo $row['image']; ?>" alt="">
-                                </div>
-                                <div class="data">
-                                    <div class="name"><?php echo $name; ?></div>
-                                </div>
-
+                <div class="col-4">
+                    <a class="no-link" href="send_emp_message.php?id=<?php echo $nid; ?>">
+                        <div class="card-basic message_contact_card mb-3">
+                            <div class="img-wrap">
+                                <img src="../uploads/user/<?php echo $row['image']; ?>" alt="">
                             </div>
-                        </a>
-                    </div>
+                            <div class="data">
+                                <div class="name"><?php echo $name; ?></div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
                 <?php } ?>
             </div>
         </div>

@@ -12,29 +12,29 @@
         <?php
         $sql = "SELECT * FROM job_categories";
         $result = $__conn->query($sql);
-        while($row = $result->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
         ?>
-        <option value="<?php echo $row['id']?>"><?php echo $row['name']?></option>
+        <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
         <?php } ?>
     </select>
     <select id="job_type" class="form-select mb-3">
         <option value="" selected>All Job Types</option>
-        <?php 
+        <?php
         $sql = "SELECT * FROM job_types";
         $result = $__conn->query($sql);
-        while($row = $result->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
         ?>
-        <option value="<?php echo $row['id']?>"><?php echo $row['name']?></option>
+        <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
         <?php } ?>
     </select>
     <select id="dist" class="form-select mb-3">
         <option value="" selected>All Districts</option>
-        <?php 
+        <?php
         $sql = "SELECT * FROM districts";
         $result = $__conn->query($sql);
-        while($row = $result->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
         ?>
-        <option value="<?php echo $row['id']?>"><?php echo $row['district']?></option>
+        <option value="<?php echo $row['id'] ?>"><?php echo $row['district'] ?></option>
         <?php } ?>
     </select>
     <div class="btn-wrap-right">
@@ -75,7 +75,7 @@ function filterJobByAll() {
             document.getElementById("job-results").innerHTML = xhttp.responseText;
         }
     };
-    xhttp.open("POST", "database/job/functions.php", true);
+    xhttp.open("POST", "./function/job.php", true);
     xhttp.send(data);
 }
 </script>
