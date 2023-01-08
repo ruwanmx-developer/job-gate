@@ -247,3 +247,45 @@ if (array_key_exists("rejectApplication", $_POST)) {
     header('Content-type: application/json');
     echo json_encode($data);
 }
+
+if (array_key_exists("inviteUser", $_POST)) {
+    $user_id = $_POST['user_id'];
+    $company_id = $_POST['company_id'];
+    $data = "";
+    $sql = "SELECT a.*, b.email FROM employies a INNER JOIN users b ON a.user_id=b.user_id WHERE a.user_id='$user_id'";
+    $result = $__conn->query($sql);
+    if ($result->num_rows == 1) {
+        $row1 = $result->fetch_assoc();
+        $sql = "SELECT * FROM companies WHERE user_id='$company_id'";
+        $result = $__conn->query($sql);
+        if ($result->num_rows == 1) {
+            $row2 = $result->fetch_assoc();
+            // sendmail
+            $to = $row1['email'];
+            $subject = 'Recuit Invitation';
+            $resetLink = $__site_url . "/" . "view_company.php?id=" . $company_id;
+            $message = "Welcome " . $row1['first_name'] . ",<br>";
+            $message .= "Happy News for you !<br><br>";
+            $message .= "We have seen your skills matching our requirement.<br><br>";
+            $message .= "Contact us using this link to contact us.<br>";
+            $message .= "<a href=" . $resetLink . "> <button>View Company</button> <a/><br><br>";
+            $message .= "Or copy and paste  the URL into your browser:<br>";
+            $message .= "<a href='" . $resetLink . "'>" . $resetLink . "</a>";
+
+            $headers = "From: Job Gate System\r\n";
+            $headers .= "Content-type: text/html\r\n";
+
+            if (mail($to, $subject, $message, $headers) === TRUE) {
+                $data = ['code' => 'code_2'];
+            } else {
+                $data = ['code' => 'code_1'];
+            }
+        } else {
+            $data = ['code' => 'code_1'];
+        }
+    } else {
+        $data = ['code' => 'code_1'];
+    }
+    header('Content-type: application/json');
+    echo json_encode($data);
+}

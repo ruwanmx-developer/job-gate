@@ -208,6 +208,7 @@ if (array_key_exists("userForgotPassword", $_POST)) {
     echo json_encode($data);
 }
 
+
 // reset password
 if (array_key_exists("resetPassword", $_POST)) {
     $token = $_POST['token'];

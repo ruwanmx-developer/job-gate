@@ -4,12 +4,12 @@
 
 <head>
     <title>Job Gate</title>
-    <?php include('./components/header_links.php');?>
+    <?php include('./components/header_links.php'); ?>
     <script type="text/javascript" src="./js/md5.js"></script>
 </head>
 
 <body>
-    <?php include('./components/navigation.php');?>
+    <?php include('./components/navigation.php'); ?>
     <div class="row gx-0">
         <div class="col-12 col-lg-6">
             <div class="jumb-wrap d-flex align-items-center">
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-        <?php include('./components/footer.php');?>
+        <?php include('./components/footer.php'); ?>
         <script>
         function userForgotPassword() {
             let email = document.getElementById("email").value;
@@ -63,7 +63,8 @@
                 return;
             }
             if (!(pattern.test(email))) {
-                Swal.fire("Invalid field", email + " is not an valid email address. Enter a valid email address", "error");
+                Swal.fire("Invalid field", email + " is not an valid email address. Enter a valid email address",
+                    "error");
                 return false;
             }
 
@@ -74,9 +75,13 @@
             Swal.fire({
                 title: "Sending Email...",
                 text: "Please wait",
-                icon: "site_images/loading.gif",
-                buttons: false,
-                closeOnClickOutside: false
+                icon: "./site_images/loading.gif",
+                showCloseButton: false,
+                showCancelButton: false,
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false
             });
 
             var xhttp = new XMLHttpRequest();
@@ -84,7 +89,8 @@
                 if (this.readyState == 4 && this.status == 200) {
                     let x = JSON.parse(xhttp.responseText);
                     if (x.code === "code_1") {
-                        Swal.fire("Unregisterd Email", email + " address in not registerd in our database", "error");
+                        Swal.fire("Unregisterd Email", email + " address in not registerd in our database",
+                            "error");
                     } else if (x.code === "code_2") {
                         Swal.fire("Email Sent", "The password reset link has send to the " + email + " address",
                             "success").then((value) => {

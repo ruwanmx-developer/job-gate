@@ -24,7 +24,7 @@
         </div>
 
         <!-- middle bar -->
-        <div class="col-lg-9 py-3 pe-3 ps-3 ps-lg-0">
+        <div class="col-lg-9 py-3 pe-3 ps-3 ps-lg-0" id="content_report">
             <?php
             $id = $_GET['id'];
             $sql = "SELECT a.*, b.* FROM employies a INNER JOIN users b ON a.user_id=b.user_id WHERE a.user_id='$id'";
@@ -49,10 +49,12 @@
 
                                 <div class="desc-1 marg-b"><?php echo $row['description']; ?></div>
                                 <div class="btn-wrap marg-b">
-                                    <button class="btn-blue"> Invite
+                                    <button class="btn-blue" onclick="inviteUser()"> Invite
                                     </button>
                                     <a href="send_emp_message.php?id=<?php echo $row['user_id']; ?>"> <button
                                             class="btn-green">Message</button></a>
+                                    <a href="user_report.php?id=<?php echo $row['user_id']; ?>"><button
+                                            class="btn-green">Print Details</button></a>
                                 </div>
                             </div>
                         </div>
@@ -162,6 +164,68 @@
         </div>
     </div>
     <?php include($__siteroot . './components/footer.php'); ?>
+    <script>
+    function inviteUser() {
+        let company_id = <?php echo $_SESSION['ses_user_id']; ?>;
+
+        const pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        let data = new FormData();
+        data.append('user_id', <?php echo $id; ?>);
+        data.append('company_id', company_id);
+        data.append('inviteUser', 'true');
+
+        Swal.fire({
+            title: "Sending Email...",
+            text: "Please wait",
+            iconHtml: "<img src='../site_images/loading.gif'>",
+            showCloseButton: false,
+            showCancelButton: false,
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false
+        });
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let x = JSON.parse(xhttp.responseText);
+                if (x.code === "code_1") {
+                    Swal.fire("Unexpected Error", "Unexpected error caused when sending the email, Try Again",
+                        "error");
+                } else if (x.code === "code_2") {
+                    Swal.fire("Email Sent", "The email notification has sent to the user",
+                        "success").then((value) => {});
+                }
+            }
+        };
+        xhttp.open("POST", "../function/company.php", true);
+        xhttp.send(data);
+    }
+
+
+    // function downloadReport() {
+    //     window.html2canvas = html2canvas;
+    //     window.jsPDF = window.jspdf.jsPDF;
+
+    //     var doc = new jsPDF();
+
+    //     // Source HTMLElement or a string containing HTML.
+    //     var elementHTML = document.getElementById("content_report");
+
+    //     doc.html(elementHTML, {
+    //         callback: function(doc) {
+    //             // Save the PDF
+    //             doc.save('sample-document.pdf');
+    //         },
+    //         x: 15,
+    //         y: 15,
+    //         width: 200, //target width in the PDF document
+    //         windowWidth: 700 //window width in CSS pixels
+    //     });
+    // }
+    </script>
 </body>
 
 </html>
