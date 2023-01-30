@@ -4,7 +4,7 @@ $__username = "root";
 $__password = "";
 $__dbname = "jobgatev2";
 $__page_error = "";
-$__site_url = "https://localhost/Websites/Job%20Gate";
+$__site_url = "https://localhost/Job%20Gate/";
 
 try {
   $__conn = new mysqli($__servername, $__username, $__password, $__dbname);

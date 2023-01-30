@@ -37,7 +37,7 @@
                 $result = $__conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
                 ?>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 mb-3">
                     <?php include('components/job_application_card.php'); ?>
                 </div>
                 <?php } ?>

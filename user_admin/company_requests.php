@@ -72,7 +72,7 @@
                 while ($row = $result->fetch_assoc()) {
                     $count++;
                 ?>
-                <div class="col-12 col-md-6 col-xl-4">
+                <div class="col-12 col-md-6 col-xl-4 mb-3">
                     <?php include('components/admin_company_card.php'); ?>
                 </div>
                 <?php } ?>
